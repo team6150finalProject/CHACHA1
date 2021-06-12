@@ -11,7 +11,19 @@
     <title>Tea</title>
     <script src="https://kit.fontawesome.com/b802117b9f.js" crossorigin="anonymous"></script>
     <style >
+      body {
+        background-color: #fcf1e1;
+
+      }
+      .navigation {
+        background: url(../img/welcome.jpg);
+        background-repeat: no-repeat;
+      }
+
       nav {
+        text-align: center;
+        margin: auto;
+        width: 80%;
         font-family: Trebuchet MS, sans-serif;
         font-size: large;
       }
@@ -36,39 +48,56 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
-      <div class="container-fluid">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#">
-          <img src="../img/logo.png" alt="logo" width="70" height="70">
-        </a>
-        <!-- Toggler/collapsibe Button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Menu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Location</a>
-            </li>
-          </ul>
-          <!-- search form -->
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <a class="btn btn-default" href="#" role="button"><i class="fas fa-search"></i></a>
-            <span>&nbsp;&nbsp;</span>
-            <a class="btn btn-default" href="#" role="button"><i class="fas fa-shopping-cart fa-lg "></i></a>
-          </form>
+    <div class="navigation">
+      <nav class="navbar navbar-expand-lg navbar-dark" >
+        <div class="container-fluid">
+          <!-- Brand -->
+          <a class="navbar-brand" href="#">
+            <img src="../img/logo.png" alt="logo" width="70" height="70">
+          </a>
+          <!-- Toggler/collapsibe Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Navbar links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left:3%">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Location</a>
+              </li>
+            </ul>
+            <!-- search form -->
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <a class="btn btn-default" href="#" role="button"><i class="fas fa-search" style="color:#616161;"></i></a>
+              <span>&nbsp;&nbsp;</span>
+              <a class="btn btn-default" href="#" role="button"><i class="fas fa-shopping-cart fa-lg" style="color:#616161;"></i></a>
+            </form>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
+
+
+
+    <div id="story" style="margin:60px">
+      <h2 style="text-align:center; color: #616161;font-family: Trebuchet MS, sans-serif">ABOUT US | BRAND INTRUDUCTION</h2>
+      <h5 style="text-align:center; color: gray;margin-top: 40px; margin-left:auto; margin-right: auto; width: 62%; line-height: 200%;font-family: Trebuchet MS, sans-serif">
+        Our drinks originated from an instant inspiration of mixing cheese with tea.
+        In 2020, with this spark of inspiration,we opened the first shop.
+        We’ve come a long way, starting from a 20 ㎡ store to our outlets across Asia today.
+        We support artistic creation,make drinking tea become a style, a way of life.
+      </h5>
+
+      <img src="../img/about.png" class="img-fluid" alt="about us">
+
+    </div>
     <main>
       <div id="tea-gallery">
         <div class="content-warp">
