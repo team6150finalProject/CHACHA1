@@ -32,9 +32,17 @@
         color: #616161;
         font-family: Trebuchet MS, sans-serif;
       }
+      #tea-gallery h2 {
+        margin-top: 3%;
+      }
       .tea{
         width: 228px;
         height: 250px;
+      }
+      .card{
+        background-color: #ccb79b;
+        margin-left: auto;
+        margin-right: auto;
       }
       #findStore{
         text-align: center;
@@ -88,19 +96,26 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="home.html">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#tea-gallery">Menu</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#tea-gallery" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Menu
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #e6daca; opacity: 0.8">
+                  <li><a class="dropdown-item" href="#milkTea">Milk Tea</a></li>
+                  <li><a class="dropdown-item" href="#fruitTea">Fruit Tea</a></li>
+                  <li><a class="dropdown-item" href="#specialty">Specialty Drinks</a></li>
+                </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Location</a>
+                <a class="nav-link" href="#findStore">Location</a>
               </li>
             </ul>
             <!-- search form -->
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <a class="btn btn-default" href="#" role="button"><i class="fas fa-search" style="color:#616161;"></i></a>
+              <a class="btn btn-default" data-bs-toggle="tooltip" data-bs-placement="bottom" title="search" href="#" role="button"><i class="fas fa-search" style="color:#616161;"></i></a>
               <span>&nbsp;&nbsp;</span>
-              <a class="btn btn-default" href="#" role="button"><i class="fas fa-shopping-cart fa-lg" style="color:#616161;"></i></a>
+              <a class="btn btn-default" data-bs-toggle="tooltip" data-bs-placement="bottom" title="shopping cart" href="#" role="button"><i class="fas fa-shopping-cart fa-lg" style="color:#616161;"></i></a>
             </form>
           </div>
         </div>
@@ -132,16 +147,16 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="../img/p1.jpg" class="d-block w-100" alt="...">
+          <img src="../img/p1.jpg" class="d-block w-100" alt="milk tea">
         </div>
         <div class="carousel-item">
-          <img src="../img/p7.jpg" class="d-block w-100" alt="...">
+          <img src="../img/p7.jpg" class="d-block w-100" alt="bubble tea">
         </div>
         <div class="carousel-item">
-          <img src="../img/p3.jpg" class="d-block w-100" alt="...">
+          <img src="../img/p3.jpg" class="d-block w-100" alt="fruit tea">
         </div>
         <div class="carousel-item">
-          <img src="../img/p4.png" class="d-block w-100" alt="...">
+          <img src="../img/p4.png" class="d-block w-100" alt="mix berry tea">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -155,14 +170,11 @@
     </div>
 
     <main>
-      <div id="order_float">
-        <span class="badge bg-info">Quick Order</span></h3>
-      </div>
       <div id="tea-gallery">
         <div class="content-warp">
-          <div>
-            <h2>Milk Tea</h2>
-            <table class="table table-hover">
+          <div class="table-responsive">
+            <h2 id="milkTea">Milk Tea <h5 style="display:inline"><span class="badge bg-info">cold</span> / <span class="badge bg-warning text-dark">hot</span></h5></h2>
+            <table class="table table-hover table-borderless " style = "text-align:center">
               <thead>
               <tr>
                 <th></th>
@@ -173,7 +185,7 @@
               <tbody>
               <tr>
                 <td>
-                  <div class="card bg-warning" style="width: 230px; ">
+                  <div class="card" style="width: 230px">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -184,9 +196,9 @@
                     <img class="tea" src="../img/Bubble.png" alt="#">
 
                   </div>
-                </td>
+                </td style="border:1px solid red">
                 <td>
-                  <div class="card bg-warning" style="width: 230px;">
+                  <div class="card" style="width: 230px">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -199,7 +211,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="card bg-warning" style="width: 230px;">
+                  <div class="card" style="width: 230px">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -215,8 +227,8 @@
             </table>
           </div>
           <div>
-            <h2>Fruit Tea</h2>
-            <table class="table table-hover">
+            <h2 id="fruitTea">Fruit Tea <h5 style="display:inline"><span class="badge bg-info">cold</span></h5></h2>
+            <table class="table table-hover table-borderless">
               <thead>
               <tr>
                 <th></th>
@@ -227,7 +239,7 @@
               <tbody>
               <tr>
                 <td>
-                  <div class="card bg-warning" style="width: 230px;">
+                  <div class="card" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -240,7 +252,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="card bg-warning" style="width: 230px;">
+                  <div class="card" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -253,7 +265,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="card bg-warning" style="width: 230px;">
+                  <div class="card" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -269,8 +281,8 @@
             </table>
           </div>
           <div>
-            <h2>Specialty Drinks</h2>
-            <table class="table table-hover">
+            <h2 id="specialty">Specialty Drinks <h5 style="display:inline"><span class="badge bg-info">cold</span></h5></h2>
+            <table class="table table-hover table-borderless">
               <thead>
               <tr>
                 <th></th>
@@ -281,7 +293,7 @@
               <tbody>
               <tr>
                 <td>
-                  <div class="card bg-warning" style="width: 230px; ">
+                  <div class="card" style="width: 230px; ">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -294,7 +306,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="card bg-warning" style="width: 230px;">
+                  <div class="card" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -306,7 +318,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="card bg-warning" style="width: 230px;">
+                  <div class="card" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
@@ -323,8 +335,8 @@
         </div>
       </div>
       <div id="findStore">
-        <div class="content-warp">
-          <h2>Find a store near you</h2>
+        <div class="content-warp" style="margin:4%">
+          <h2 style="margin-bottom: 4%">Find a store near you</h2>
           <a href="#">
             <img src="../img/img-map.png" width="100%";
                  height="auto";>
