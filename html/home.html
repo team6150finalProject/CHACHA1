@@ -27,11 +27,28 @@
         font-family: Trebuchet MS, sans-serif;
         font-size: large;
       }
+      #tea-gallery{
+        text-align: center;
+        color: #616161;
+        font-family: Trebuchet MS, sans-serif;
+      }
+      .tea{
+        width: 228px;
+        height: 250px;
+      }
       #findStore{
         text-align: center;
+        color: #616161;
+        font-family: Trebuchet MS, sans-serif;
       }
       #footer{
         background-color: #2E0000;
+      }
+      #footer a:link{
+        color: white;
+      }
+      #footer a:visited{
+        color: white;
       }
       #footer-logo{
         float: left;
@@ -43,7 +60,13 @@
         font-size: .80em;
         font-style: italic;
       }
-
+      #order_float{
+        width:90px;
+        height:25px;
+        position:fixed;
+        right:0;
+        top:100px;
+      }
 
     </style>
   </head>
@@ -132,137 +155,168 @@
     </div>
 
     <main>
+      <div id="order_float">
+        <span class="badge bg-info">Quick Order</span></h3>
+      </div>
       <div id="tea-gallery">
         <div class="content-warp">
           <div>
+            <h2>Milk Tea</h2>
             <table class="table table-hover">
               <thead>
               <tr>
-                <th>Category</th>
-                <th>Category</th>
-                <th>Category</th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
               </thead>
               <tbody>
               <tr>
                 <td>
-                  <div class="card" style="max-width: 202px;">
+                  <div class="card bg-warning" style="width: 230px; ">
 
                     <!-- Heading -->
                     <div class="card-body">
-                      <h4 class="card-title">?Tea</h4>
-                      <h6 class="card-subtitle text-muted">subtitle</h6>
+                      <h4 class="card-title">Bubble Milk Tea</h4>
                     </div>
 
                     <!-- Image -->
-                    <img src="#" alt="#">
-
-                    <!-- Text Content -->
-                    <div class="card-body">
-                      <p class="card-text">Description</p>
-                    </div>
+                    <img class="tea" src="../img/Bubble.png" alt="#">
 
                   </div>
                 </td>
                 <td>
-                  <div class="card" style="max-width: 202px;">
+                  <div class="card bg-warning" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
-                      <h4 class="card-title">?Tea</h4>
-                      <h6 class="card-subtitle text-muted">subtitle</h6>
+                      <h4 class="card-title">Red Bean Milk Tea</h4>
                     </div>
 
                     <!-- Image -->
-                    <img src="#" alt="#">
-
-                    <!-- Text Content -->
-                    <div class="card-body">
-                      <p class="card-text">Description</p>
-                    </div>
+                    <img class="tea" src="../img/Red%20Bean.png" alt="#">
 
                   </div>
                 </td>
                 <td>
-                  <div class="card" style="max-width: 202px;">
+                  <div class="card bg-warning" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
-                      <h4 class="card-title">?Tea</h4>
-                      <h6 class="card-subtitle text-muted">subtitle</h6>
+                      <h4 class="card-title">Cheese Milk Tea</h4>
                     </div>
 
                     <!-- Image -->
-                    <img src="#" alt="#">
-
-                    <!-- Text Content -->
-                    <div class="card-body">
-                      <p class="card-text">Description</p>
-                    </div>
-
+                    <img class="tea" src="../img/Cheese.png" alt="#">
                   </div>
                 </td>
               </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h2>Fruit Tea</h2>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
               <tr>
                 <td>
-                  <div class="card" style="max-width: 202px;">
+                  <div class="card bg-warning" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
-                      <h4 class="card-title">?Tea</h4>
-                      <h6 class="card-subtitle text-muted">subtitle</h6>
+                      <h4 class="card-title">Mango Green Tea</h4>
                     </div>
 
                     <!-- Image -->
-                    <img src="#" alt="#">
-
-                    <!-- Text Content -->
-                    <div class="card-body">
-                      <p class="card-text">Description</p>
-                    </div>
+                    <img class="tea" src="../img/Mango.png" alt="#">
 
                   </div>
                 </td>
                 <td>
-                  <div class="card" style="max-width: 202px;">
+                  <div class="card bg-warning" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
-                      <h4 class="card-title">?Tea</h4>
-                      <h6 class="card-subtitle text-muted">subtitle</h6>
+                      <h4 class="card-title">Berry Red Tea</h4>
+
                     </div>
 
                     <!-- Image -->
-                    <img src="#" alt="#">
-
-                    <!-- Text Content -->
-                    <div class="card-body">
-                      <p class="card-text">Description</p>
-                    </div>
-
+                    <img class="tea" src="../img/Berry.png" alt="#">
                   </div>
                 </td>
                 <td>
-                  <div class="card" style="max-width: 202px;">
+                  <div class="card bg-warning" style="width: 230px;">
 
                     <!-- Heading -->
                     <div class="card-body">
-                      <h4 class="card-title">?Tea</h4>
-                      <h6 class="card-subtitle text-muted">subtitle</h6>
+                      <h4 class="card-title">Passion Fruit QQ</h4>
                     </div>
 
                     <!-- Image -->
-                    <img src="#" alt="#">
-
-                    <!-- Text Content -->
-                    <div class="card-body">
-                      <p class="card-text">Description</p>
-                    </div>
-
+                    <img class="tea" src="../img/Passion.png" alt="#">
                   </div>
                 </td>
               </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h2>Specialty Drinks</h2>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <div class="card bg-warning" style="width: 230px; ">
 
+                    <!-- Heading -->
+                    <div class="card-body">
+                      <h4 class="card-title">Matcha Creme</h4>
+                    </div>
+
+                    <!-- Image -->
+                    <img class="tea" src="../img/Matcha.png" alt="#">
+
+                  </div>
+                </td>
+                <td>
+                  <div class="card bg-warning" style="width: 230px;">
+
+                    <!-- Heading -->
+                    <div class="card-body">
+                      <h4 class="card-title">Thai Tea</h4>
+                    </div>
+
+                    <!-- Image -->
+                    <img class="tea" src="../img/Thai.png" alt="#">
+                  </div>
+                </td>
+                <td>
+                  <div class="card bg-warning" style="width: 230px;">
+
+                    <!-- Heading -->
+                    <div class="card-body">
+                      <h4 class="card-title">Smoothie</h4>
+                    </div>
+                    <!-- Image -->
+                    <img class="tea" src="../img/Smoothie.png" alt="#">
+                  </div>
+                </td>
+              </tr>
               </tbody>
             </table>
           </div>
