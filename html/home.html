@@ -11,7 +11,7 @@
     <title>Tea</title>
     <script src="https://kit.fontawesome.com/b802117b9f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/homeStyle.css">
-
+    <script src="../js/homeJS.js"></script>
   </head>
   <body>
     <div id = "navbar" class="navigation">
@@ -102,7 +102,7 @@
     </a>
   </div>
 
-  <main>
+  <div class="container">
     <div id="tea-gallery">
       <div class="content-warp">
         <div class="table-responsive">
@@ -297,14 +297,43 @@
         Phone: 555-234-6456
       </div>
     </div>
-  </main>
+  </div>
+    <div>
+    <div id="sign_float">
+      <button id="sign_in" onclick="sign_in()">Sign in here</button>
+    </div>
+    <div>
+      <div id="dialogOrd">
+        <div id="dialogBtn">
+          <button type="button" class="close" aria-label="Close"><span aria-hidden="true" onclick="dialogExit()">×</span></button>
+        </div>
+        <form action="/html/tags/html_form_tag_action.cfm">
+          <div class="mb-3">
+            <label for="email_addr" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email_addr">
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pwd">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="remember_me">
+            <label class="form-check-label" for="remember_me">Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div id="body_light">
+      </div>
+    </div>
+    </div>
   <!-- Footer -->
   <div>
     <footer id="footer">
       <div class="footer-nav">
         <div id="footer-logo">
           <img src="../img/logo.png" class="rounded-circle" alt="logo" width="70" height="70">
-          ??TEA
+          TEA
         </div>
         <div>
           <br>

@@ -84,10 +84,38 @@ nav {
   font-size: .80em;
   font-style: italic;
 }
-#order_float{
+#sign_float{
   width:90px;
   height:25px;
   position:fixed;
   right:0;
   top:100px;
+}
+#dialogOrd{
+  padding: 15px;
+  width: 500px;
+  height: 300px;
+  background-color: #fcf1e1;
+  margin: auto;
+  position: fixed;
+  display: none;
+  z-index: 2;
+  top: 100px;
+  left: 400px;
+}
+#body_light{
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 1;
+}
+#dialogBtn{
+  position: relative;
+  left: 450px;
+  top: 0px;
 }
