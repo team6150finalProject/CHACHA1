@@ -13,7 +13,6 @@
     <style >
       body {
         background-color: #fcf1e1;
-
       }
       .navigation {
         background: url(../img/welcome.jpg);
@@ -79,8 +78,8 @@
     </style>
   </head>
   <body>
-    <div class="navigation">
-      <nav class="navbar navbar-expand-lg navbar-dark" >
+    <div id = "navbar" class="navigation">
+      <nav id="navbar-example2" class="navbar navbar-static-top navbar-expand-lg navbar-dark" >
         <div class="container-fluid">
           <!-- Brand -->
           <a class="navbar-brand" href="#">
@@ -122,271 +121,277 @@
       </nav>
     </div>
 
-
-
     <div id="story" style="margin:60px">
-      <h2 style="text-align:center; color: #616161;font-family: Trebuchet MS, sans-serif">ABOUT US | OUR STORY</h2>
-      <h5 style="text-align:center; color: gray;margin-top: 40px; margin-left:auto; margin-right: auto; width: 50%; line-height: 200%;font-family: Trebuchet MS, sans-serif">
-        Our drinks originated from an instant inspiration of mixing cheese with tea.
-        In 2020, with this spark of inspiration,we opened the first shop.
-        Our mission is to bridge cultures and change the way people thaink about tea.
-        We support artistic creation,make drinking tea become a style, a way of life.
-      </h5>
+    <h2 style="text-align:center; color: #616161;font-family: Trebuchet MS, sans-serif">ABOUT US | OUR STORY</h2>
+    <h5 style="text-align:center; color: gray;margin-top: 40px; margin-left:auto; margin-right: auto; width: 50%; line-height: 200%;font-family: Trebuchet MS, sans-serif">
+      Our drinks originated from an instant inspiration of mixing cheese with tea.
+      In 2020, with this spark of inspiration,we opened the first shop.
+      Our mission is to bridge cultures and change the way people thaink about tea.
+      We support artistic creation,make drinking tea become a style, a way of life.
+    </h5>
 
-      <img src="../img/about.png" class="img-fluid" alt="about us">
+    <img src="../img/about.png" class="img-fluid mx-auto d-block" alt="about us">
+  </div>
+
+  <h2 style="text-align:center; color: #616161;font-family: Trebuchet MS, sans-serif">OUR TEA</h2>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style = "margin: 3% auto ; width:40%">
+    <ol class="carousel-indicators">
+      <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+      <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+      <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../img/p1.jpg" class="d-block w-100" alt="milk tea">
+      </div>
+      <div class="carousel-item">
+        <img src="../img/p7.jpg" class="d-block w-100" alt="bubble tea">
+      </div>
+      <div class="carousel-item">
+        <img src="../img/p3.jpg" class="d-block w-100" alt="fruit tea">
+      </div>
+      <div class="carousel-item">
+        <img src="../img/p4.png" class="d-block w-100" alt="mix berry tea">
+      </div>
     </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
 
-    <h2 style="text-align:center; color: #616161;font-family: Trebuchet MS, sans-serif">OUR TEA</h2>
+  <main>
+    <div id="tea-gallery">
+      <div class="content-warp">
+        <div class="table-responsive">
+          <h2 id="milkTea">Milk Tea <h5 style="display:inline"><span class="badge bg-info">cold</span> / <span class="badge bg-warning text-dark">hot</span></h5></h2>
+          <table class="table table-hover table-borderless " style = "text-align:center">
+            <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <div class="card" style="width: 230px">
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style = "margin: 3% auto ; width:40%">
-      <ol class="carousel-indicators">
-        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
-        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="../img/p1.jpg" class="d-block w-100" alt="milk tea">
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Bubble Milk Tea</h4>
+                  </div>
+
+                  <!-- Image -->
+                  <img class="tea" src="../img/Bubble.png" alt="#">
+
+                </div>
+              </td style="border:1px solid red">
+              <td>
+                <div class="card" style="width: 230px">
+
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Red Bean Milk Tea</h4>
+                  </div>
+
+                  <!-- Image -->
+                  <img class="tea" src="../img/Red%20Bean.png" alt="#">
+
+                </div>
+              </td>
+              <td>
+                <div class="card" style="width: 230px">
+
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Cheese Milk Tea</h4>
+                  </div>
+
+                  <!-- Image -->
+                  <img class="tea" src="../img/Cheese.png" alt="#">
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="carousel-item">
-          <img src="../img/p7.jpg" class="d-block w-100" alt="bubble tea">
+        <div>
+          <h2 id="fruitTea">Fruit Tea <h5 style="display:inline"><span class="badge bg-info">cold</span></h5></h2>
+          <table class="table table-hover table-borderless">
+            <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <div class="card" style="width: 230px;">
+
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Mango Green Tea</h4>
+                  </div>
+
+                  <!-- Image -->
+                  <img class="tea" src="../img/Mango.png" alt="#">
+
+                </div>
+              </td>
+              <td>
+                <div class="card" style="width: 230px;">
+
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Berry Red Tea</h4>
+
+                  </div>
+
+                  <!-- Image -->
+                  <img class="tea" src="../img/Berry.png" alt="#">
+                </div>
+              </td>
+              <td>
+                <div class="card" style="width: 230px;">
+
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Passion Fruit QQ</h4>
+                  </div>
+
+                  <!-- Image -->
+                  <img class="tea" src="../img/Passion.png" alt="#">
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="carousel-item">
-          <img src="../img/p3.jpg" class="d-block w-100" alt="fruit tea">
-        </div>
-        <div class="carousel-item">
-          <img src="../img/p4.png" class="d-block w-100" alt="mix berry tea">
+        <div>
+          <h2 id="specialty">Specialty Drinks <h5 style="display:inline"><span class="badge bg-info">cold</span></h5></h2>
+          <table class="table table-hover table-borderless">
+            <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <div class="card" style="width: 230px; ">
+
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Matcha Creme</h4>
+                  </div>
+
+                  <!-- Image -->
+                  <img class="tea" src="../img/Matcha.png" alt="#">
+
+                </div>
+              </td>
+              <td>
+                <div class="card" style="width: 230px;">
+
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Thai Tea</h4>
+                  </div>
+
+                  <!-- Image -->
+                  <img class="tea" src="../img/Thai.png" alt="#">
+                </div>
+              </td>
+              <td>
+                <div class="card" style="width: 230px;">
+
+                  <!-- Heading -->
+                  <div class="card-body">
+                    <h4 class="card-title">Smoothie</h4>
+                  </div>
+                  <!-- Image -->
+                  <img class="tea" src="../img/Smoothie.png" alt="#">
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+    </div>
+    <div id="findStore">
+      <div class="content-warp" style="margin:4%">
+        <h2 style="margin-bottom: 4%">Find a store near you</h2>
+        <a href="#">
+          <img src="../img/img-map.png" width="100%";
+               height="auto";>
+        </a>
+      </div>
+    </div>
+    <p>
+      <a class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="background-color:#ccb79b; margin-left: 1%">
+        Contact us
       </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        Phone: 555-234-6456
+      </div>
     </div>
+  </main>
+  <!-- Footer -->
+  <div>
+    <footer id="footer">
+      <div class="footer-nav">
+        <div id="footer-logo">
+          <img src="../img/logo.png" class="rounded-circle" alt="logo" width="70" height="70">
+          ??TEA
+        </div>
+        <div>
+          <br>
+          <ul class="nav justify-content-end">
 
-    <main>
-      <div id="tea-gallery">
-        <div class="content-warp">
-          <div class="table-responsive">
-            <h2 id="milkTea">Milk Tea <h5 style="display:inline"><span class="badge bg-info">cold</span> / <span class="badge bg-warning text-dark">hot</span></h5></h2>
-            <table class="table table-hover table-borderless " style = "text-align:center">
-              <thead>
-              <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  <div class="card" style="width: 230px">
+            <li class="nav-item">
+              <a class="nav-link active" href="#navbar">Home</a>
+            </li>
 
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Bubble Milk Tea</h4>
-                    </div>
+            <li class="nav-item">
+              <a class="nav-link" href="#tea-gallery">Our Tea</a>
+            </li>
 
-                    <!-- Image -->
-                    <img class="tea" src="../img/Bubble.png" alt="#">
-
-                  </div>
-                </td style="border:1px solid red">
-                <td>
-                  <div class="card" style="width: 230px">
-
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Red Bean Milk Tea</h4>
-                    </div>
-
-                    <!-- Image -->
-                    <img class="tea" src="../img/Red%20Bean.png" alt="#">
-
-                  </div>
-                </td>
-                <td>
-                  <div class="card" style="width: 230px">
-
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Cheese Milk Tea</h4>
-                    </div>
-
-                    <!-- Image -->
-                    <img class="tea" src="../img/Cheese.png" alt="#">
-                  </div>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <h2 id="fruitTea">Fruit Tea <h5 style="display:inline"><span class="badge bg-info">cold</span></h5></h2>
-            <table class="table table-hover table-borderless">
-              <thead>
-              <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  <div class="card" style="width: 230px;">
-
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Mango Green Tea</h4>
-                    </div>
-
-                    <!-- Image -->
-                    <img class="tea" src="../img/Mango.png" alt="#">
-
-                  </div>
-                </td>
-                <td>
-                  <div class="card" style="width: 230px;">
-
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Berry Red Tea</h4>
-
-                    </div>
-
-                    <!-- Image -->
-                    <img class="tea" src="../img/Berry.png" alt="#">
-                  </div>
-                </td>
-                <td>
-                  <div class="card" style="width: 230px;">
-
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Passion Fruit QQ</h4>
-                    </div>
-
-                    <!-- Image -->
-                    <img class="tea" src="../img/Passion.png" alt="#">
-                  </div>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <h2 id="specialty">Specialty Drinks <h5 style="display:inline"><span class="badge bg-info">cold</span></h5></h2>
-            <table class="table table-hover table-borderless">
-              <thead>
-              <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  <div class="card" style="width: 230px; ">
-
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Matcha Creme</h4>
-                    </div>
-
-                    <!-- Image -->
-                    <img class="tea" src="../img/Matcha.png" alt="#">
-
-                  </div>
-                </td>
-                <td>
-                  <div class="card" style="width: 230px;">
-
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Thai Tea</h4>
-                    </div>
-
-                    <!-- Image -->
-                    <img class="tea" src="../img/Thai.png" alt="#">
-                  </div>
-                </td>
-                <td>
-                  <div class="card" style="width: 230px;">
-
-                    <!-- Heading -->
-                    <div class="card-body">
-                      <h4 class="card-title">Smoothie</h4>
-                    </div>
-                    <!-- Image -->
-                    <img class="tea" src="../img/Smoothie.png" alt="#">
-                  </div>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
+            <li class="nav-item">
+              <a class="nav-link" href="#story">Our Store</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div id="findStore">
-        <div class="content-warp" style="margin:4%">
-          <h2 style="margin-bottom: 4%">Find a store near you</h2>
-          <a href="#">
-            <img src="../img/img-map.png" width="100%";
-                 height="auto";>
-          </a>
-        </div>
+      <div class="copyright">
+        <p>
+          <br>
+          Copyright &copy; 2021 XXXXXX
+          <br>
+          CONTACT EMAIL:
+          <a href="mailto:">xxx@xxx.xxx</a>
+          <br>
+        </p>
       </div>
-    </main>
-    <!-- Footer -->
-    <div>
-      <footer id="footer">
-        <div class="footer-nav">
-          <div id="footer-logo">
-            <img src="../img/logo.png" class="rounded-circle" alt="logo" width="70" height="70">
-            ??TEA
-          </div>
-          <div>
-            <br>
-            <ul class="nav justify-content-end">
+    </footer>
+  </div>
 
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
-              </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="#">Our Tea</a>
-              </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="#">Our Store</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-        <div class="copyright">
-          <p>
-            <br>
-            Copyright &copy; 2021 XXXXXX
-            <br>
-            CONTACT EMAIL:
-            <a href="mailto:">xxx@xxx.xxx</a>
-            <br>
-          </p>
-        </div>
-      </footer>
-    </div>
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
