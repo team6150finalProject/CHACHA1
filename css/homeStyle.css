@@ -67,6 +67,7 @@ nav {
 }
 #footer{
   background-color: #2E0000;
+  padding: 1%;
 }
 #footer a:link{
   color: white;
@@ -90,6 +91,12 @@ nav {
   position:fixed;
   right:0;
   top:100px;
+}
+#sign_in{
+  border-color: #ccb79b;
+  background-color: #ccb79b;
+  font-family: Trebuchet MS, sans-serif;
+  color: #616161;
 }
 #dialogOrd{
   padding: 15px;
