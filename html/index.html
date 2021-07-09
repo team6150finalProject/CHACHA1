@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript">
+    function validInput(object,type){
+      console.log(object)
+      var regExPassWord=/^.*(?=.{6,16})(?=.*\d)(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*[!@#$%^&*?\(\)]).*$/;
+      var regExEmail=/([\w\.]+)@([\w\.]+)\.(\w+)/;
+      switch(type){
+        case 1:if(!object.value.trim().match(regExEmail)){
+          //object.style.border = "2px solid red";
+          $(object).css("border","2px solid red");
+          //document.getElementById("errorMsgEmail").style.display ="block";
+          $("#errorMsgEmail").show();
+          //object.value="";
+          $(object).value="";
+          document.getElementById("buttonClick").disabled=true;
+          document.getElementById("buttonDelete").disabled=true;
+        }else{
+          //object.style.border="";
+          $(object).css("border","");
+          $("#errorMsgEmail").hide();
+          document.getElementById("buttonClick").disabled=false;
+          document.getElementById("buttonDelete").disabled=false;
+        }
+          break;
+        case 2:if(!object.value.trim().match(regExPassWord)){
+          //object.style.border = "2px solid red";
+          $(object).css("border","2px solid red");
+          //document.getElementById("errorZipCode").style.display ="block";
+          $("#errorPassWord").show();
+          //object.value="";
+          $(object).value="";
+          document.getElementById("buttonClick").disabled=true;
+          document.getElementById("buttonDelete").disabled=true;
+        }else{
+          //object.style.border="";
+          $(object).css("border","");
+          $("#errorPassWord").hide();
+          document.getElementById("buttonClick").disabled=false;
+          document.getElementById("buttonDelete").disabled=false;
+        }
+          break;
+        case 3:if(!object.value.trim().match(regExPassWord)){
+          //object.style.border = "2px solid red";
+          $(object).css("border","2px solid red");
+          //document.getElementById("errorZipCode").style.display ="block";
+          $("#errorPassWordChange").show();
+          //object.value="";
+          $(object).value="";
+          document.getElementById("buttonChange").disabled=true;
+        }else{
+          //object.style.border="";
+          $(object).css("border","");
+          $("#errorPassWordChange").hide();
+          document.getElementById("buttonChange").disabled=false;
+        }
+          break;
+        case 4:if(!object.value.trim().match(regExEmail)){
+          //object.style.border = "2px solid red";
+          $(object).css("border","2px solid red");
+          //document.getElementById("errorMsgEmail").style.display ="block";
+          $("#errorMsgEmailOld").show();
+          //object.value="";
+          $(object).value="";
+          document.getElementById("buttonChange").disabled=true;
+        }else{
+          //object.style.border="";
+          $(object).css("border","");
+          $("#errorMsgEmailOld").hide();
+          document.getElementById("buttonChange").disabled=false;
+        }
+          break;
+      }};
+</script>
+ <style>
+   label {	float: left;
+     width: 150px;}
+   #container{
+     width: 700px;
+     margin: auto;
+     background-color: beige;
+   }
+   #container h1{
+     text-align: center;
+   }
+   main{
+     padding: 50px;
+   }
+   #passWordBack{
+     float: left;
+   }
+ </style>
+</head>
+<body>
+<div id="container">
+  <h1>Register</h1>
+  <div id="test">
+  <form method="post" novalidate>
+    <label for="emailId">Email Id*:</label>
+    <input type="text" id="emailId" placeholder="yourname@domain.com" onblur="validInput(this,1)"/>
+    <br><br>
+    <div id="errorMsgEmail" style="display:none;color:red">
+      Invalid Email. Please enter again.
+    </div>
+    <div id="forPassWord">
+    <div id="passWordBack">
+    <label for="passWord">PassWord*:</label>
+    <input type="password" name="passWord" id="passWord" onblur="validInput(this,2)"/>
+    <br><br>
+    <div id="errorPassWord" style="display:none;color:red">
+      Invalid PassWord. Please enter again.
+    </div>
+      <br><br></div>
+      <div id="passWordExplain">
+        <p for="passWord">
+          The shortest 6 bits, the longest 16 bits {6,16}<br/>
+          Must contain 1 number<br/>
+          Must contain 2 lowercase letters<br/>
+          Must contain 2 uppercase letters<br/>
+          Must contain 1 special character</p>
+      </div>
+      <div>
+        <label for="emailIdOld">Old Email Id*:</label>
+        <input type="text" id="emailIdOld" placeholder="yourname@domain.com" onblur="validInput(this,4)"/>
+        <br><br>
+        <div id="errorMsgEmailOld" style="display:none;color:red">
+          Invalid Email. Please enter again.
+        </div>
+      </div>
+      <div>
+      <label for="passWordChange">Old PassWord*:</label>
+      <input type="password" name="passWordChange" id="passWordChange" onblur="validInput(this,3)"/>
+      <br><br>
+      <div id="errorPassWordChange" style="display:none;color:red">
+        Invalid PassWord. Please enter again.
+      </div>
+      </div>
+  </div>
+    <input type="submit" id="buttonClick" value="Submit" />
+    <input type="submit" id="buttonChange" value="Change" />
+    <input type="submit" id="buttonDelete" value="Delete" />
+  </form>
+    <h1>Data is displayed below</h1>
+    <h4 id="text"></h4>
+  </div>
+</div>
+  <script type="text/javascript">
+    //create
+    function populateText() {
+      document.getElementById("text").innerHTML="";
+      $.get('http://localhost:3000/user/getAll', function(data, status){
+        $.each(data, function(i, item) {
+          console.log("Email" +data[i].emailId +"PassWord" +data[i].passWord);
+          $("h4").append("Email: " +data[i].emailId +"PassWord: " +data[i].passWord + "<br/>");
+        })
+      });}
+    populateText();
+    $(function() {
+      $('#buttonClick').click(function (e) {
+        e.preventDefault();
+        console.log('Submit button is clicked');
+        var ema = document.getElementById("emailId").value;
+        var pass =document.getElementById("passWord").value;
+        var data = {};
+        data.emailId = ema;
+        data.passWord =pass;
+        console.log("emailId"+ema, "passWord"+pass);
+        $.ajax({
+          type: 'POST',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          url: 'http://localhost:3000/user/create',
+          success: function (result) {
+            console.log('success');
+            populateText();
+          },
+          error:function(data){
+            console.log(data.responseText);
+          }
+
+        });
+
+      });
+      //Change
+        $('#buttonChange').click(function (e) {
+          e.preventDefault();
+          console.log('Submit button is clicked');
+          var ema = document.getElementById("emailId").value;
+          var pass =document.getElementById("passWord").value;
+          var emaOld =document.getElementById("emailIdOld").value;
+          var passOld=document.getElementById("passWordChange").value;
+          var data = {};
+          data.emailId = ema;
+          data.passWord =pass;
+          data.old_emailId =emaOld;
+          data.old_passWord =passOld;
+          console.log("emailId"+ema, "passWord"+pass, "emailIdOld"+emaOld, "passWordOld"+passOld);
+          $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: 'http://localhost:3000/user/edit',
+            success: function (result) {
+              console.log('success');
+              populateText();
+            }
+          });
+
+        });
+      //delete
+      $('#buttonDelete').click(function (e) {
+        e.preventDefault();
+        console.log('Submit button is clicked');
+        var ema = document.getElementById("emailId").value;
+        var pass =document.getElementById("passWord").value;
+        var data = {};
+        data.emailId = ema;
+        data.passWord =pass;
+        console.log("emailId"+ema, "passWord"+pass);
+        $.ajax({
+          type: 'DELETE',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          url: 'http://localhost:3000/user/delete',
+          success: function (result) {
+            console.log('success');
+            populateText();
+          }
+        });
+
+      });
+
+    });
+  </script>
+</body>
+</html>
