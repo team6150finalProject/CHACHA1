@@ -2,6 +2,15 @@
     padding: 20px;
     margin-left: 20%;
 }
+
+h2 {
+    font-family: Georgia, serif;
+    font-weight: 550;
+}
+h6 {
+    color: #680303fb;
+    font-family: Georgia, serif;
+}
 #picture {
     float: left;
     width: 300px;
@@ -9,8 +18,26 @@
     padding: 20px;
 }
 
-#option {
+#options {
     margin-left: 400px;
+}
+
+select:invalid {
+    color: gray; 
+}
+
+#addCart {
+    background-color: #4c8baf;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 #footer {
