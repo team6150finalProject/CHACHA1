@@ -2,7 +2,7 @@ body {
   background-color: #fcf1e1;
 }
 .navigation {
-  background: url(../img/welcome.jpg);
+  /*background: url(../img/welcome.jpg);*/
   background-repeat: no-repeat;
   background-size:cover
 }
@@ -10,7 +10,6 @@ body {
 nav {
   text-align: center;
   margin: auto;
-  width: 80%;
   font-family: Trebuchet MS, sans-serif;
   font-size: large;
 }
