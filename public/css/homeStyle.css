@@ -1,6 +1,5 @@
 body {
   background-color: #fcf1e1;
-  padding-top: 75px;
 }
 .navigation {
   background: url(../img/welcome.jpg);
@@ -45,9 +44,6 @@ nav {
   text-align: center;
   color: #616161;
   font-family: Trebuchet MS, sans-serif;
-}
-#tea-gallery h2 {
-  padding-top: 90px;
 }
 .tea{
   width: 228px;

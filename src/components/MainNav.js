@@ -5,12 +5,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
+
+import { Link } from 'react-router-dom';
+
 import SignIn from './SignIn';
 
 class MainNav extends React.Component {
   render() {
     return (
-      <Navbar fixed="top" expand="lg" variant="dark" style={{ backgroundImage: "url(" + process.env.PUBLIC_URL + "/img/welcome.jpg)" }}>
+      <Navbar expand="lg" variant="dark" style={{ backgroundImage: "url(" + process.env.PUBLIC_URL + "/img/welcome.jpg)" }}>
         <Container>
           <Navbar.Brand href="#">
             <Image src={process.env.PUBLIC_URL + "/img/logo.jpg"} alt="logo" width="70" height="70" />
@@ -19,7 +22,7 @@ class MainNav extends React.Component {
           <Navbar.Collapse id="navbarSupportedContent" style={{ marginLeft: "3%" }}>
             <Nav className="me-auto mb-2 mb-lg-0">
               <Nav.Item>
-                <Nav.Link active aria-current="page" href="#">Home</Nav.Link>
+                <Nav.Link as={Link} to="/" active aria-current="page">Home</Nav.Link>
               </Nav.Item>
               <NavDropdown title="Menu">
                 <NavDropdown.Item href="#milkTea">Milk Tea</NavDropdown.Item>

@@ -1,13 +1,23 @@
 import React from 'react';
+import products from '../model/products';
 
 class TeaSelect extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productId: props.match.params.productId
+    };
+  }
+
   render() {
+    const productInfo = products.getProductInfo(this.state.productId);
+    if (!productInfo) { return (<div>Product not found</div>);}
     return (
       <div id="select-content">
-        <img id="select-picture" src="../../img/Bubble.png" alt="Bubble Tea" />
+        <img id="select-picture" src={ "../../img/" + productInfo.imgFileName } alt={this.productId} />
         <form id="select-options" method="post" >
-          <h2>Bubble Milk Tea</h2>
-          <h2 id="price">$4.49 - $4.99</h2>
+          <h2>{ productInfo.title }</h2>
+          <h2 id="price">{ productInfo.price }</h2>
           <br />
 
           <h6>Select an option <span style={{color: "red"}}>*</span>:</h6>
