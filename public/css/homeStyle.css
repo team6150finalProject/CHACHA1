@@ -91,9 +91,27 @@ nav {
   right:0;
   top:100px;
 }
-#sign_in{
+.btn-default{
   border-color: #ccb79b;
   background-color: #ccb79b;
+  font-family: Trebuchet MS, sans-serif;
+  color: #616161;
+}
+.btn-default:hover{
+  border-color: #ccb79b;
+  background-color: #ccb79b;
+  font-family: Trebuchet MS, sans-serif;
+  color: #616161;
+}
+.btn-default:focus{
+  border-color: #ccb79b;
+  background-color: #ccb79b;
+  font-family: Trebuchet MS, sans-serif;
+  color: #616161;
+}
+.btn-default:active{
+  border-color: #ccb79b;
+  background-color: #ac906c;
   font-family: Trebuchet MS, sans-serif;
   color: #616161;
 }
