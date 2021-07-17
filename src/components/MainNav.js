@@ -28,6 +28,9 @@ class MainNav extends React.Component {
                 <Nav.Item>
                   <Nav.Link href="#findStore">Location</Nav.Link>
                 </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href="#tea-gallery">Online Order</Nav.Link>
+                </Nav.Item>
               </Nav>
               <Form className="d-flex">
                 <Form.Control className="me-2" type="search" placeholder="Search" aria-label="Search" />
