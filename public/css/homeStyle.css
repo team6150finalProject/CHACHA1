@@ -1,5 +1,6 @@
 body {
   background-color: #fcf1e1;
+  padding-top: 75px;
 }
 .navigation {
   background: url(../img/welcome.jpg);
@@ -46,7 +47,7 @@ nav {
   font-family: Trebuchet MS, sans-serif;
 }
 #tea-gallery h2 {
-  margin-top: 3%;
+  padding-top: 90px;
 }
 .tea{
   width: 228px;
@@ -115,31 +116,45 @@ nav {
   font-family: Trebuchet MS, sans-serif;
   color: #616161;
 }
-#dialogOrd{
-  padding: 15px;
-  width: 500px;
-  height: 300px;
-  background-color: #fcf1e1;
-  margin: auto;
-  position: fixed;
-  display: none;
-  z-index: 2;
-  top: 100px;
-  left: 400px;
+
+#select-content {
+  padding: 20px;
+  margin-left: 20%;
 }
-#body_light{
-  opacity: 0.8;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
-  z-index: 1;
+
+#select-content h2 {
+  font-family: Georgia, serif;
+  font-weight: 550;
 }
-#dialogBtn{
-  position: relative;
-  left: 450px;
-  top: 0px;
+#select-content h6 {
+  color: #680303fb;
+  font-family: Georgia, serif;
+}
+#select-picture {
+  float: left;
+  width: 300px;
+  height: 350px;
+  padding: 20px;
+}
+
+#select-options {
+  margin-left: 400px;
+}
+
+#select-content select:invalid {
+  color: gray; 
+}
+
+#select-addCart {
+  background-color: #4c8baf;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
 }

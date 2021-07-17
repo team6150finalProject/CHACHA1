@@ -19,7 +19,7 @@ class MainNav extends React.Component {
           <Navbar.Collapse id="navbarSupportedContent" style={{ marginLeft: "3%" }}>
             <Nav className="me-auto mb-2 mb-lg-0">
               <Nav.Item>
-                <Nav.Link active aria-current="page" href="home.html">Home</Nav.Link>
+                <Nav.Link active aria-current="page" href="#">Home</Nav.Link>
               </Nav.Item>
               <NavDropdown title="Menu">
                 <NavDropdown.Item href="#milkTea">Milk Tea</NavDropdown.Item>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 class TeaGallery extends React.Component {
   render() {
@@ -28,9 +29,9 @@ class TeaGallery extends React.Component {
                         <h4 className="card-title">Bubble Milk Tea</h4>
                       </div>
 
-                      <a href="./menu/bubbleTea.html" title="click to order">
+                      <Link to='/bubbleTea' title="click to order">
                         <img className="tea" src={process.env.PUBLIC_URL + "/img/Bubble.png"} alt="#" />
-                      </a>
+                      </Link>
 
                     </div>
                   </td>
