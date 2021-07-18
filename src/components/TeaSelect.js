@@ -1,5 +1,6 @@
 import React from 'react';
 import products from '../model/products';
+import MilkTeaOption from './MilkTeaOption'
 
 class TeaSelect extends React.Component {
   constructor(props) {
@@ -15,7 +16,11 @@ class TeaSelect extends React.Component {
     return (
       <div id="select-content">
         <img id="select-picture" src={ "../../img/" + productInfo.imgFileName } alt={this.productId} />
-        <form id="select-options" method="post" >
+        
+        <MilkTeaOption  title = {productInfo.title}/>
+       
+        
+        {/* <form id="select-options" method="post" >
           <h2>{ productInfo.title }</h2>
           <h2 id="price">{ productInfo.price }</h2>
           <br />
@@ -81,10 +86,11 @@ class TeaSelect extends React.Component {
 
           <input type="submit" id="select-addCart" value="+ Add to cart" />
 
-        </form>
+        </form> */}
       </div>
     );
   }
 }
+
 
 export default TeaSelect;

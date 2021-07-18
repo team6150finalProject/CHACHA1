@@ -7,12 +7,9 @@ class TeaGallery extends React.Component {
       <div id="tea-gallery">
         <div className="content-warp">
           <div className="table-responsive">
-            <h2 id="milkTea">Milk Tea
-                    <h5 style={{ display: "inline" }}>
-                <span className="badge bg-info">cold</span> /
-                      <span className="badge bg-warning text-dark">hot</span>
-              </h5>
-            </h2>
+            <h2 id="milkTea">Milk Tea</h2>
+            <h5 style={{ display: "inline" }}><span className="badge bg-info">cold</span> /<span className="badge bg-warning text-dark">hot</span></h5>
+            
             <table className="table table-hover table-borderless " style={{ textAlign: "center" }}>
               <thead>
                 <tr>
@@ -37,11 +34,10 @@ class TeaGallery extends React.Component {
             </table>
           </div>
           <div>
-            <h2 id="fruitTea">Fruit Tea
-                    <h5 style={{ display: "inline" }}>
-                <span className="badge bg-info">cold</span>
-              </h5>
-            </h2>
+            <h2 id="fruitTea">Fruit Tea</h2>
+            <h5 style={{ display: "inline" }}><span className="badge bg-info">cold</span></h5>
+              
+            
             <table className="table table-hover table-borderless">
               <thead>
                 <tr>
@@ -66,11 +62,9 @@ class TeaGallery extends React.Component {
             </table>
           </div>
           <div>
-            <h2 id="specialty">Specialty Drinks
-                    <h5 style={{ display: "inline" }}>
-                <span className="badge bg-info">cold</span>
-              </h5>
-            </h2>
+            <h2 id="specialty">Specialty Drinks</h2>
+            <h5 style={{ display: "inline" }}><span className="badge bg-info">cold</span></h5>
+            
             <table className="table table-hover table-borderless">
               <thead>
                 <tr>
