@@ -25,15 +25,15 @@ class MainNav extends React.Component {
                 <Nav.Link as={Link} to="/" active aria-current="page">Home</Nav.Link>
               </Nav.Item>
               <NavDropdown title="Menu">
-                <NavDropdown.Item href="#milkTea">Milk Tea</NavDropdown.Item>
-                <NavDropdown.Item href="#fruitTea">Fruit Teaa</NavDropdown.Item>
-                <NavDropdown.Item href="#specialty">Specialty Drinks</NavDropdown.Item>
+                <NavDropdown.Item href="/#milkTea">Milk Tea</NavDropdown.Item>
+                <NavDropdown.Item href="/#fruitTea">Fruit Teaa</NavDropdown.Item>
+                <NavDropdown.Item href="/#specialty">Specialty Drinks</NavDropdown.Item>
               </NavDropdown>
               <Nav.Item>
-                <Nav.Link href="#findStore">Location</Nav.Link>
+                <Nav.Link href="/#findStore">Location</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="#tea-gallery">Online Order</Nav.Link>
+                <Nav.Link href="/#tea-gallery">Online Order</Nav.Link>
               </Nav.Item>
             </Nav>
             <Nav.Item>
