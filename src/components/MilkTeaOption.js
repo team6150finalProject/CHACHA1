@@ -1,45 +1,88 @@
 import React from 'react';
 import products from '../model/products';
+import Select from 'react-select';
+
+const sizeOptions = [
+    { value: "Regular", label: "Regular" },
+    { value: "Large", label: "Large" },
+  ];
+
+const qtyOptions = [
+{ value: "1", label: "1" },
+{ value: "2", label: "2" },
+{ value: "3", label: "3" },
+{ value: "4", label: "4" },
+{ value: "5", label: "5" },
+{ value: "6", label: "6" },
+{ value: "7", label: "7" },
+{ value: "8", label: "8" },
+{ value: "9", label: "9" },
+{ value: "10", label: "10" },
+];  
 
 class MilkTeaOption extends React.Component {
     constructor(props) {
         super(props);
         
         this.state = {
-            price : 0,
-            value:'coconut',
-            size :'Select your option',
+            price : 4.49,
+            size :"Regular",
+            ice: 'Regular Ice',
+            sweet: 'Standard Sweet',
+            qty: 1
         };
 
         this.setSize = this.setSize.bind(this);
+        this.setIce = this.setIce.bind(this);
+        this.setSweet = this.setSweet.bind(this);
+        this.setQty = this.setQty.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
+
     setSize(event) {
-        if (event.target.value == "regular") {
+        if (event.value == "Regular") {
             this._price.innerHTML = "$4.49";
             this.setState({price: 4.49});
         }
-        else if (event.target.value == "large") {
+        else if (event.value == "Large") {
             this._price.innerHTML = "$4.99";
             this.setState({price: 4.99});
         }
         else {
             this._price.innerHTML = "$4.49 - $4.99";
-            // this.setState({size: event.target.value});
         }
-        this.setState({size: event.target.value});
+        this.setState({size: event.value});
     }
 
+    setIce(event) {
+        this.setState({ice:event.target.value });
+    }
+
+    setSweet(event) {
+        this.setState({sweet:event.target.value});
+    }
+
+    setQty(event) {
+        this.setState({price: this.state.price * event.value});
+        this.setState({qty: event.value});
+    }
+
+
     handleSubmit(event) {
-        alert('your size: ' + this.state.size);
-        alert('your price: ' + this.state.price);
+        alert('Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
+              + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty);
+    
         event.preventDefault();
     }
 
     
+
+    
     render() {
         var self = this;
+
         return (
             <form id="select-options" method="post" onSubmit={this.handleSubmit}>
                 <h2>{ this.props.title}</h2>
@@ -51,27 +94,49 @@ class MilkTeaOption extends React.Component {
                 <br />
 
                 <h6>Select an option <span style={{color: "red"}}>*</span>:</h6>
-                <select value={this.state.size}  required="required" onChange={this.setSize} >
-                    <option value="Select your option" disabled >Select your option</option>
-                    <option value="regular" >Regular</option>
-                    <option value="large">Large</option>
-                </select>
+                <Select options={sizeOptions} onChange={this.setSize}  required/>
                 <br /><br />
 
 
                 <h6>Ice Level:</h6>
-                <input type="radio" id="regulerIce" name="ice" value="Regular ice" checked /><label for="regulerIce">Regular Ice</label>
+                <input type="radio" id="regulerIce" name="ice" value="Regular Ice" checked={this.state.ice === 'Regular Ice'}  onChange={this.setIce}/><label for="regulerIce">Regular Ice</label>
                 <br />
-                <input type="radio" id="lessIce" name="ice" value="Less ice" /><label for="lessIce">Less Ice</label>
+                <input type="radio" id="lessIce" name="ice" value="Less Ice" checked={this.state.ice === 'Less Ice'}  onChange={this.setIce}/><label for="lessIce">Less Ice</label>
                 <br />
-                <input type="radio" id="noIce" name="ice" value="No ice" /><label for="noIce">No Ice</label>
+                <input type="radio" id="noIce" name="ice" value="No Ice" checked={this.state.ice === 'No Ice'}  onChange={this.setIce}/><label for="noIce">No Ice</label>
                 <br />
-                <input type="radio" id="moreIce" name="ice" value="More ice" /><label for="moreIce">More Ice</label>
+                <input type="radio" id="moreIce" name="ice" value="More Ice" checked={this.state.ice === 'More Ice'}  onChange={this.setIce}/><label for="moreIce">More Ice</label>
                 <br />
-                <input type="radio" id="hot" name="ice" value="hot" /><label for="hot">Hot</label>
+                <input type="radio" id="hot" name="ice" value="hot" checked={this.state.ice === 'hot'}  onChange={this.setIce}/><label for="hot">Hot</label>
                 <br />
                 <br />
 
+                <h6>Sweetness Level:</h6>
+                <input type="radio" id="standardSweet" name="sweet" value="Standard Sweet" checked={this.state.sweet === 'Standard Sweet'}  onChange={this.setSweet}/><label for="standardSweet"> 50% Standard Sweet</label>
+                <br />
+                <input type="radio" id="lessSweet" name="sweet" value="Less Sweet" checked={this.state.sweet === 'Less Sweet'}  onChange={this.setSweet}/><label for="lessSweet"> 25% Less Sweet</label>
+                <br />
+                <input type="radio" id="moreSweet" name="sweet" value="More Sweet" checked={this.state.sweet === 'More Sweet'}  onChange={this.setSweet}/><label for="moreSweet"> 75% More Sweet</label>
+                <br />
+                <input type="radio" id="superSweet" name="sweet" value="Super Sweet" checked={this.state.sweet === 'Super Sweet'}  onChange={this.setSweet}/><label for="superSweet"> 100% Super Sweet</label>
+                <br />
+                <input type="radio" id="noSweet" name="sweet" value="No Sweet" checked={this.state.sweet === 'No Sweet'}  onChange={this.setSweet}/><label for="noSweet"> 0% No Sweet</label>
+                <br />
+                <br />
+
+
+                {/* <h6>Extra Topping:</h6>
+                <p><input type="checkbox" name="Pearl" value="Pearl" onChange={this.chkClick}/>Pearl(+ $0.50)</p>
+                <p><input type="checkbox" name="Grass Jelly" value="Grass Jelly"  onChange={this.chkClick}/>Grass Jelly(+ $0.50) </p>
+                <p><input type="checkbox" name="Egg Pudding" value="Egg Pudding"  onChange={this.chkClick}/>Egg Pudding(+ $0.50)</p>
+                <p><input type="checkbox" name="Aiyu" value="Aiyu"  onChange={this.chkClick}/>Aiyu(+ $0.50)</p>
+                <p><input type="checkbox" name="Salted Cheese Cream" value="Salted Cheese Cream"  onChange={this.chkClick} />Salted Cheese Cream(+ $0.50)</p>
+                <p><input type="checkbox" name="Tiramisu Cream" value="Tiramisu Cream"  onChange={this.chkClick}/>Tiramisu Cream(+ $0.50)</p>
+                <br /> */}
+
+                <h6>Quantity <span style={{color: "red"}}>*</span>:</h6>
+                <Select options={qtyOptions} onChange={this.setQty}  required/>
+                <br /><br />
 
             <input type="submit" value="提交" />
 
