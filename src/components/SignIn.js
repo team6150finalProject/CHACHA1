@@ -32,7 +32,7 @@ class SignIn extends React.Component {
   render() {
     return (
       <div>
-        <Button className="btn-default"><Link to='/signin'>SIGN IN</Link></Button>
+        <Button className="btn-default"><Link to='/signin' style={{ color: "#616161", textDecoration:'none'}}>SIGN IN</Link></Button>
 
       {/*  <Modal show={this.state.show} onHide={() => this.handleClose()}>*/}
       {/*    <Modal.Header closeButton>*/}
