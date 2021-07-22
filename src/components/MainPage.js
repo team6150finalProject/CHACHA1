@@ -4,7 +4,9 @@ import FindStore from './FindStore';
 import Story from './Story';
 import TeaCarousel from './TeaCarousel';
 import TeaGallery from './TeaGallery';
+
 import MainNav from "./MainNav";
+
 
 class MainPage extends React.Component {
   render() {

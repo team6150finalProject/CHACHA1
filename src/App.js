@@ -22,6 +22,12 @@ class App extends React.Component {
             <Route path='/SignUpScreen' component={SignUpScreen}/>
         </Switch>
         <MainFooter/>
+        <MainNav></MainNav>
+        <Switch>
+          <Route exact path='/' component={MainPage}/>
+          <Route path='/tea-select/:productId' component={TeaSelect}/>
+        </Switch>
+        <MainFooter></MainFooter>
       </BrowserRouter>
     );
   }
