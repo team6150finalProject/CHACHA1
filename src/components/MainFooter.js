@@ -14,15 +14,15 @@ class MainFooter extends React.Component {
               <ul className="nav justify-content-end">
 
                 <li className="nav-item">
-                  <a className="nav-link active" href="#navbar">Home</a>
+                  <a className="nav-link active" href="/#navbar">Home</a>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link" href="#tea-gallery">Our Tea</a>
+                  <a className="nav-link" href="/#tea-gallery">Our Tea</a>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link" href="#story">Our Store</a>
+                  <a className="nav-link" href="/#story">Our Store</a>
                 </li>
               </ul>
             </div>

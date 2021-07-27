@@ -1,6 +1,7 @@
 import React from 'react';
 import products from '../model/products';
 import Select from 'react-select';
+import cookie from 'react-cookies';
 
 const sizeOptions = [
     { value: "Regular", label: "Regular" },
@@ -73,8 +74,11 @@ class MilkTeaOption extends React.Component {
     handleSubmit(event) {
         alert('Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
               + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty);
-    
+        cookie.save('num', parseInt(cookie.load('num')) + this.state.qty, {path:"/"});
+        cookie.save('test', 'Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
+              + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty, {path:"/"});
         event.preventDefault();
+        window.open("/", "_self");
     }
 
     
@@ -99,28 +103,28 @@ class MilkTeaOption extends React.Component {
 
 
                 <h6>Ice Level:</h6>
-                <input type="radio" id="regulerIce" name="ice" value="Regular Ice" checked={this.state.ice === 'Regular Ice'}  onChange={this.setIce}/><label for="regulerIce">Regular Ice</label>
+                <input type="radio" id="regulerIce" name="ice" value="Regular Ice" checked={this.state.ice === 'Regular Ice'}  onChange={this.setIce}/><label htmlFor="regulerIce">Regular Ice</label>
                 <br />
-                <input type="radio" id="lessIce" name="ice" value="Less Ice" checked={this.state.ice === 'Less Ice'}  onChange={this.setIce}/><label for="lessIce">Less Ice</label>
+                <input type="radio" id="lessIce" name="ice" value="Less Ice" checked={this.state.ice === 'Less Ice'}  onChange={this.setIce}/><label htmlFor="lessIce">Less Ice</label>
                 <br />
-                <input type="radio" id="noIce" name="ice" value="No Ice" checked={this.state.ice === 'No Ice'}  onChange={this.setIce}/><label for="noIce">No Ice</label>
+                <input type="radio" id="noIce" name="ice" value="No Ice" checked={this.state.ice === 'No Ice'}  onChange={this.setIce}/><label htmlFor="noIce">No Ice</label>
                 <br />
-                <input type="radio" id="moreIce" name="ice" value="More Ice" checked={this.state.ice === 'More Ice'}  onChange={this.setIce}/><label for="moreIce">More Ice</label>
+                <input type="radio" id="moreIce" name="ice" value="More Ice" checked={this.state.ice === 'More Ice'}  onChange={this.setIce}/><label htmlFor="moreIce">More Ice</label>
                 <br />
-                <input type="radio" id="hot" name="ice" value="hot" checked={this.state.ice === 'hot'}  onChange={this.setIce}/><label for="hot">Hot</label>
+                <input type="radio" id="hot" name="ice" value="hot" checked={this.state.ice === 'hot'}  onChange={this.setIce}/><label htmlFor="hot">Hot</label>
                 <br />
                 <br />
 
                 <h6>Sweetness Level:</h6>
-                <input type="radio" id="standardSweet" name="sweet" value="Standard Sweet" checked={this.state.sweet === 'Standard Sweet'}  onChange={this.setSweet}/><label for="standardSweet"> 50% Standard Sweet</label>
+                <input type="radio" id="standardSweet" name="sweet" value="Standard Sweet" checked={this.state.sweet === 'Standard Sweet'}  onChange={this.setSweet}/><label htmlFor="standardSweet"> 50% Standard Sweet</label>
                 <br />
-                <input type="radio" id="lessSweet" name="sweet" value="Less Sweet" checked={this.state.sweet === 'Less Sweet'}  onChange={this.setSweet}/><label for="lessSweet"> 25% Less Sweet</label>
+                <input type="radio" id="lessSweet" name="sweet" value="Less Sweet" checked={this.state.sweet === 'Less Sweet'}  onChange={this.setSweet}/><label htmlFor="lessSweet"> 25% Less Sweet</label>
                 <br />
-                <input type="radio" id="moreSweet" name="sweet" value="More Sweet" checked={this.state.sweet === 'More Sweet'}  onChange={this.setSweet}/><label for="moreSweet"> 75% More Sweet</label>
+                <input type="radio" id="moreSweet" name="sweet" value="More Sweet" checked={this.state.sweet === 'More Sweet'}  onChange={this.setSweet}/><label htmlFor="moreSweet"> 75% More Sweet</label>
                 <br />
-                <input type="radio" id="superSweet" name="sweet" value="Super Sweet" checked={this.state.sweet === 'Super Sweet'}  onChange={this.setSweet}/><label for="superSweet"> 100% Super Sweet</label>
+                <input type="radio" id="superSweet" name="sweet" value="Super Sweet" checked={this.state.sweet === 'Super Sweet'}  onChange={this.setSweet}/><label htmlFor="superSweet"> 100% Super Sweet</label>
                 <br />
-                <input type="radio" id="noSweet" name="sweet" value="No Sweet" checked={this.state.sweet === 'No Sweet'}  onChange={this.setSweet}/><label for="noSweet"> 0% No Sweet</label>
+                <input type="radio" id="noSweet" name="sweet" value="No Sweet" checked={this.state.sweet === 'No Sweet'}  onChange={this.setSweet}/><label htmlFor="noSweet"> 0% No Sweet</label>
                 <br />
                 <br />
 

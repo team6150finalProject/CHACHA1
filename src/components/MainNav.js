@@ -5,6 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
+import Badge from 'react-bootstrap/Badge';
+import cookie from 'react-cookies';
 
 import { Link } from 'react-router-dom';
 
@@ -13,7 +15,7 @@ import SignIn from './SignIn';
 class MainNav extends React.Component {
   render() {
     return (
-      <Navbar expand="lg" variant="dark" style={{ backgroundImage: "url(" + process.env.PUBLIC_URL + "/img/welcome.jpg)" }}>
+      <Navbar expand="lg" variant="dark" style={{ backgroundColor: "#2E0000" }}>
         <Container>
           <Navbar.Brand href="#">
             <Image src={process.env.PUBLIC_URL + "/img/logo.jpg"} alt="logo" width="70" height="70" />
@@ -47,8 +49,9 @@ class MainNav extends React.Component {
               </a>
             </Nav.Item>
             <Nav.Item>
-              <a className="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="shopping cart" href="#" role="button">
+              <a className="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="shopping cart" href="/cart" role="button">
                 <i className="fas fa-shopping-cart fa-lg" style={{ color: "#616161" }}></i>
+                <Badge bg="secondary">{cookie.load('num')}</Badge>
               </a>
             </Nav.Item>
             <Nav.Item>
