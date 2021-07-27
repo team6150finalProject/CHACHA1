@@ -7,7 +7,7 @@ const productInfoMap = {
   },
   redBeanTea: {
     title: 'Red Bean Milk Tea',
-    imgFileName: 'Red%20Bean.png',
+    imgFileName: 'RedBean.png',
     price: 'TBD'
   },
   cheeseTea: {

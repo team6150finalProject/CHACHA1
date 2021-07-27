@@ -56,7 +56,7 @@ section .body_signin_container .body_user .imgBx{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
     transition: 0.5s;
 }
 .form_signIn h2{
@@ -211,6 +211,17 @@ section .body_signin_container .body_user .imgBx{
     color: #28CCD6;
 }
 
+.errorMsgEmailtrue{
+    color:red;display: block;
+}
+.errorMsgEmailfalse{
+    display:none;color:red
+}
+.error-msg{
+    color: red;
+    text-align: center;
+    font-size: 18px;
+}
 @media (max-width: 991px){
     section .body_signin_container{
         max-width: 400px;
