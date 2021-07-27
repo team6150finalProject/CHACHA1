@@ -11,7 +11,7 @@ class ProductCard extends React.Component {
           <h4 className="card-title">{productInfo.title}</h4>
         </div>
 
-        <Link to={'/tea-select/' + this.props.productId} title="click to order">
+        <Link to={'/tea-select/' + this.props.productType + "/"+ this.props.productId} title="click to order">
           <img className="tea" src={process.env.PUBLIC_URL + "/img/" + productInfo.imgFileName} alt="#" />
         </Link>
 

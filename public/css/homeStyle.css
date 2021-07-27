@@ -137,20 +137,9 @@ nav {
   margin-left: 400px;
 }
 
-#select-content select:invalid {
-  color: gray; 
-}
-
-#select-addCart {
-  background-color: #4c8baf;
-  border: none;
-  color: white;
-  padding: 15px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 10px;
+#addCart {
+  padding : 10px;
+  background-color:rgb(175, 148, 110);
+  color:aliceblue;
+  border-radius: 5px;
 }

@@ -21,13 +21,13 @@ class TeaGallery extends React.Component {
               <tbody>
                 <tr>
                   <td>
-                    <ProductCard productId="bubbleTea" />
+                    <ProductCard productType="milkTea" productId="bubbleTea" />
                   </td>
                   <td>
-                    <ProductCard productId="redBeanTea" />
+                    <ProductCard productType="milkTea" productId="redBeanTea" />
                   </td>
                   <td>
-                    <ProductCard productId="cheeseTea" />
+                    <ProductCard productType="milkTea" productId="cheeseTea" />
                   </td>
                 </tr>
               </tbody>
@@ -49,13 +49,13 @@ class TeaGallery extends React.Component {
               <tbody>
                 <tr>
                   <td>
-                    <ProductCard productId="mangoTea" />
+                    <ProductCard productType="fruitTea" productId="mangoTea" />
                   </td>
                   <td>
-                    <ProductCard productId="berryTea" />
+                    <ProductCard productType="fruitTea" productId="berryTea" />
                   </td>
                   <td>
-                    <ProductCard productId="passionFruitTea" />
+                    <ProductCard productType="fruitTea" productId="passionFruitTea" />
                   </td>
                 </tr>
               </tbody>
@@ -76,13 +76,13 @@ class TeaGallery extends React.Component {
               <tbody>
                 <tr>
                   <td>
-                    <ProductCard productId="matchaTea" />
+                    <ProductCard productType="specialtyDrinks" productId="matchaTea" />
                   </td>
                   <td>
-                    <ProductCard productId="thaiTea" />
+                    <ProductCard productType="specialtyDrinks" productId="thaiTea" />
                   </td>
                   <td>
-                    <ProductCard productId="smoothie" />
+                    <ProductCard productType="specialtyDrinks" productId="smoothie" />
                   </td>
                 </tr>
               </tbody>

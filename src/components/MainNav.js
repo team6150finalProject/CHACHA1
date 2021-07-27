@@ -44,7 +44,7 @@ class MainNav extends React.Component {
               </Form>
             </Nav.Item>
             <Nav.Item>
-              <a className="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="search" href="#" role="button">
+              <a className="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="search" role="button">
                 <i className="fas fa-search" style={{ color: "#616161" }}></i>
               </a>
             </Nav.Item>

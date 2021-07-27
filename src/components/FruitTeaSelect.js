@@ -1,8 +1,8 @@
 import React from 'react';
 import products from '../model/products';
-import MilkTeaOption from './MilkTeaOption'
+import FruitTeaOption from './FruitTeaOption';
 
-class TeaSelect extends React.Component {
+class FruitTeaSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ class TeaSelect extends React.Component {
       <div id="select-content">
         <img id="select-picture" src={ "../../img/" + productInfo.imgFileName } alt={this.productId} />
         
-        <MilkTeaOption  title = {productInfo.title}/>
+        <FruitTeaOption  title = {productInfo.title}/>
       
       </div>
     );
@@ -25,4 +25,4 @@ class TeaSelect extends React.Component {
 }
 
 
-export default TeaSelect;
+export default FruitTeaSelect;

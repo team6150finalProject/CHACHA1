@@ -2,47 +2,47 @@
 const productInfoMap = {
   bubbleTea: {
     title: 'Bubble Tea',
-    imgFileName: 'Bubble.png',
+    imgFileName: 'bubbleTea.jpg',
     price: '$4.49 - $4.99'
   },
   redBeanTea: {
-    title: 'Red Bean Milk Tea',
-    imgFileName: 'RedBean.png',
+    title: 'Taro Milk Tea',
+    imgFileName: 'TaroTea.jpg',
     price: 'TBD'
   },
   cheeseTea: {
     title: 'Cheese Milk Tea',
-    imgFileName: 'Cheese.png',
+    imgFileName: 'cheese.jpg',
     price: 'TBD'
   },
   mangoTea: {
-    title: 'Mango Green Tea',
-    imgFileName: 'Mango.png',
+    title: 'Mango Tea',
+    imgFileName: 'mangoTea.jpg',
     price: 'TBD'
   },
   berryTea: {
-    title: 'Berry Red Tea',
-    imgFileName: 'Berry.png',
+    title: 'Mix Berry Tea',
+    imgFileName: 'berryTea.jpg',
     price: 'TBD'
   },
   passionFruitTea: {
     title: 'Passion Fruit QQ',
-    imgFileName: 'Passion.png',
+    imgFileName: 'passion.jpeg',
     price: 'TBD'
   },
   matchaTea: {
     title: 'Matcha Creme',
-    imgFileName: 'Matcha.png',
+    imgFileName: 'matcha.jpg',
     price: 'TBD'
   },
   thaiTea: {
     title: 'Thai Tea',
-    imgFileName: 'Thai.png',
+    imgFileName: 'thaiTea.webp',
     price: 'TBD'
   },
   smoothie: {
-    title: 'Smoothie',
-    imgFileName: 'Smoothie.png',
+    title: 'Peach Oolong',
+    imgFileName: 'coldTea.jfif',
     price: 'TBD'
   }
 };

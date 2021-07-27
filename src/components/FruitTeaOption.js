@@ -20,7 +20,7 @@ const qtyOptions = [
 { value: "10", label: "10" },
 ];  
 
-class MilkTeaOption extends React.Component {
+class FruitTeaOption extends React.Component {
     constructor(props) {
         super(props);
         
@@ -73,7 +73,7 @@ class MilkTeaOption extends React.Component {
         cookie.save('num', parseInt(cookie.load('num')) + this.state.qty, {path:"/"});
         cookie.save('test', 'Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
               + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty, {path:"/"});
-        //sevent.preventDefault();
+        event.preventDefault();
         window.open("/", "_self");
     }
 
@@ -94,7 +94,7 @@ class MilkTeaOption extends React.Component {
                 <br />
 
                 <h6>Select an option <span style={{color: "red"}}>*</span>:</h6>
-                <Select options={sizeOptions} onChange={this.setSize}  defaultValue = {sizeOptions[0]}/>
+                <Select options={sizeOptions} onChange={this.setSize} defaultValue = {sizeOptions[0]}  required/>
                 <br /><br />
 
 
@@ -106,8 +106,6 @@ class MilkTeaOption extends React.Component {
                 <input type="radio" id="noIce" name="ice" value="No Ice" checked={this.state.ice === 'No Ice'}  onChange={this.setIce}/><label htmlFor="noIce">No Ice</label>
                 <br />
                 <input type="radio" id="moreIce" name="ice" value="More Ice" checked={this.state.ice === 'More Ice'}  onChange={this.setIce}/><label htmlFor="moreIce">More Ice</label>
-                <br />
-                <input type="radio" id="hot" name="ice" value="hot" checked={this.state.ice === 'hot'}  onChange={this.setIce}/><label htmlFor="hot">Hot</label>
                 <br />
                 <br />
 
@@ -124,18 +122,8 @@ class MilkTeaOption extends React.Component {
                 <br />
                 <br />
 
-
-                {/* <h6>Extra Topping:</h6>
-                <p><input type="checkbox" name="Pearl" value="Pearl" onChange={this.chkClick}/>Pearl(+ $0.50)</p>
-                <p><input type="checkbox" name="Grass Jelly" value="Grass Jelly"  onChange={this.chkClick}/>Grass Jelly(+ $0.50) </p>
-                <p><input type="checkbox" name="Egg Pudding" value="Egg Pudding"  onChange={this.chkClick}/>Egg Pudding(+ $0.50)</p>
-                <p><input type="checkbox" name="Aiyu" value="Aiyu"  onChange={this.chkClick}/>Aiyu(+ $0.50)</p>
-                <p><input type="checkbox" name="Salted Cheese Cream" value="Salted Cheese Cream"  onChange={this.chkClick} />Salted Cheese Cream(+ $0.50)</p>
-                <p><input type="checkbox" name="Tiramisu Cream" value="Tiramisu Cream"  onChange={this.chkClick}/>Tiramisu Cream(+ $0.50)</p>
-                <br /> */}
-
                 <h6>Quantity <span style={{color: "red"}}>*</span>:</h6>
-                <Select options={qtyOptions} onChange={this.setQty}  defaultValue = {qtyOptions[0]}/>
+                <Select options={qtyOptions} onChange={this.setSize}  defaultValue = {qtyOptions[0]}/>
                 <br /><br />
 
             <input id = "addCart" type="submit" value="Add to Cart" />
@@ -147,4 +135,4 @@ class MilkTeaOption extends React.Component {
 }
 
 
-export default MilkTeaOption;
+export default FruitTeaOption;

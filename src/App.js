@@ -4,7 +4,8 @@ import MainFooter from './components/MainFooter';
 import MainNav from './components/MainNav';
 import MainPage from './components/MainPage';
 import ScrollToLocation from './components/ScrollToLocation';
-import TeaSelect from './components/TeaSelect';
+import MilkTeaSelect from './components/MilkTeaSelect';
+import FruitTeaSelect from './components/FruitTeaSelect';
 import './App.css';
 import Cart from "./components/Cart";
 import SignInScreen from "./components/SigninScreen/SignInScreen";
@@ -24,7 +25,9 @@ class App extends React.Component {
         <ScrollToLocation />
         <Switch>
             <Route exact path='/' component={MainPage}/>
-            <Route path='/tea-select/:productId' component={TeaSelect}/>
+            <Route path='/tea-select/milkTea/:productId' component={MilkTeaSelect}/>
+            <Route path='/tea-select/fruitTea/:productId' component={FruitTeaSelect}/>
+            <Route path='/tea-select/specialtyDrinks/:productId' component={FruitTeaSelect}/>
             <Route path='/cart' component={Cart}/>
             <Route path='/signin' component={SignInScreen}/>
             <Route path='/signup' component={SignUpScreen}/>
