@@ -29,6 +29,14 @@ class MilkTeaOption extends React.Component {
             size :"Regular",
             ice: 'Regular Ice',
             sweet: 'Standard Sweet',
+            topping: {
+                pearl: false,
+                redBean: false,
+                eggPudding: false,
+                aiyu: false,
+                saltedCheeseCream: false,
+                tiramisuCream: false,
+            },
             qty: 1
         };
 
@@ -36,6 +44,7 @@ class MilkTeaOption extends React.Component {
         this.setIce = this.setIce.bind(this);
         this.setSweet = this.setSweet.bind(this);
         this.setQty = this.setQty.bind(this);
+        this.handleTopping = this.handleTopping.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
@@ -44,13 +53,25 @@ class MilkTeaOption extends React.Component {
     setSize(event) {
         if (event.value === "Regular") {
             this._price.innerHTML = "$4.49";
-            this.setState({price: 4.49});
+            if (this.state.size === "Large") {
+                var oriPrice = this.state.price - 4.99 * this.state.qty;
+                var currPrice = oriPrice + 4.49 * this.state.qty;
+                this.state.price = currPrice.toFixed(2);
+                this.setState(this.state);
+            }
         }
         else if (event.value === "Large") {
             this._price.innerHTML = "$4.99";
-            this.setState({price: 4.99});
+            if (this.state.size === "Regular") {
+                var oriPrice = this.state.price - 4.49 * this.state.qty;
+                var currPrice = oriPrice + 4.99 * this.state.qty;
+                this.state.price = currPrice.toFixed(2);
+                this.setState(this.state);
+            }
         }
         this.setState({size: event.value});
+
+        console.log(this.state);
     }
 
     setIce(event) {
@@ -62,10 +83,29 @@ class MilkTeaOption extends React.Component {
     }
 
     setQty(event) {
-        this.setState({price: this.state.price * event.value});
-        this.setState({qty: event.value});
+        let state = this.state;
+        var oriPrice = this.state.price / this.state.qty;
+        this.state.price = (oriPrice * event.value).toFixed(2);
+        this.state.qty = event.value;
+        this.setState(state);
+        console.log(this.state);
     }
 
+    handleTopping(event) {
+        let state = this.state;
+        this.state.topping[event.target.value] = event.target.checked;
+        if (event.target.checked) {
+            var currPrice = this.state.price + 0.5 * this.state.qty;
+            this.state.price = currPrice;
+        }
+        else {
+            var currPrice = this.state.price - 0.5 * this.state.qty;
+            this.state.price = currPrice;
+        }
+        this.setState(state);
+        console.log(this.state);
+        
+    }
 
     handleSubmit(event) {
         alert('Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
@@ -73,7 +113,7 @@ class MilkTeaOption extends React.Component {
         cookie.save('num', parseInt(cookie.load('num')) + this.state.qty, {path:"/"});
         cookie.save('test', 'Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
               + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty, {path:"/"});
-        //sevent.preventDefault();
+        
         window.open("/", "_self");
     }
 
@@ -125,14 +165,14 @@ class MilkTeaOption extends React.Component {
                 <br />
 
 
-                {/* <h6>Extra Topping:</h6>
-                <p><input type="checkbox" name="Pearl" value="Pearl" onChange={this.chkClick}/>Pearl(+ $0.50)</p>
-                <p><input type="checkbox" name="Grass Jelly" value="Grass Jelly"  onChange={this.chkClick}/>Grass Jelly(+ $0.50) </p>
-                <p><input type="checkbox" name="Egg Pudding" value="Egg Pudding"  onChange={this.chkClick}/>Egg Pudding(+ $0.50)</p>
-                <p><input type="checkbox" name="Aiyu" value="Aiyu"  onChange={this.chkClick}/>Aiyu(+ $0.50)</p>
-                <p><input type="checkbox" name="Salted Cheese Cream" value="Salted Cheese Cream"  onChange={this.chkClick} />Salted Cheese Cream(+ $0.50)</p>
-                <p><input type="checkbox" name="Tiramisu Cream" value="Tiramisu Cream"  onChange={this.chkClick}/>Tiramisu Cream(+ $0.50)</p>
-                <br /> */}
+                <h6>Extra Topping:</h6>
+                <p><input type="checkbox" name="topping" value="pearl" onChange={this.handleTopping}  checked = {this.state.topping.pearl}/>Pearl(+ $0.50)</p>
+                <p><input type="checkbox" name="topping" value="redBean"  onChange={this.handleTopping} checked = {this.state.topping.redBean}/>Red Bean(+ $0.50) </p>
+                <p><input type="checkbox" name="topping" value="eggPudding"  onChange={this.handleTopping} checked = {this.state.topping.eggPudding}/>Egg Pudding(+ $0.50)</p>
+                <p><input type="checkbox" name="topping" value="aiyu"  onChange={this.handleTopping} checked = {this.state.topping.aiyu}/>Aiyu(+ $0.50)</p>
+                <p><input type="checkbox" name="topping" value="saltedCheeseCream"  onChange={this.handleTopping} checked = {this.state.topping.saltedCheeseCream}/>Salted Cheese Cream(+ $0.50)</p>
+                <p><input type="checkbox" name="topping" value="tiramisuCream"  onChange={this.handleTopping} checked = {this.state.topping.tiramisuCream}/>Tiramisu Cream(+ $0.50)</p>
+                <br />
 
                 <h6>Quantity <span style={{color: "red"}}>*</span>:</h6>
                 <Select options={qtyOptions} onChange={this.setQty}  defaultValue = {qtyOptions[0]}/>
