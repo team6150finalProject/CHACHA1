@@ -84,8 +84,8 @@ class MilkTeaOption extends React.Component {
 
     setQty(event) {
         let state = this.state;
-        var oriPrice = this.state.price / this.state.qty;
-        this.state.price = (oriPrice * event.value).toFixed(2);
+        // var oriPrice = this.state.price / this.state.qty;
+        this.state.price = ((this.state.price / this.state.qty) * event.value).toFixed(2);
         this.state.qty = event.value;
         this.setState(state);
         console.log(this.state);
@@ -95,12 +95,10 @@ class MilkTeaOption extends React.Component {
         let state = this.state;
         this.state.topping[event.target.value] = event.target.checked;
         if (event.target.checked) {
-            var currPrice = this.state.price + 0.5 * this.state.qty;
-            this.state.price = currPrice;
+            this.state.price = this.state.price + 0.5 * this.state.qty;
         }
         else {
-            var currPrice = this.state.price - 0.5 * this.state.qty;
-            this.state.price = currPrice;
+            this.state.price = this.state.price - 0.5 * this.state.qty;
         }
         this.setState(state);
         console.log(this.state);
