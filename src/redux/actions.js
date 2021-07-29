@@ -5,7 +5,9 @@ import {
     ERROR_MSG,
     REGISTER_SUCCESS,
     ERROR_MSG_REGISTER,
+    SYNC_STATE_INFO
 } from "./action-types";
+import data from "bootstrap/js/src/dom/data";
 
 //signin action
 
@@ -53,5 +55,13 @@ export const register =(user) =>{
         }else{
             dispatch(errormsgreg(result.msg))
         }
+    }
+}
+
+
+export const syncInfoAc =data => {
+    return{
+        type: SYNC_STATE_INFO,
+        data: data
     }
 }

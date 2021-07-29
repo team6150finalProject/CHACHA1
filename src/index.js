@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import decode from 'jwt-decode'
 import store from "./redux/store";
 import {Provider} from "react-redux";
+import {syncInfoAc} from "./redux/actions";
+
+const tk =localStorage.getItem('@#@TOKEN');
+console.log(tk)
+if(tk) store.dispatch( syncInfoAc(decode(tk)));
 
 ReactDOM.render(
     <Provider store={store}>

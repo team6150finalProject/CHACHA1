@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import imglogo from './img/logo.jpg'
+import showlogo from './img/show.png'
+import hidelogo from './img/hide.png'
 import {Link} from "react-router-dom";
 import './Signin.css'
 import {connect} from "react-redux";
@@ -15,24 +17,41 @@ class SignUpScreen extends Component{
             confirmPassword:"",
             emailChangstyle: false,
             passwordChangestyle:false,
+            shown: false,
         };
     }
 
     emailChange(e) {
-
-        this.setState({
-            email: e.target.value,
-        });
+        const{value} = e.target;
+        const reg = /([\w\.]+)@([\w\.]+)\.(\w+)/;
+        if(reg.test(value) || value ===''){
+            this.setState({
+                email: value,
+                emailChangstyle: false
+            });
+        }else{
+            this.setState({
+                emailChangstyle: true})
+        }
     }
+
     userChange(e) {
         this.setState({
             username: e.target.value,
         });
     }
     passwordChange(e) {
-        this.setState({
-            password: e.target.value,
-        });
+        const {value} =e.target;
+        const reg =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,12}$/;
+        if(reg.test(value) || value === ''){
+            this.setState({
+                password: e.target.value,
+                passwordChangestyle: false
+            });
+        }else{
+            this.setState({
+                passwordChangestyle: true})
+        }
     }
     passwordChangeConfirm(e) {
         this.setState({
@@ -42,11 +61,16 @@ class SignUpScreen extends Component{
     submitbutton =()=>{
         this.props.register(this.state)
     }
+    setShow () {
+        this.setState({
+            shown:! this.state.shown
+        })
+    }
 
     render() {
         const {msg, redirectTo} =this.props.userregister
-        console.log(redirectTo)
         if(redirectTo){
+            alert("Register Success")
             return <Redirect to ={redirectTo}/>
         }
         return(
@@ -65,11 +89,18 @@ class SignUpScreen extends Component{
                                 <div className="form_signup_email">
                                     <input type="email" id="email" placeholder="Email Address" className= "signup_input" onChange={this.emailChange.bind(this)}/>
                                 </div>
-                                <div className="form_signup_password">
-                                    <input type="password" id="password" placeholder="Create PassWord" className= "signup_input" onChange={this.passwordChange.bind(this)}/>
+                                <div className= {this.state.emailChangstyle?"errorMsgEmailtrue":"errorMsgEmailfalse"}>
+                                    <span style={{margin: 0, padding :0}}> Invalid Email. Please enter again.</span>
                                 </div>
                                 <div className="form_signup_password">
-                                    <input type="password" id="confirmPassword" placeholder="Confirm PassWord" className= "signup_input" onChange={this.passwordChangeConfirm.bind(this)}/>
+                                    <input type={this.state.shown ? 'text' : 'password'} id="password" placeholder="Create PassWord" className= "signup_input" onChange={this.passwordChange.bind(this)}/>
+                                    <button className='password-button' type='button' onClick={this.setShow.bind(this)}><img src={this.state.shown ?hidelogo: showlogo}/></button>
+                                </div>
+                                <div className= {this.state.passwordChangestyle?"errorMsgEmailtrue":"errorMsgEmailfalse"}>
+                                    <span>6-12 characters, at least 1 Upper case, Lower case, Number</span>
+                                </div>
+                                <div className="form_signup_password">
+                                    <input type={this.state.shown ? 'text' : 'password'} id="confirmPassword" placeholder="Confirm PassWord" className= "signup_input" onChange={this.passwordChangeConfirm.bind(this)}/>
                                 </div>
                                 <div className="Signup-button">
                                 <button type='button' onClick={this.submitbutton}>Sign Up</button>

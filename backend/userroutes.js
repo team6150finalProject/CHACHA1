@@ -1,6 +1,7 @@
 const Sample =require('./userModels');
-const filter = {password:0 }
+const filter = {password:0, __v:0 }
 const jwt = require('jsonwebtoken');
+const md5= require('blueimp-md5')
 
 const auth = async(req,res) =>{
     const raw = String(req.headers.authorization).split(' ').pop();
@@ -28,7 +29,7 @@ function checkFormat(data,type){
 
 module.exports =(app) =>{
     app.post('/signup', function (req,res){
-        const {email,username,password}=req.body;
+        let {email,username,password}=req.body;
         if(checkFormat(req.body.email,1) ) {
             if (checkFormat(req.body.password,0)) {
                 Sample.findOne({email}, function (err, data) {
@@ -39,7 +40,7 @@ module.exports =(app) =>{
                             if(data){
                                 res.send({code:1, msg: 'username already registered!'})
                             }else {
-                                new Sample({email, username, password}).save(function (error, user) {
+                                new Sample({email, username, password: md5(password)}).save(function (error, user) {
                                     if (error) res.send({code: 1, msg: 'Server disconnected'})
                                     const data = {email, username, _id: email._id}
                                     res.cookie('emailid', email._id, {maxAge: 1000 * 60 * 60 * 24})
@@ -50,60 +51,37 @@ module.exports =(app) =>{
                     };
                 });
             } else {
-                //res.end( JSON.stringify({error:"password too simple"}));
                 res.send({code:1, msg: 'password too simple!'})
             }
         }else{
-            //res.end(JSON.stringify({error: "email error"}));
             res.send({code:1, msg: 'email error!'})
         }
     });
 
-   app.post("/signin",async function (req,res){
+   app.post("/signin", async function (req,res){
         const {email,password }=req.body;
-        const user = await Sample.findOne({
-            email: req.body.email
-        })
-        if(!user){
-            return res.status(422).send({
-                message:"this email doesn't exist"
-            })
-        }
-
-        Sample.findOne({email, password:password},filter,function (err,data){
+        Sample.findOne({email, password:md5(password)},filter,function (err,data){
             if(data){
                 const token = jwt.sign({
-                    id:String(user._id)
+                    username: data.username,
+                    id:String(data._id)
                 },
                     process.env.JWT_KEY,
                     {
                         expiresIn: "1h"
                     }
                 );
-
-                console.log(user)
                 console.log(token)
+                const alldata ={_id:data._id,email: data.email,isadmin: data.isadmin, token}
                 res.send({
                     code:0,
-                    user,
-                    token
+                    data:alldata,
                 })
             }else{
-                return res.status(422).send({code:1 , msg: "Wrong Password"});
+                res.send({code:1 , msg: "Invalid email or password"});
             }
         })
     })
-   /* app.post("/signin",function (req,res){
-        const {email,password }=req.body;
-        Sample.findOne({email, password:password},filter,function (err,data){
-            if(data){
-                res.send({code: 0, data: email});
-            }else{
-                 res.send({code:1 , msg: "Invalid Email or Password"});
-            }
-        })
-    })*/
-
 
     app.get('/',(req,res) =>{
 

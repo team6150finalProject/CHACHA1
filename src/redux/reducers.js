@@ -4,6 +4,7 @@ import {
     ERROR_MSG,
     REGISTER_SUCCESS,
     ERROR_MSG_REGISTER,
+    SYNC_STATE_INFO
 } from "./action-types";
 
 const initUser ={
@@ -11,6 +12,7 @@ const initUser ={
     msg: '',
     username:'',
     redirectTo: '',
+    token:''
 }
 
 function user(state=initUser, action){
@@ -33,7 +35,18 @@ function userregister(state=initUser, action){
             return state
     }
 }
+
+function syncInfoAc(state =initUser,action){
+    switch (action.type) {
+        case SYNC_STATE_INFO:
+            return {...action.data}
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
+     syncInfo: syncInfoAc,
      userreducer: user,
     registerreducer: userregister,
 })

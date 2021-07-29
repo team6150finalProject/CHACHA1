@@ -192,9 +192,16 @@ section .body_signin_container .body_user .imgBx{
 .form_signup_email input{
     background-color: #f5f5f5;
 }
-
+.form_signup_password{
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin: 8px 0;
+}
 .form_signup_password input{
     background-color: #f5f5f5;
+    max-width: 90%;
+    padding: 0px;
+    margin:  0;
 }
 .Signup-button button{
     background: #ea1b1b;
@@ -211,7 +218,8 @@ section .body_signin_container .body_user .imgBx{
 }
 
 .errorMsgEmailtrue{
-    color:red;display: block;
+    color:red;display: inline;
+    font-size: 10px;
 }
 .errorMsgEmailfalse{
     display:none;color:red
@@ -230,6 +238,14 @@ section .body_signin_container .body_user .imgBx{
 .form_signin_email button img{
     display: block;
     float: right;
+}
+.form_signup_password button{
+    display: table;
+    width: 24px;
+    float: right;
+    background: #f5f5f5;
+    margin: 0 auto;
+    text-align: center;
 }
 
 @media (max-width: 991px){

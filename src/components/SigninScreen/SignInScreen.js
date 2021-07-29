@@ -32,7 +32,6 @@ class SignInScreen extends Component {
                 this.setState({
                     emaildisplay: true})
             }
-
         }
         getPassword(e) {
             const {value} =e.target;
@@ -46,8 +45,7 @@ class SignInScreen extends Component {
                     passworddisplay: true})
             }
         }
-        onesubmitbutton=(e)=>{
-            console.log('enter')
+        onesubmitbutton= (e)=>{
             this.props.login(this.state)
         }
 
@@ -58,7 +56,7 @@ class SignInScreen extends Component {
         }
 
     render() {
-        const{msg, redirectTo} =this.props.user
+        const{msg, redirectTo, token} =this.props.user
         if(redirectTo){
             return <Redirect to={redirectTo}/>
         }
@@ -78,7 +76,7 @@ class SignInScreen extends Component {
                                 <input type="email" placeholder="Enter Email" className= "signIn_input" onChange={this.getEmail.bind(this)}/>
                             </div>
                             <div className= {this.state.emaildisplay?"errorMsgEmailtrue":"errorMsgEmailfalse"}>
-                                Invalid Email. Please enter again.
+                                <span>Invalid Email. Please enter again</span>
                             </div>
                         <div className="form_signin_email">
                             <img src={img2URL} alt=''/>
@@ -86,7 +84,7 @@ class SignInScreen extends Component {
                             <button className='password-button' type='button' onClick={this.setShow.bind(this)}><img src={this.state.shown ?hidelogo: showlogo}/></button>
                         </div>
                             <div className= {this.state.passworddisplay?"errorMsgEmailtrue":"errorMsgEmailfalse"}>
-                                <p>The Password field can not exceed 12 characters in length.</p>
+                                <span>The Password field can not exceed 12 characters in length.</span>
                             </div>
                         <div className="form_checkbox">
                             <p><input type="checkbox" className="custom-control-input" id="check1"/>Remember Password</p>
