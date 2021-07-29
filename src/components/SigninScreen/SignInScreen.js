@@ -7,6 +7,8 @@ import "./Signin.css"
 import {connect} from "react-redux";
 import {login} from "../../redux/actions";
 import {Redirect} from 'react-router-dom'
+import showlogo from './img/show.png'
+import hidelogo from './img/hide.png'
 class SignInScreen extends Component {
 
     constructor(props) {
@@ -16,6 +18,7 @@ class SignInScreen extends Component {
             password: "",
             emaildisplay: false,
             passworddisplay: false,
+            shown: false,
         };}
 
         getEmail(e) {
@@ -31,7 +34,6 @@ class SignInScreen extends Component {
             }
 
         }
-
         getPassword(e) {
             const {value} =e.target;
             if(value.length <12 || value === ''){
@@ -47,6 +49,12 @@ class SignInScreen extends Component {
         onesubmitbutton=(e)=>{
             console.log('enter')
             this.props.login(this.state)
+        }
+
+        setShow () {
+            this.setState({
+                shown:! this.state.shown
+            })
         }
 
     render() {
@@ -74,7 +82,8 @@ class SignInScreen extends Component {
                             </div>
                         <div className="form_signin_email">
                             <img src={img2URL} alt=''/>
-                            <input type="password" placeholder="Enter PassWord" className= "signIn_input" onChange={this.getPassword.bind(this)}/>
+                            <input type={this.state.shown ? 'text' : 'password'} placeholder="Enter PassWord" className= "signIn_input" onChange={this.getPassword.bind(this)}/>
+                            <button className='password-button' type='button' onClick={this.setShow.bind(this)}><img src={this.state.shown ?hidelogo: showlogo}/></button>
                         </div>
                             <div className= {this.state.passworddisplay?"errorMsgEmailtrue":"errorMsgEmailfalse"}>
                                 <p>The Password field can not exceed 12 characters in length.</p>

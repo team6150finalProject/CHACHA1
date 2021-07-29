@@ -40,6 +40,7 @@
       <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\src\components\SigninScreen\img" />
       <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\public" />
     </key>
   </component>
@@ -58,6 +59,12 @@
       <workItem from="1626654433287" duration="634000" />
       <workItem from="1626716548507" duration="791000" />
       <workItem from="1626823902253" duration="61000" />
+      <workItem from="1626937412098" duration="116000" />
+      <workItem from="1626938544590" duration="14000" />
+      <workItem from="1626980393938" duration="12000" />
+      <workItem from="1627073473267" duration="4733000" />
+      <workItem from="1627523068825" duration="6801000" />
+      <workItem from="1627581901370" duration="299000" />
     </task>
     <servers />
   </component>
@@ -69,7 +76,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/index.html</url>
-          <line>281</line>
+          <line>37</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
