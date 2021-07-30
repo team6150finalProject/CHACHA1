@@ -84,8 +84,6 @@ class MilkTeaOption extends React.Component {
 
     setQty(event) {
         let state = this.state;
-        // var oriPrice = this.state.price / this.state.qty;
-        this.state.price = ((this.state.price / this.state.qty) * event.value).toFixed(2);
         this.state.qty = event.value;
         this.setState(state);
         console.log(this.state);
@@ -108,10 +106,11 @@ class MilkTeaOption extends React.Component {
     handleSubmit(event) {
         alert('Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
               + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty);
-        cookie.save('num', parseInt(cookie.load('num')) + this.state.qty, {path:"/"});
-        cookie.save('test', 'Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
-              + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty, {path:"/"});
-        
+        cookie.save('drinkNum', parseInt(cookie.load('drinkNum')) + parseInt(this.state.qty), {path:"/"});
+        cookie.save('orderNum', parseInt(cookie.load('orderNum')) + 1, {path:"/"});
+        cookie.save('order' + cookie.load('orderNum'), JSON.stringify(this.props.title + '\,' + this.state.size + '\,' + this.state.price + '\,'+ this.state.ice
+                      + '\,'+ this.state.sweet + '\,' + this.state.qty), {path:"/"});
+        event.preventDefault();
         window.open("/", "_self");
     }
 

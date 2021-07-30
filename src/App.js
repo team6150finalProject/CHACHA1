@@ -16,8 +16,10 @@ import cookie from 'react-cookies';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    if(!cookie.load('num'))
-      cookie.save('num', 0, {path:"/"});
+    if(!cookie.load('drinkNum'))
+      cookie.save('drinkNum', 0, {path:"/"});
+    if(!cookie.load('orderNum'))
+      cookie.save('orderNum', 0, {path:"/"});
   }
   render() {
     return (
