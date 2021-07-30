@@ -1,0 +1,75 @@
+{
+    "products": [
+        {
+            "_id" : 1,
+            "title": "Bubble Tea",
+            "imgFileName": "bubble.jfif",
+            "price": "$4.49",
+            "description":"this is bubble tea"
+        },
+
+        {
+            "_id" : 2,
+            "title": "Taro Milk Tea",
+            "imgFileName": "taro.jfif",
+            "price": "$4.49",
+            "description":"this is Taro Milk Tea"
+        },
+
+        {
+            "_id" : 3,
+            "title": "Cheese Milk Tea",
+            "imgFileName": "cheese1.jfif",
+            "price": "$4.49",
+            "description":"this is Cheese Milk Tea"
+        },
+
+        {
+            "_id" : 4,
+            "title": "Mango Tea",
+            "imgFileName": "mangoTea.jpg",
+            "price": "$4.49",
+            "description":"this is Mango Tea"
+        },
+
+        {
+            "_id" : 5,
+            "title": "Mix Berry Tea",
+            "imgFileName": "berryTea.jpg",
+            "price": "$4.49",
+            "description":"this is Berry Tea"
+        },
+
+        {
+            "_id" : 6,
+            "title": "Passion Fruit QQ",
+            "imgFileName": "passion.jpeg",
+            "price": "$4.49",
+            "description":"this is Passion Fruit QQ"
+        },
+
+        {
+            "_id" : 7,
+            "title": "Matcha Creme",
+            "imgFileName": "matcha.jpg",
+            "price": "$4.49",
+            "description":"this is Matcha Creme"
+        },
+
+        {
+            "_id" : 8,
+            "title": "Thai Tea",
+            "imgFileName": "thaiTea.jpg",
+            "price": "$4.49",
+            "description":"this is Thai Tea"
+        },
+
+        {
+            "_id" : 9,
+            "title": "Peach Oolong",
+            "imgFileName": "coldTea.jfif",
+            "price": "$4.49",
+            "description":"this is Peach Oolong"
+        }
+    ]
+}

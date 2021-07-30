@@ -44,13 +44,25 @@ class FruitTeaOption extends React.Component {
     setSize(event) {
         if (event.value === "Regular") {
             this._price.innerHTML = "$4.49";
-            this.setState({price: 4.49});
+            if (this.state.size === "Large") {
+                var oriPrice = this.state.price - 4.99 * this.state.qty;
+                var currPrice = oriPrice + 4.49 * this.state.qty;
+                this.state.price = currPrice.toFixed(2);
+                this.setState(this.state);
+            }
         }
         else if (event.value === "Large") {
             this._price.innerHTML = "$4.99";
-            this.setState({price: 4.99});
+            if (this.state.size === "Regular") {
+                var oriPrice = this.state.price - 4.49 * this.state.qty;
+                var currPrice = oriPrice + 4.99 * this.state.qty;
+                this.state.price = currPrice.toFixed(2);
+                this.setState(this.state);
+            }
         }
         this.setState({size: event.value});
+
+        // console.log(this.state);
     }
 
     setIce(event) {
@@ -73,8 +85,8 @@ class FruitTeaOption extends React.Component {
         cookie.save('orderNum', parseInt(cookie.load('orderNum')) + 1, {path:"/"});
         cookie.save('order' + cookie.load('orderNum'), JSON.stringify(this.props.title + '\,' + this.state.size + '\,' + this.state.price + '\,'+ this.state.ice
                       + '\,'+ this.state.sweet + '\,' + this.state.qty), {path:"/"});
+        window.open("/cart", "_self");
         event.preventDefault();
-        window.open("/", "_self");
     }
 
     

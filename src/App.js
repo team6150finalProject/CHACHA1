@@ -11,6 +11,7 @@ import Cart from "./components/Cart";
 import SignInScreen from "./components/SigninScreen/SignInScreen";
 import SignUpScreen from "./components/SigninScreen/SignUpScreen";
 import cookie from 'react-cookies';
+import Order from './components/Order';
 
 
 class App extends React.Component {
@@ -31,6 +32,7 @@ class App extends React.Component {
             <Route path='/tea-select/milkTea/:productId' component={MilkTeaSelect}/>
             <Route path='/tea-select/fruitTea/:productId' component={FruitTeaSelect}/>
             <Route path='/tea-select/specialtyDrinks/:productId' component={FruitTeaSelect}/>
+            <Route path='/order' component={Order}/>
             <Route path='/cart' component={Cart}/>
             <Route path='/signin' component={SignInScreen}/>
             <Route path='/signup' component={SignUpScreen}/>

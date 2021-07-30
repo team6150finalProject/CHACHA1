@@ -2,17 +2,17 @@
 const productInfoMap = {
   bubbleTea: {
     title: 'Bubble Tea',
-    imgFileName: 'bubbleTea.jpg',
+    imgFileName: 'bubble.jfif',
     price: '$4.49 - $4.99'
   },
   redBeanTea: {
     title: 'Taro Milk Tea',
-    imgFileName: 'TaroTea.jpg',
+    imgFileName: 'taro.jfif',
     price: 'TBD'
   },
   cheeseTea: {
     title: 'Cheese Milk Tea',
-    imgFileName: 'cheese.jpg',
+    imgFileName: 'cheese1.jfif',
     price: 'TBD'
   },
   mangoTea: {
@@ -37,7 +37,7 @@ const productInfoMap = {
   },
   thaiTea: {
     title: 'Thai Tea',
-    imgFileName: 'thaiTea.webp',
+    imgFileName: 'thaiTea.jpg',
     price: 'TBD'
   },
   smoothie: {

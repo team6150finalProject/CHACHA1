@@ -35,7 +35,7 @@ class MainNav extends React.Component {
                 <Nav.Link href="/#findStore">Location</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/#tea-gallery">Online Order</Nav.Link>
+                <Nav.Link href="/order">Online Order</Nav.Link>
               </Nav.Item>
             </Nav>
             <Nav.Item>

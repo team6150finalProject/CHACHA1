@@ -143,3 +143,50 @@ nav {
   color:aliceblue;
   border-radius: 5px;
 }
+
+
+.teaContent {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 3 60rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.orderNav {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 60rem;
+  justify-content: center;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  
+}
+
+
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding:0;
+  margin: 0;
+  list-style-type: none;
+}
+
+
+.product {
+  margin:0px 10px 30px 30px;
+  
+}
+
+
+.linkText{ 
+  color:#363535; 
+}
+
+
+
+
+

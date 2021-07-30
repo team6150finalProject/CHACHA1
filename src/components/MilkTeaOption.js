@@ -71,7 +71,7 @@ class MilkTeaOption extends React.Component {
         }
         this.setState({size: event.value});
 
-        console.log(this.state);
+        // console.log(this.state);
     }
 
     setIce(event) {
@@ -86,7 +86,7 @@ class MilkTeaOption extends React.Component {
         let state = this.state;
         this.state.qty = event.value;
         this.setState(state);
-        console.log(this.state);
+        // console.log(this.state);
     }
 
     handleTopping(event) {
@@ -99,7 +99,7 @@ class MilkTeaOption extends React.Component {
             this.state.price = this.state.price - 0.5 * this.state.qty;
         }
         this.setState(state);
-        console.log(this.state);
+        // console.log(this.state);
         
     }
 
@@ -110,8 +110,8 @@ class MilkTeaOption extends React.Component {
         cookie.save('orderNum', parseInt(cookie.load('orderNum')) + 1, {path:"/"});
         cookie.save('order' + cookie.load('orderNum'), JSON.stringify(this.props.title + '\,' + this.state.size + '\,' + this.state.price + '\,'+ this.state.ice
                       + '\,'+ this.state.sweet + '\,' + this.state.qty), {path:"/"});
+        window.open("/cart", "_self");
         event.preventDefault();
-        window.open("/", "_self");
     }
 
     
