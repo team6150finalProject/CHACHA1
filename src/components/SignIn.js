@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-
+import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {logOut} from "../redux/actions";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -31,7 +32,11 @@ class SignIn extends React.Component {
   render() {
     return (
       <div>
-        <Button className="btn-default" ><Link to='/signin' style={{ color: "#616161", textDecoration:'none'}}>SIGN IN</Link></Button>
+        {this.props.loginData.isAuth?
+            <Button className="btn-default" onClick={this.props.logOut}><Link to='/' style={{ color: "#616161", textDecoration:'none'}}>Logout</Link></Button>
+            :<Button className="btn-default" ><Link to='/signin' style={{ color: "#616161", textDecoration:'none'}}>SIGN IN</Link></Button>
+        }
+
 
       {/*  <Modal show={this.state.show} onHide={() => this.handleClose()}>*/}
       {/*    <Modal.Header closeButton>*/}
@@ -60,4 +65,10 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+
+
+
+export default connect(
+    state=>({loginData : state.syncInfo}),
+    {logOut}
+)(SignIn);

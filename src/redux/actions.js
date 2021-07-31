@@ -8,6 +8,7 @@ import {
     SYNC_STATE_INFO
 } from "./action-types";
 import data from "bootstrap/js/src/dom/data";
+import decode from "jwt-decode";
 
 //signin action
 
@@ -30,6 +31,8 @@ export const login =(user)=>{
         const result =response.data
         if(result.code === 0){  //signin success
             dispatch(authSuccess(result.data))
+            localStorage.setItem('@#@TOKEN',result.data.token)
+            dispatch( syncInfoAc(decode(result.data.token)))
         }else{     //sigin failure
             dispatch(errormsg(result.msg))
         }
@@ -63,5 +66,12 @@ export const syncInfoAc =data => {
     return{
         type: SYNC_STATE_INFO,
         data: data
+    }
+}
+
+export const logOut =data => {
+    return dispatch =>{
+        localStorage.removeItem('@#@TOKEN');
+        dispatch(syncInfoAc({}));
     }
 }

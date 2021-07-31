@@ -63,6 +63,7 @@ module.exports =(app) =>{
         Sample.findOne({email, password:md5(password)},filter,function (err,data){
             if(data){
                 const token = jwt.sign({
+                    isAuth: true,
                     username: data.username,
                     id:String(data._id)
                 },
@@ -71,7 +72,6 @@ module.exports =(app) =>{
                         expiresIn: "1h"
                     }
                 );
-                console.log(token)
                 const alldata ={_id:data._id,email: data.email,isadmin: data.isadmin, token}
                 res.send({
                     code:0,

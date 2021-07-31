@@ -2,13 +2,15 @@ import React, {Component} from "react";
 import img1URL from './img/img_signin.png'
 import img2URL from './img/img_signin02.png'
 import imglogo from './img/logo.jpg'
-import { Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import "./Signin.css"
 import {connect} from "react-redux";
-import {login} from "../../redux/actions";
-import {Redirect} from 'react-router-dom'
+import {login, syncInfoAc} from "../../redux/actions";
 import showlogo from './img/show.png'
 import hidelogo from './img/hide.png'
+import store from "../../redux/store";
+import decode from "jwt-decode";
+
 class SignInScreen extends Component {
 
     constructor(props) {
@@ -55,10 +57,11 @@ class SignInScreen extends Component {
             })
         }
 
+
     render() {
-        const{msg, redirectTo, token} =this.props.user
+        const{msg, redirectTo} =this.props.user
         if(redirectTo){
-            return <Redirect to={redirectTo}/>
+           return <Redirect to={redirectTo}/>
         }
         return(
             <div>

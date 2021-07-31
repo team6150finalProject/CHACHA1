@@ -6,9 +6,9 @@ import store from "./redux/store";
 import {Provider} from "react-redux";
 import {syncInfoAc} from "./redux/actions";
 
-const tk =localStorage.getItem('@#@TOKEN');
-console.log(tk)
-if(tk) store.dispatch( syncInfoAc(decode(tk)));
+const tk =localStorage.getItem('@#@TOKEN')
+if(tk) {console.log('exist')
+  store.dispatch( syncInfoAc(decode(tk)));}
 
 ReactDOM.render(
     <Provider store={store}>

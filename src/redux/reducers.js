@@ -1,4 +1,5 @@
 import {combineReducers} from "redux";
+import isEmpty from 'lodash/isEmpty'
 import {
     AUTH_SUCCESS,
     ERROR_MSG,
@@ -8,17 +9,19 @@ import {
 } from "./action-types";
 
 const initUser ={
+    isAuth: false,
     email: '',
     msg: '',
     username:'',
     redirectTo: '',
-    token:''
 }
 
 function user(state=initUser, action){
     switch (action.type) {
         case AUTH_SUCCESS:
-            return {...action.data, redirectTo: '/' }
+            return {isAuth: !isEmpty(action.data),
+                    ...action.data,
+                    redirectTo: '/' }
         case ERROR_MSG:
             return {...state, msg: action.data}
         default:
@@ -35,11 +38,16 @@ function userregister(state=initUser, action){
             return state
     }
 }
+const loginUser ={
+    isAuth: false,
+    user:{}
+}
 
-function syncInfoAc(state =initUser,action){
+function syncInfoAc(state =loginUser,action){
     switch (action.type) {
         case SYNC_STATE_INFO:
-            return {...action.data}
+            return {isAuth: !isEmpty(action.data),
+                    user:action.data}
         default:
             return state
     }
