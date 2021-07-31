@@ -11,7 +11,7 @@ const auth = async (req, res) => {
       req.user = await Sample.findById(id);
     }
     catch(err) {
-      // todo
+      // todo handle errors?
       req.user = null;
     }
   }
@@ -38,7 +38,6 @@ function checkFormat(data, type) {
 module.exports = (app) => {
   app.post('/signup', function (req, res) {
     let { email, username, password } = req.body;
-    console.log(JSON.stringify(req.body));
     if (checkFormat(req.body.email, 1)) {
       if (checkFormat(req.body.password, 0)) {
         Sample.findOne({ email }, function (err, data) {
@@ -81,7 +80,6 @@ module.exports = (app) => {
             expiresIn: "1h"
           }
         );
-        console.log(token);
         const alldata = { _id: data._id, email: data.email, isadmin: data.isadmin, token }
         res.send({
           code: 0,
@@ -95,7 +93,7 @@ module.exports = (app) => {
   });
 
   app.post("/addorder", async function (req, res) {
-    const { products } = req.body;
+    const { timemillis, totalprice, products } = req.body;
     // todo: validate products
     auth(req, res)
       .then(() => {
@@ -103,6 +101,8 @@ module.exports = (app) => {
           const nextid = req.user.nextid;
           const newOrder = {
             orderid: nextid,
+            timemillis: timemillis,
+            totalprice: totalprice,
             products: products
           }
           Sample.updateOne({ _id: req.user._id }, {nextid: nextid + 1, $push: {orders: newOrder}}, function(err, data) {
@@ -134,7 +134,6 @@ module.exports = (app) => {
     Sample.find(function (err, samples) {
       if (err)
         res.send(err);
-      console.log('samples', samples);
       res.status(201);
       res.json(samples);
     });
