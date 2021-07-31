@@ -62,7 +62,7 @@ class MilkTeaOption extends React.Component {
     }
 
     setQty(event) {
-        this.setState({qty:event.target.value});
+        this.setState({qty:event.value});
     }
 
     handleTopping(event) {
