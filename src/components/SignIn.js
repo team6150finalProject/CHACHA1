@@ -38,7 +38,7 @@ class SignIn extends React.Component {
         {this.props.loginData.isAuth?
             <div>
 
-              <NavDropdown title={cookie.load('emailid')}>
+              <NavDropdown  title={this.props.loginData.user.username}>
                 <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
                 <NavDropdown.Item href="/order-history">Order History</NavDropdown.Item>
                 <NavDropdown.Item href="/" onClick={this.props.logOut}>Logout</NavDropdown.Item>

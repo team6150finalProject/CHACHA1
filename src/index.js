@@ -7,8 +7,15 @@ import {Provider} from "react-redux";
 import {syncInfoAc} from "./redux/actions";
 
 const tk =localStorage.getItem('@#@TOKEN')
-if(tk) {console.log('exist')
-  store.dispatch( syncInfoAc(decode(tk)));}
+if(tk) {
+  try{
+  store.dispatch( syncInfoAc(decode(tk)));
+} catch (err){
+  localStorage.removeItem('@#@TOKEN');
+  window.location.href ='/signin';
+  }
+
+}
 
 ReactDOM.render(
     <Provider store={store}>

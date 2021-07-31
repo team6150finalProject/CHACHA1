@@ -38,7 +38,6 @@ function checkFormat(data, type) {
 module.exports = (app) => {
   app.post('/signup', function (req, res) {
     let { email, username, password } = req.body;
-    console.log(JSON.stringify(req.body));
     if (checkFormat(req.body.email, 1)) {
       if (checkFormat(req.body.password, 0)) {
         Sample.findOne({ email }, function (err, data) {
@@ -81,7 +80,6 @@ module.exports = (app) => {
             expiresIn: "1h"
           }
         );
-        console.log(token);
         const alldata = { _id: data._id, email: data.email, isadmin: data.isadmin, token }
         res.send({
           code: 0,
@@ -128,6 +126,15 @@ module.exports = (app) => {
         }
       });
   });
+
+  app.post('/profile',(req,res) =>{
+    console.log(req.user);
+    res.send({
+      status: 0,
+      msg :'request success',
+      username: req.user.username
+    });
+  })
 
   app.get('/', (req, res) => {
 
