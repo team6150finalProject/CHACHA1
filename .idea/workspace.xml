@@ -19,7 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f52b5eb-4f95-42e1-895c-d9a96b99d0ac" name="Default Changelist" comment="" />
+    <list default="true" id="3f52b5eb-4f95-42e1-895c-d9a96b99d0ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/userroutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/userroutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,12 +60,11 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\public" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\src" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\src\components\SigninScreen\img" />
-      <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -77,16 +82,10 @@
       <workItem from="1626654433287" duration="634000" />
       <workItem from="1626716548507" duration="791000" />
       <workItem from="1626823902253" duration="61000" />
-      <workItem from="1626937412098" duration="116000" />
-      <workItem from="1626938544590" duration="14000" />
-      <workItem from="1626980393938" duration="12000" />
-      <workItem from="1627073473267" duration="4733000" />
-      <workItem from="1627523068825" duration="6801000" />
-      <workItem from="1627581901370" duration="299000" />
-      <workItem from="1627579015458" duration="227000" />
-      <workItem from="1627592550460" duration="513000" />
-      <workItem from="1627593079695" duration="9986000" />
-      <workItem from="1627666101505" duration="11251000" />
+      <workItem from="1627579015458" duration="676000" />
+      <workItem from="1627638734699" duration="481000" />
+      <workItem from="1627742398820" duration="287000" />
+      <workItem from="1627742766820" duration="4487000" />
     </task>
     <servers />
   </component>
@@ -110,7 +109,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/index.html</url>
-          <line>37</line>
+          <line>281</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

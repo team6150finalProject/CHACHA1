@@ -3,12 +3,15 @@ import Button from 'react-bootstrap/Button';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {logOut} from "../redux/actions";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import cookie from 'react-cookies';
 
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      show: false,
+      account:cookie.load('emailid')
     };
   }
 
@@ -20,7 +23,7 @@ class SignIn extends React.Component {
 
   handleClose() {
     this.setState({
-      show: false
+      show: false,
     });
   }
 
@@ -33,7 +36,15 @@ class SignIn extends React.Component {
     return (
       <div>
         {this.props.loginData.isAuth?
-            <Button className="btn-default" onClick={this.props.logOut}><Link to='/' style={{ color: "#616161", textDecoration:'none'}}>Logout</Link></Button>
+            <div>
+
+              <NavDropdown title={cookie.load('emailid')}>
+                <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+                <NavDropdown.Item href="/order-history">Order History</NavDropdown.Item>
+                <NavDropdown.Item href="/" onClick={this.props.logOut}>Logout</NavDropdown.Item>
+              </NavDropdown>
+
+            </div>
             :<Button className="btn-default" ><Link to='/signin' style={{ color: "#616161", textDecoration:'none'}}>SIGN IN</Link></Button>
         }
 

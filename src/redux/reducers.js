@@ -19,6 +19,7 @@ const initUser ={
 function user(state=initUser, action){
     switch (action.type) {
         case AUTH_SUCCESS:
+
             return {isAuth: !isEmpty(action.data),
                     ...action.data,
                     redirectTo: '/' }

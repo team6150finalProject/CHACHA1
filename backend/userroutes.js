@@ -81,10 +81,12 @@ module.exports = (app) => {
             expiresIn: "1h"
           }
         );
+        console.log(token);
         const alldata = { _id: data._id, email: data.email, isadmin: data.isadmin, token }
         res.send({
           code: 0,
           data: alldata,
+          token
         })
       } else {
         res.send({ code: 1, msg: "Invalid email or password" });
