@@ -35,7 +35,7 @@ class MainNav extends React.Component {
                 <Nav.Link href="/#findStore">Location</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/#tea-gallery">Online Order</Nav.Link>
+                <Nav.Link href="/order">Online Order</Nav.Link>
               </Nav.Item>
             </Nav>
             <Nav.Item>
@@ -51,7 +51,7 @@ class MainNav extends React.Component {
             <Nav.Item>
               <a className="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="shopping cart" href="/cart" role="button">
                 <i className="fas fa-shopping-cart fa-lg" style={{ color: "#616161" }}></i>
-                <Badge bg="secondary">{cookie.load('num')}</Badge>
+                <Badge bg="secondary">{cookie.load('drinkNum')}</Badge>
               </a>
             </Nav.Item>
             <Nav.Item>

@@ -11,13 +11,16 @@ import Cart from "./components/Cart";
 import SignInScreen from "./components/SigninScreen/SignInScreen";
 import SignUpScreen from "./components/SigninScreen/SignUpScreen";
 import cookie from 'react-cookies';
+import Order from './components/Order';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    if(!cookie.load('num'))
-      cookie.save('num', 0, {path:"/"});
+    if(!cookie.load('drinkNum'))
+      cookie.save('drinkNum', 0, {path:"/"});
+    if(!cookie.load('orderNum'))
+      cookie.save('orderNum', 0, {path:"/"});
   }
   render() {
     return (
@@ -29,6 +32,7 @@ class App extends React.Component {
             <Route path='/tea-select/milkTea/:productId' component={MilkTeaSelect}/>
             <Route path='/tea-select/fruitTea/:productId' component={FruitTeaSelect}/>
             <Route path='/tea-select/specialtyDrinks/:productId' component={FruitTeaSelect}/>
+            <Route path='/order' component={Order}/>
             <Route path='/cart' component={Cart}/>
             <Route path='/signin' component={SignInScreen}/>
             <Route path='/signup' component={SignUpScreen}/>

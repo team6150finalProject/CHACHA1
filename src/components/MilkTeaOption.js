@@ -71,7 +71,7 @@ class MilkTeaOption extends React.Component {
         }
         this.setState({size: event.value});
 
-        console.log(this.state);
+        // console.log(this.state);
     }
 
     setIce(event) {
@@ -84,11 +84,9 @@ class MilkTeaOption extends React.Component {
 
     setQty(event) {
         let state = this.state;
-        // var oriPrice = this.state.price / this.state.qty;
-        this.state.price = ((this.state.price / this.state.qty) * event.value).toFixed(2);
         this.state.qty = event.value;
         this.setState(state);
-        console.log(this.state);
+        // console.log(this.state);
     }
 
     handleTopping(event) {
@@ -101,18 +99,19 @@ class MilkTeaOption extends React.Component {
             this.state.price = this.state.price - 0.5 * this.state.qty;
         }
         this.setState(state);
-        console.log(this.state);
+        // console.log(this.state);
         
     }
 
     handleSubmit(event) {
         alert('Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
               + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty);
-        cookie.save('num', parseInt(cookie.load('num')) + this.state.qty, {path:"/"});
-        cookie.save('test', 'Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
-              + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty, {path:"/"});
-        
-        window.open("/", "_self");
+        cookie.save('drinkNum', parseInt(cookie.load('drinkNum')) + parseInt(this.state.qty), {path:"/"});
+        cookie.save('orderNum', parseInt(cookie.load('orderNum')) + 1, {path:"/"});
+        cookie.save('order' + cookie.load('orderNum'), JSON.stringify(this.props.title + '\,' + this.state.size + '\,' + this.state.price + '\,'+ this.state.ice
+                      + '\,'+ this.state.sweet + '\,' + this.state.qty), {path:"/"});
+        window.open("/cart", "_self");
+        event.preventDefault();
     }
 
     
