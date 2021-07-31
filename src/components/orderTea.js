@@ -27,7 +27,7 @@ class OrderTea extends Component {
                 <div className = "products">
                     {this.props.products.slice(0, 3).map(product => (
                         <Card  key={product.title} className = "product" style={cardStyle}>
-                            <img style = {imgStyle} src= {"../../img/" + product.imgFileName} />
+                            <img style = {imgStyle} src= {"../../img/" + product.imgFileName} alt = {product.title}/>
                             <Card.Body>
                                 <Card.Title>{product.title}</Card.Title>
                                 <Card.Text className="mb-2 text-muted">
@@ -46,7 +46,7 @@ class OrderTea extends Component {
                 <div className = "products">
                     {this.props.products.slice(3, 6).map(product => (
                         <Card key={product.title} className = "product" style={cardStyle}>
-                            <img style = {imgStyle} src= {"../../img/" + product.imgFileName} />
+                            <img style = {imgStyle} src= {"../../img/" + product.imgFileName} alt = {product.title}/>
                             <Card.Body>
                                 <Card.Title>{product.title}</Card.Title>
                                 <Card.Text className="mb-2 text-muted">
@@ -65,7 +65,7 @@ class OrderTea extends Component {
                 <div  className = "products">
                     {this.props.products.slice(6, 9).map(product => (
                         <Card key={product.title} className = "product" style={cardStyle}>
-                            <img style = {imgStyle} src= {"../../img/" + product.imgFileName} />
+                            <img style = {imgStyle} src= {"../../img/" + product.imgFileName} alt = {product.title}/>
                             <Card.Body>
                                 <Card.Title>{product.title}</Card.Title>
                                 <Card.Text className="mb-2 text-muted">
