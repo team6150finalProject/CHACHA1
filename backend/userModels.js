@@ -9,6 +9,8 @@ module.exports = mongoose.model('project-register', {
   nextid: { type: Number, default: 0 },
   orders: [{
     orderid: { type: String, required: true },
+    timemillis: { type: Number, required: true },
+    totalprice: { type: Number, required: true },
     products: [{
       name: { type: String, required: true },
       size: { type: String, default: '' },
