@@ -6,6 +6,12 @@ module.exports = mongoose.model('project-register', {
   password: { type: String, default: '', required: true },
   username: { type: String, unique: true, default: '', required: true },
   isadmin: { type: Boolean, default: false, required: true },
+  profile: {
+    firstname: { type: String, default: '' },
+    lastname: { type: String, default: '' },
+    phone: { type: String, default: '' },
+    address: { type: String, default: '' }
+  },
   nextid: { type: Number, default: 0 },
   orders: [{
     orderid: { type: String, required: true },
