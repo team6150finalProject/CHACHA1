@@ -8,8 +8,8 @@ class SideBar extends React.Component {
     return (
       <div className="sidebar">
         <ListGroup>
-          <ListGroup.Item as="li"><Link className='sidebar-link' to='/profile'>Profile</Link></ListGroup.Item>
-          <ListGroup.Item as="li"><Link className='sidebar-link' to='/profile'>Favorites</Link></ListGroup.Item>
+          <ListGroup.Item as="li"><Link className='sidebar-link' to='/user'>Profile</Link></ListGroup.Item>
+          <ListGroup.Item as="li"><Link className='sidebar-link' to='/user/order-history'>Order History</Link></ListGroup.Item>
         </ListGroup>
       </div>
     );
