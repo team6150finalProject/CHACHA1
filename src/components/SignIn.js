@@ -40,6 +40,8 @@ class SignIn extends React.Component {
               <NavDropdown  title={this.props.loginData.user.username}>
                 <NavDropdown.Item href="/user">My Profile</NavDropdown.Item>
                 <NavDropdown.Item href="/user/order-history">Order History</NavDropdown.Item>
+                <NavDropdown.Item href="/user/favorites">Favorites</NavDropdown.Item>
+                <NavDropdown.Item href="/user/settings">Settings</NavDropdown.Item>
                 <NavDropdown.Item href="/" onClick={this.props.logOut}>Logout</NavDropdown.Item>
               </NavDropdown>
             </div>
