@@ -10,8 +10,7 @@ import './App.css';
 import Cart from "./components/Cart";
 import SignInScreen from "./components/SigninScreen/SignInScreen";
 import SignUpScreen from "./components/SigninScreen/SignUpScreen";
-import ProfileScreen from "./components/Profile/ProfileScreen";
-import OrderHistory  from "./components/User/OrderHistory"
+import Users  from "./components/User/Users";
 import cookie from 'react-cookies';
 import Order from './components/Order';
 import Auth from '../src/utils/auth'
@@ -38,8 +37,12 @@ class App extends React.Component {
             <Route path='/cart' component={Auth(Cart)}/>
             <Route path='/signin' component={SignInScreen}/>
             <Route path='/signup' component={SignUpScreen}/>
+
             <Route path='/profile' component={Auth(ProfileScreen)}/>
             <Route path='/order-history' component={OrderHistory}/>
+
+            <Route path='/user' component={Users}/>
+
         </Switch>
         <MainFooter/>
       </BrowserRouter>
