@@ -1,0 +1,48 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+#profile-wrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-areas:
+    "sidebar"
+    "content";
+}
+
+#profile-sidebar {
+  grid-area: sidebar;
+}
+
+#profile-main {
+  grid-area: content;
+}
+
+@media (min-width: 700px) {
+  #profile-wrapper {
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas:
+      "sidebar content"
+   }
+}
+
+#profile-main {
+  width: 80%
+}
+
+.profile-error {
+  color: red
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  display: block
+}

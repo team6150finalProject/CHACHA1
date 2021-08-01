@@ -11,6 +11,7 @@ import Cart from "./components/Cart";
 import SignInScreen from "./components/SigninScreen/SignInScreen";
 import SignUpScreen from "./components/SigninScreen/SignUpScreen";
 import ProfileScreen from "./components/Profile/ProfileScreen";
+import OrderHistory  from "./components/User/OrderHistory"
 import cookie from 'react-cookies';
 import Order from './components/Order';
 
@@ -38,6 +39,7 @@ class App extends React.Component {
             <Route path='/signin' component={SignInScreen}/>
             <Route path='/signup' component={SignUpScreen}/>
             <Route path='/profile' component={ProfileScreen}/>
+            <Route path='/order-history' component={OrderHistory}/>
         </Switch>
         <MainFooter/>
       </BrowserRouter>

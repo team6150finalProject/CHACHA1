@@ -3,20 +3,6 @@ const filter = { password: 0, __v: 0 }
 const jwt = require('jsonwebtoken');
 const md5 = require('blueimp-md5')
 
-const auth = async (req, res) => {
-  const raw = String(req.headers.authorization).split(' ').pop();
-  if (raw) {
-    try {
-      const { id } = jwt.verify(raw, process.env.JWT_KEY);
-      req.user = await Sample.findById(id);
-    }
-    catch(err) {
-      // todo handle errors?
-      req.user = null;
-    }
-  }
-};
-
 function checkFormat(data, type) {
   var regPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,12}$/;
   var regExEmail = /([\w\.]+)@([\w\.]+)\.(\w+)/;
@@ -95,47 +81,87 @@ module.exports = (app) => {
   app.post("/addorder", async function (req, res) {
     const { timemillis, totalprice, products } = req.body;
     // todo: validate products
-    auth(req, res)
-      .then(() => {
-        if (req.user) {
-          const nextid = req.user.nextid;
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({ code: 1, msg: "Invalid ID" });
+        } else {
+          const nextid = user.nextid;
           const newOrder = {
             orderid: nextid,
             timemillis: timemillis,
             totalprice: totalprice,
             products: products
           }
-          Sample.updateOne({ _id: req.user._id }, {nextid: nextid + 1, $push: {orders: newOrder}}, function(err, data) {
+          Sample.updateOne({ _id: user._id }, { nextid: nextid + 1, $push: { orders: newOrder } }, function (err, data) {
             if (data.nModified === 1) {
-              res.send({ code: 0, data: { orderid: nextid }});
+              res.send({ code: 0, data: { orderid: nextid } });
             } else {
-              res.send({ code: 1, msg: "Could not submit order"});
+              res.send({ code: 1, msg: "Could not submit order" });
             }
           });
-        } else {
-          res.send({ code: 1, msg: "Invalid login" });
         }
       });
+    } else {
+      res.send({ code: 1, msg: "Invalid login" });
+    }
   });
 
   app.get("/orders", async function (req, res) {
-    auth(req, res)
-      .then(() => {
-        if (req.user) {
-          res.send({ code: 0, data: req.user.orders });
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({ code: 1, msg: "Invalid ID" });
         } else {
-          res.send({ code: 1, msg: "Invalid login" });
+          res.send({ code: 0, data: user.orders });
         }
       });
+    } else {
+      res.send({ code: 1, msg: "Invalid login" });
+    }
   });
 
-  app.post('/profile',(req,res) =>{
-    console.log(req.user);
-    res.send({
-      status: 0,
-      msg :'request success',
-      username: req.user.username
-    });
+  app.post("/updateprofile", async function (req, res) {
+    const { profile } = req.body;
+    // todo: validate profile
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({ code: 1, msg: "Invalid ID" });
+        } else {
+          Sample.updateOne({ _id: user._id }, { profile: profile }, function (err, data) {
+            if (data.nModified === 1) {
+              res.send({ code: 0, data: profile });
+            } else {
+              res.send({ code: 1, msg: "Could not update profile" });
+            }
+          });
+        }
+      });
+    } else {
+      res.send({ code: 1, msg: "Invalid login" });
+    }
+  });
+
+  app.get('/profile', (req, res) => {
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({ code: 1, msg: "Invalid ID" });
+        } else {
+          res.send({
+            code: 0,
+            data: {
+              username: user.username,
+              email: user.email,
+              profile: user.profile
+            }
+          });
+        }
+      });
+    } else {
+      res.send({ code: 1, msg: "Invalid login" });
+    }
   })
 
   app.get('/', (req, res) => {
