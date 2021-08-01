@@ -8,18 +8,6 @@ import "./Profile.css"
 const nameRegex = /^([A-Za-zÀ-ÿ][-,a-z. ']+[ ]*)+$/;
 const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
-
-    render() {
-        return (
-            <div>
-                Personal Information<hr/>
-                Personal Information<hr/>
-                Personal Information<hr/>
-                Personal Information<hr/>
-                
-
-                </div>
-
 class ProfileScreen extends Component {
   constructor(props) {
     super(props);
@@ -76,7 +64,6 @@ class ProfileScreen extends Component {
               }
               reqUpdateProfile(data)
                 .then(response => {
-                  alert(JSON.stringify(response));
                   setSubmitting(false);
                 });
             }}
