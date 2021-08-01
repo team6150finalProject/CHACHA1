@@ -12,6 +12,7 @@ if(tk) {
   store.dispatch( syncInfoAc(decode(tk)));
 } catch (err){
   localStorage.removeItem('@#@TOKEN');
+  alert('Login timeout, please login again');
   window.location.href ='/signin';
   }
 

@@ -14,7 +14,7 @@ import ProfileScreen from "./components/Profile/ProfileScreen";
 import OrderHistory  from "./components/User/OrderHistory"
 import cookie from 'react-cookies';
 import Order from './components/Order';
-
+import Auth from '../src/utils/auth'
 
 class App extends React.Component {
   constructor(props) {
@@ -35,10 +35,10 @@ class App extends React.Component {
             <Route path='/tea-select/fruitTea/:productId' component={FruitTeaSelect}/>
             <Route path='/tea-select/specialtyDrinks/:productId' component={FruitTeaSelect}/>
             <Route path='/order' component={Order}/>
-            <Route path='/cart' component={Cart}/>
+            <Route path='/cart' component={Auth(Cart)}/>
             <Route path='/signin' component={SignInScreen}/>
             <Route path='/signup' component={SignUpScreen}/>
-            <Route path='/profile' component={ProfileScreen}/>
+            <Route path='/profile' component={Auth(ProfileScreen)}/>
             <Route path='/order-history' component={OrderHistory}/>
         </Switch>
         <MainFooter/>

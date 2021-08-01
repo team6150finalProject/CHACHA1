@@ -1,8 +1,6 @@
 import axios from "./request";
 
 
-
-
 export default function ajax(url, data={},type='GET'){
     //get paramStr : email&password
     //data:{email: , password: }
