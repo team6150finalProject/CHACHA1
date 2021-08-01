@@ -1,5 +1,4 @@
 import {reqLogin, reqRegister} from "../api";
-import cookie from 'react-cookies';
 
 import {
     AUTH_SUCCESS,
@@ -32,7 +31,6 @@ export const login =(user)=>{
         const result =response.data
         if(result.code === 0){  //signin success
             dispatch(authSuccess(result.data))
-            cookie.save('emailid',response.data.data.email)
             localStorage.setItem('@#@TOKEN',result.data.token)
             dispatch( syncInfoAc(decode(result.data.token)))
         }else{     //sigin failure

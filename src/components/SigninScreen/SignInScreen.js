@@ -5,11 +5,9 @@ import imglogo from './img/logo.jpg'
 import {Link, Redirect} from "react-router-dom";
 import "./Signin.css"
 import {connect} from "react-redux";
-import {login, syncInfoAc} from "../../redux/actions";
+import {login} from "../../redux/actions";
 import showlogo from './img/show.png'
 import hidelogo from './img/hide.png'
-import store from "../../redux/store";
-import decode from "jwt-decode";
 
 class SignInScreen extends Component {
 

@@ -13,6 +13,9 @@ class ProfileScreen extends Component {
                 Personal Information<hr/>
                 Personal Information<hr/>
                 Personal Information<hr/>
+                <div>
+
+                </div>
 
             </div>
         );

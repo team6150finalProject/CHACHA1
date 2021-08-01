@@ -18,7 +18,7 @@ axios.interceptors.request.use(config =>{
 
 axios.interceptors.response.use( response=>{
     const {status, msg} =response.data;
-    if(status ===1  && msg == 'TOKEN ERROR'){
+    if(status ===1  && msg === 'TOKEN ERROR'){
         window.location.href ='/';
     }
     return response;
