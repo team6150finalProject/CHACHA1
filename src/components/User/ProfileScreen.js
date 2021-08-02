@@ -2,21 +2,12 @@ import React, { Component } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { reqProfile, reqUpdateProfile } from "../../api";
-import SideBar from './SideBar';
+
 import "./Profile.css"
 
 const nameRegex = /^([A-Za-zÀ-ÿ][-,a-z. ']+[ ]*)+$/;
 const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
-
-    // render() {
-    //     return (
-    //         <div>
-    //             Personal Information<hr/>
-    //             Personal Information<hr/>
-    //             Personal Information<hr/>
-    //             Personal Information<hr/>
-    //         </div>
 
 class ProfileScreen extends Component {
   constructor(props) {
@@ -44,8 +35,6 @@ class ProfileScreen extends Component {
 
   render() {
     return (
-      <div id="profile-wrapper">
-        <SideBar id="profile-sidebar"/>
         <div id="profile-main">
           <h1>Profile</h1>
           <Formik
@@ -105,7 +94,6 @@ class ProfileScreen extends Component {
             )}
           </Formik>
         </div>
-      </div>
     );
   }
 }

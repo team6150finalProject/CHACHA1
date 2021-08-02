@@ -2,14 +2,10 @@ import React from "react";
 import {connect} from "react-redux";
 
 export default function (Comp){
-     class Auth extends React.Component {
-        //if not register, turn to login
+    class AuthForLogin extends React.Component{
         componentWillMount() {
-            if(this.props.loginData.isAuth === false){
-                alert('Please Login' )
-                this.props.history.push ('/signin');
-            }else{
-                console.log('enter')
+            if(this.props.loginData.isAuth === true){
+                this.props.history.push ('/');
             }
         }
         componentWillUpdate(nextProps, nextState, nextContext) {
@@ -25,6 +21,5 @@ export default function (Comp){
     return connect(
         state=>({loginData : state.syncInfo}),
         {}
-        )(Auth);
+    )(AuthForLogin)
 }
-

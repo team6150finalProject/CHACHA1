@@ -56,11 +56,12 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\src\components\User" />
+      <recent name="C:\Users\yitin\Documents\GitHub\CHACHA1\public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -86,6 +87,7 @@
       <workItem from="1627773626800" duration="4795000" />
       <workItem from="1627837540006" duration="2354000" />
       <workItem from="1627803907287" duration="6834000" />
+      <workItem from="1627859156861" duration="8950000" />
     </task>
     <servers />
   </component>

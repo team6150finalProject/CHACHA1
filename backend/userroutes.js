@@ -133,7 +133,7 @@ module.exports = (app) => {
             if (data.nModified === 1) {
               res.send({ code: 0, data: profile });
             } else {
-              res.send({ code: 1, msg: "Could not update profile" });
+              res.send({ code: 1, msg: "Could not update password" });
             }
           });
         }
@@ -142,6 +142,34 @@ module.exports = (app) => {
       res.send({ code: 1, msg: "Invalid login" });
     }
   });
+
+  app.post('/user/settings', async function (req,res){
+    const {oldPassword, newPassword} =req.body;
+    if(req.user){
+      Sample.findById(req.user.id, function (err, user){
+        if(err){
+          res.send({code:1, msg: 'Invalid ID'});
+        }else{
+          Sample.findOne({_id:user._id, password: md5(oldPassword)}, filter, function (err, data){
+              if (data) {
+                    Sample.updateOne({ _id: user._id }, {password: md5(newPassword)}, function (err,data){
+                      if (data.nModified === 1) {
+                        res.send({ code: 0, msg: 'Update Success' });
+                      } else {
+                        res.send({ code: 1, msg: "Could not update password" });
+                      }
+                    });
+              }else{
+                res.send({ code: 1, msg: "Invalid password" });
+              }
+            })
+        }
+      })
+    }
+  });
+
+
+
 
   app.get('/profile', (req, res) => {
     if (req.user) {
