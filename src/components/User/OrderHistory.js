@@ -41,7 +41,7 @@ class OrderHistory extends React.Component {
             timemillis: "08-02-2021",
             totalprice: 20,
             products: [{
-                name: "",
+                name: "berryTea",
                 size: "",
                 ice: "",
                 sweetness: "",
@@ -54,7 +54,7 @@ class OrderHistory extends React.Component {
                 timemillis: "08-02-2021",
                 totalprice: 10,
                 products: [{
-                    name: "",
+                    name: "bubbleTea",
                     size: "",
                     ice: "",
                     sweetness: "",
@@ -67,7 +67,7 @@ class OrderHistory extends React.Component {
                 timemillis: "07-31-2021",
                 totalprice: 30,
                 products: [{
-                    name: "",
+                    name: "mangoTea",
                     size: "",
                     ice: "",
                     sweetness: "",

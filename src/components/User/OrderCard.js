@@ -13,8 +13,7 @@ const OrderCard = ({reading}) => {
             </div>
             <div className="card-body">
                 <h4 className="card-title">Order Complete </h4>
-                <img className="orderImg" src="../../img/p6.jpg" />
-                <img className="orderImg" src="../../img/p2.jpg" />
+                <img className="orderImg" src={"../../img/"+reading.products[0].name+".jpg"} />
                 <p className="card-text"></p>
             </div>
             <div className="card-footer">

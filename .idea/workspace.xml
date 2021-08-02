@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c40043bd-3461-4440-825e-32e612b8209a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/User/OrderCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/userroutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/userroutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/User/OrderCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/OrderCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/User/OrderHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/OrderHistory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +56,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627908465510</updated>
-      <workItem from="1627908467090" duration="9903000" />
+      <workItem from="1627908467090" duration="10845000" />
     </task>
     <servers />
   </component>
