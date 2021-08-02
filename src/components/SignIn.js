@@ -34,7 +34,7 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div>
+      <div >
         {this.props.loginData.isAuth?
             <div>
               <NavDropdown  title={this.props.loginData.user.username}>
@@ -47,8 +47,6 @@ class SignIn extends React.Component {
             </div>
             :<Button className="btn-default" ><Link to='/signin' style={{ color: "#616161", textDecoration:'none'}}>SIGN IN</Link></Button>
         }
-
-
       {/*  <Modal show={this.state.show} onHide={() => this.handleClose()}>*/}
       {/*    <Modal.Header closeButton>*/}
       {/*      <Modal.Title>Please enter your credentials</Modal.Title>*/}

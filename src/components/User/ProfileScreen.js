@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { reqProfile, reqUpdateProfile } from "../../api";
+
+
 import "./Profile.css"
 
 const nameRegex = /^([A-Za-zÀ-ÿ][-,a-z. ']+[ ]*)+$/;
 const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
 
 class ProfileScreen extends Component {
   constructor(props) {
@@ -88,10 +91,14 @@ class ProfileScreen extends Component {
               <button type="submit" disabled={isSubmitting}>
                 Update
               </button>
-            </Form>
-          )}
-        </Formik>
+
+              </Form>
+            )}
+          </Formik>
+
+
       </div>
+
     );
   }
 }

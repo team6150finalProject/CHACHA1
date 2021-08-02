@@ -7,6 +7,7 @@ import Settings from './Settings';
 import SideBar from './SideBar';
 import Auth from '../../utils/auth';
 import './User.css';
+import Auth from "../../utils/auth";
 
 class Users extends React.Component {
   render() {
