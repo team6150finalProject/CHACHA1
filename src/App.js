@@ -14,7 +14,6 @@ import Users  from "./components/User/Users";
 import cookie from 'react-cookies';
 import Order from './components/Order';
 
-import Auth from '../src/utils/auth';
 import AuthForLogin from '../src/utils/authForLogin';
 import OrderHistory from "./components/User/OrderHistory";
 import ProfileScreen from "./components/User/ProfileScreen";

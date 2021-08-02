@@ -36,33 +36,6 @@ class ProfileScreen extends Component {
 
   render() {
     return (
-
-        <div id="profile-main">
-          <h1>Profile</h1>
-          <Formik
-            enableReinitialize={true}
-            initialValues={{
-              username: this.state.username,
-              email: this.state.email,
-              firstname: this.state.profile.firstname,
-              lastname: this.state.profile.lastname,
-              phone: this.state.profile.phone,
-              address: this.state.profile.address
-            }}
-            validationSchema={Yup.object({
-              firstname: Yup.string().matches(nameRegex, 'Invalid first name'),
-              lastname: Yup.string().matches(nameRegex, 'Invalid last name'),
-              phone: Yup.string().matches(phoneRegex, 'Invalid phone number')
-            })}
-            onSubmit={(values, { setSubmitting }) => {
-              const data = {
-                profile: {
-                  firstname: values.firstname,
-                  lastname: values.lastname,
-                  phone: values.phone,
-                  address: values.address
-                }
-
       <div id="profile-main">
         <h1>Profile</h1>
         <Formik
@@ -123,9 +96,7 @@ class ProfileScreen extends Component {
             )}
           </Formik>
 
-            </Form>
-          )}
-        </Formik>
+
       </div>
 
     );
