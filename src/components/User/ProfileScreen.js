@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { reqProfile, reqUpdateProfile } from "../../api";
+import { reqUpdateProfile } from "../../api";
 
+import {connect} from "react-redux";
+import {fetchData} from "../../redux/actions";
 
 import "./Profile.css"
 
 const nameRegex = /^([A-Za-zÀ-ÿ][-,a-z. ']+[ ]*)+$/;
 const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-
 
 class ProfileScreen extends Component {
   constructor(props) {
@@ -24,29 +25,30 @@ class ProfileScreen extends Component {
       }
     };
   }
-  async componentDidMount() {
-    const { data } = await reqProfile();
-    this.setState({
-      username: data.data.username,
-      email: data.data.email,
-      profile: data.data.profile
-    });
-  }
-
-
+  
   render() {
+    const userData = this.props.user.userData;
+    let profile = {
+      firstname: '',
+      lastname: '',
+      phone: '',
+      address: ''
+    };
+    if (userData && userData.profile) {
+      profile = userData.profile;
+    }
     return (
       <div id="profile-main">
         <h1>Profile</h1>
         <Formik
           enableReinitialize={true}
           initialValues={{
-            username: this.state.username,
-            email: this.state.email,
-            firstname: this.state.profile.firstname,
-            lastname: this.state.profile.lastname,
-            phone: this.state.profile.phone,
-            address: this.state.profile.address
+            username: userData.username,
+            email: userData.email,
+            firstname: profile.firstname,
+            lastname: profile.lastname,
+            phone: profile.phone,
+            address: profile.address
           }}
           validationSchema={Yup.object({
             firstname: Yup.string().matches(nameRegex, 'Invalid first name'),
@@ -64,7 +66,7 @@ class ProfileScreen extends Component {
             }
             reqUpdateProfile(data)
               .then(response => {
-                alert(JSON.stringify(response));
+                this.props.fetchData();
                 setSubmitting(false);
               });
           }}
@@ -103,4 +105,7 @@ class ProfileScreen extends Component {
   }
 }
 
-export default ProfileScreen;
+export default connect(
+  state => ({user: state.fetchreducer}),
+  {fetchData}
+)(ProfileScreen);

@@ -5,7 +5,8 @@ import {
     ERROR_MSG,
     REGISTER_SUCCESS,
     ERROR_MSG_REGISTER,
-    SYNC_STATE_INFO
+    SYNC_STATE_INFO,
+    FETCH_USER_DATA
 } from "./action-types";
 
 const initUser ={
@@ -54,8 +55,22 @@ function syncInfoAc(state =loginUser,action){
     }
 }
 
+const initUserData = {
+  userData: {}
+}
+
+function fetchUserData(state=initUserData, action){
+  switch (action.type) {
+      case FETCH_USER_DATA:
+          return {userData: action.data}
+      default:
+          return state
+  }
+}
+
 export default combineReducers({
-     syncInfo: syncInfoAc,
-     userreducer: user,
+    syncInfo: syncInfoAc,
+    userreducer: user,
     registerreducer: userregister,
+    fetchreducer: fetchUserData
 })

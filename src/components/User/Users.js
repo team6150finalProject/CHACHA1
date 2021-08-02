@@ -9,6 +9,8 @@ import Member from "./Member";
 import './User.css';
 import Auth from "../../utils/auth";
 import Coupon from "./Coupon";
+import Auth from '../../utils/auth';
+import './User.css';
 
 class Users extends React.Component {
   render() {

@@ -21,6 +21,17 @@ function checkFormat(data, type) {
   }
 }
 
+function userDataFromDocument(doc) {
+  return {
+    username: doc.username,
+    email: doc.email,
+    isadmin: doc.isadmin,
+    profile: doc.profile,
+    favorites: doc.favorites,
+    orders: doc.orders
+  };
+}
+
 module.exports = (app) => {
   app.post('/signup', function (req, res) {
     let { email, username, password } = req.body;
@@ -66,11 +77,10 @@ module.exports = (app) => {
             expiresIn: "1h"
           }
         );
-        const alldata = { _id: data._id, email: data.email, isadmin: data.isadmin, token }
         res.send({
           code: 0,
-          data: alldata,
-          token
+          data: userDataFromDocument(data),
+          token: token
         })
       } else {
         res.send({ code: 1, msg: "Invalid email or password" });
@@ -168,6 +178,41 @@ module.exports = (app) => {
     }
   });
 
+  app.post('/user/favorites', async function (req,res){
+    const {product, isFavorite} =req.body;
+    if(req.user){
+      Sample.findById(req.user.id, function (err, user){
+        if(err){
+          res.send({code:1, msg: 'Invalid ID'});
+        }else{
+          Sample.findOne({_id:user._id}, filter, function (err, data){
+              if (data) {
+                if (isFavorite) {
+                  Sample.updateOne({ _id: user._id }, { $addToSet: { favorites: product } }, function (err, data) {
+                    if (data.nModified === 1) {
+                      res.send({ code: 0, data: { product: product, isFavorite: isFavorite } });
+                    } else {
+                      res.send({ code: 1, msg: "Could not add favorite" });
+                    }
+                  });
+                } else {
+                  Sample.updateOne({ _id: user._id }, { $pull: { favorites: product } }, function (err, data) {
+                    if (data.nModified === 1) {
+                      res.send({ code: 0, data: { product: product, isFavorite: isFavorite } });
+                    } else {
+                      res.send({ code: 1, msg: "Could not remove favorite" });
+                    }
+                  });
+                }
+              }else{
+                res.send({ code: 1, msg: "Invalid password" });
+              }
+            })
+        }
+      })
+    }
+  });
+
 
 
 
@@ -191,6 +236,7 @@ module.exports = (app) => {
       res.send({ code: 1, msg: "Invalid login" });
     }
   })
+
 
   app.get('/user/member', function (req,res) {
     console.log(req.user)
@@ -219,6 +265,45 @@ module.exports = (app) => {
     }
   });
 
+  app.get('/userdata', (req, res) => {
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({ code: 1, msg: "Invalid ID" });
+        } else {
+          res.send({
+            code: 0,
+            data: userDataFromDocument(user)
+          });
+        }
+      });
+    } else {
+      res.send({ code: 1, msg: "Invalid login" });
+    }
+  })
+
+  app.get('/order-history', (req, res) => {
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({ code: 1, msg: "Invalid ID" });
+        } else {
+          res.send({
+            code: 0,
+            data: {
+              username: user.username,
+              email: user.email,
+              order: user.order
+            }
+          });
+        }
+      });
+    } else {
+      res.send({ code: 1, msg: "Invalid login" });
+    }
+  })
+
+
   app.get('/', (req, res) => {
 
     Sample.find(function (err, samples) {
@@ -228,6 +313,8 @@ module.exports = (app) => {
       res.json(samples);
     });
   });
+
+
 
 
 }

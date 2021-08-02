@@ -21,13 +21,13 @@ class TeaGallery extends React.Component {
               <tbody>
                 <tr>
                   <td>
-                    <ProductCard productType="milkTea" productId="bubbleTea" />
+                    <ProductCard productId="bubbleTea" />
                   </td>
                   <td>
-                    <ProductCard productType="milkTea" productId="redBeanTea" />
+                    <ProductCard productId="redBeanTea" />
                   </td>
                   <td>
-                    <ProductCard productType="milkTea" productId="cheeseTea" />
+                    <ProductCard productId="cheeseTea" />
                   </td>
                 </tr>
               </tbody>
@@ -49,13 +49,13 @@ class TeaGallery extends React.Component {
               <tbody>
                 <tr>
                   <td>
-                    <ProductCard productType="fruitTea" productId="mangoTea" />
+                    <ProductCard productId="mangoTea" />
                   </td>
                   <td>
-                    <ProductCard productType="fruitTea" productId="berryTea" />
+                    <ProductCard productId="berryTea" />
                   </td>
                   <td>
-                    <ProductCard productType="fruitTea" productId="passionFruitTea" />
+                    <ProductCard productId="passionFruitTea" />
                   </td>
                 </tr>
               </tbody>
@@ -76,13 +76,13 @@ class TeaGallery extends React.Component {
               <tbody>
                 <tr>
                   <td>
-                    <ProductCard productType="specialtyDrinks" productId="matchaTea" />
+                    <ProductCard productId="matchaTea" />
                   </td>
                   <td>
-                    <ProductCard productType="specialtyDrinks" productId="thaiTea" />
+                    <ProductCard productId="thaiTea" />
                   </td>
                   <td>
-                    <ProductCard productType="specialtyDrinks" productId="smoothie" />
+                    <ProductCard productId="smoothie" />
                   </td>
                 </tr>
               </tbody>

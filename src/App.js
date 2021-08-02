@@ -18,6 +18,9 @@ import AuthForLogin from '../src/utils/authForLogin';
 import OrderHistory from "./components/User/OrderHistory";
 import ProfileScreen from "./components/User/ProfileScreen";
 
+import {connect} from "react-redux";
+import {fetchData} from "./redux/actions";
+
 import Auth from '../src/utils/auth'
 
 
@@ -31,7 +34,12 @@ class App extends React.Component {
     if(!cookie.load('orderNum'))
       cookie.save('orderNum', 0, {path:"/"});
   }
+
   render() {
+    const userData = this.props.user.userData;
+    if (this.props.loginData.isAuth && Object.keys(userData).length === 0) {
+      this.props.fetchData();
+    }
     return (
       <BrowserRouter>
         <MainNav/>
@@ -61,4 +69,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(
+  state => ({
+    user: state.fetchreducer,
+    loginData: state.syncInfo
+  }),
+  {fetchData}
+)(App);

@@ -56,6 +56,14 @@ nav {
   width: 230px;
 }
 
+.favorite-icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0px;
+  right: 0px;
+}
+
 #findStore{
   text-align: center;
   color: #616161;
