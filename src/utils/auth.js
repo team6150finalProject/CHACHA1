@@ -7,9 +7,8 @@ export default function (Comp){
         componentWillMount() {
             if(this.props.loginData.isAuth === false){
                 alert('Please Login' )
-                this.props.history.push ('/signin');
+                this.props.history.push ('/');
             }else{
-                console.log('enter')
             }
         }
         componentWillUpdate(nextProps, nextState, nextContext) {

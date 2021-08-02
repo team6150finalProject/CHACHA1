@@ -8,11 +8,6 @@ export default function (Comp){
                 this.props.history.push ('/');
             }
         }
-        componentWillUpdate(nextProps, nextState, nextContext) {
-            if(!nextProps.loginData.isAuth && nextProps.loginData.isAuth !== this.props.loginData.isAuth){
-                this.props.history.push ('/');
-            }
-        }
 
         render() {
             return <Comp {...this.props}/>

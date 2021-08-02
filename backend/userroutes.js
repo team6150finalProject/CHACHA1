@@ -192,6 +192,33 @@ module.exports = (app) => {
     }
   })
 
+  app.get('/user/member', function (req,res) {
+    console.log(req.user)
+    const password =req.body.password
+    if(req.user){
+      console.log(req.user)
+      Sample.findById(req.user.id, function (err, user){
+        if(err){
+          res.send({code:1, msg: 'Invalid ID'});
+        }else{
+          Sample.findOne({_id:user._id, password: md5(password)}, filter, function (err, data){
+            if(data){
+              Sample.updateOne({ _id: user._id }, { isadmin: true }, function (err, data) {
+                if (data.nModified === 1) {
+                  res.send({ code: 0, msg: 'Get Membership Success' });
+                } else {
+                  res.send({ code: 1, msg: "Could not get membership" });
+                }
+            })
+          }else {
+              res.send({code:1, msg: 'Invalid ID'});
+            }
+          })
+        }
+      })
+    }
+  });
+
   app.get('/', (req, res) => {
 
     Sample.find(function (err, samples) {
