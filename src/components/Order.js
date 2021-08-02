@@ -1,11 +1,7 @@
 import React from 'react';
-import cookie from 'react-cookies';
 import productInfo from "../model/productInfo.json"
 import OrderTea from './orderTea';
 import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { AutoComplete } from 'antd';
-import { Navbar } from 'react-bootstrap';
 
 
 class Order extends React.Component {
@@ -18,11 +14,6 @@ class Order extends React.Component {
     }
     
     render() {
-
-        // var navStyle = {
-        //     textAlign: 'center',
-        //     marginLeft: 'auto'
-        // }
         return (
             <div>
                 <div  className = "orderNav">

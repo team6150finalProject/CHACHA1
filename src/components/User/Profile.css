@@ -10,15 +10,15 @@
   color: red
 }
 
-label {
+#profileLable {
   font-weight: bold;
 }
 
-input {
+/* input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
   border: 2px solid #aaa;
   border-radius: 10px;
   display: block
-}
+}  */

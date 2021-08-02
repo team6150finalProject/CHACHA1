@@ -28,7 +28,7 @@ class ProductCard extends React.Component {
                onClick={this.toggleFavorite.bind(this)}/> : null}
         </div>
 
-        <Link to={'/tea-select/' + productInfo.type + "/"+ this.props.productId} title="click to order">
+        <Link to={'/order/' + productInfo.type + "/"+ this.props.productId} title="click to order">
           <img className="tea" src={process.env.PUBLIC_URL + "/img/" + productInfo.imgFileName} alt="#" />
         </Link>
 

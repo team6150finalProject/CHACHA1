@@ -6,7 +6,7 @@ const productInfoMap = {
     imgFileName: 'bubble.jfif',
     price: '$4.49 - $4.99'
   },
-  redBeanTea: {
+  taroTea: {
     title: 'Taro Milk Tea',
     type: 'milkTea',
     imgFileName: 'taro.jfif',
@@ -48,7 +48,7 @@ const productInfoMap = {
     imgFileName: 'thaiTea.jpg',
     price: 'TBD'
   },
-  smoothie: {
+  peachOolong: {
     title: 'Peach Oolong',
     type: 'specialtyDrinks',
     imgFileName: 'coldTea.jfif',

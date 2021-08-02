@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 class OrderTea extends Component {
@@ -36,7 +37,10 @@ class OrderTea extends Component {
                                 <Card.Title>
                                     {product.price}
                                 </Card.Title>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Link to={'/order/' + product.type + "/"+ product.productId} >
+                                    <Button variant="primary">Go somewhere</Button>
+                                </Link>
+                                
                             </Card.Body>
                         </Card>
                     ))}
@@ -55,7 +59,9 @@ class OrderTea extends Component {
                                 <Card.Title>
                                     {product.price}
                                 </Card.Title>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Link to={'/order/' + product.type + "/"+ product.productId} >
+                                    <Button variant="primary">Go somewhere</Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     ))}
@@ -74,7 +80,9 @@ class OrderTea extends Component {
                                 <Card.Title>
                                     {product.price}
                                 </Card.Title>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Link to={'/order/' + product.type + "/"+ product.productId} >
+                                    <Button variant="primary">Go somewhere</Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     ))}

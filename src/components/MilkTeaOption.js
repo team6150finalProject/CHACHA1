@@ -2,6 +2,8 @@ import React from 'react';
 import Select from 'react-select';
 import cookie from 'react-cookies';
 
+import "./homeStyle.css"
+
 const sizeOptions = [
     { value: "Regular", label: "Regular" },
     { value: "Large", label: "Large" },
@@ -46,9 +48,11 @@ class MilkTeaOption extends React.Component {
     setSize(event) {
         if (event.value === "Regular") {
             this._price.innerHTML = "$4.49";
+            this.setState({price: 4.49});
         }
         else if (event.value === "Large") {
             this._price.innerHTML = "$4.99";
+            this.setState({price: 4.99});
         }
         this.setState({size: event.value});
     }

@@ -5,7 +5,9 @@
             "title": "Bubble Tea",
             "imgFileName": "bubble.jfif",
             "price": "$4.49",
-            "description":"this is bubble tea"
+            "description":"this is bubble tea",
+            "type": "milkTea",
+            "productId" : "bubbleTea"
         },
 
         {
@@ -13,7 +15,9 @@
             "title": "Taro Milk Tea",
             "imgFileName": "taro.jfif",
             "price": "$4.49",
-            "description":"this is Taro Milk Tea"
+            "description":"this is Taro Milk Tea",
+            "type": "milkTea",
+            "productId" : "taroTea"
         },
 
         {
@@ -21,7 +25,9 @@
             "title": "Cheese Milk Tea",
             "imgFileName": "cheese1.jfif",
             "price": "$4.49",
-            "description":"this is Cheese Milk Tea"
+            "description":"this is Cheese Milk Tea",
+            "type": "milkTea",
+            "productId" : "cheeseTea"
         },
 
         {
@@ -29,7 +35,9 @@
             "title": "Mango Tea",
             "imgFileName": "mangoTea.jpg",
             "price": "$4.49",
-            "description":"this is Mango Tea"
+            "description":"this is Mango Tea",
+            "type": "fruitTea",
+            "productId" : "mangoTea"
         },
 
         {
@@ -37,7 +45,9 @@
             "title": "Mix Berry Tea",
             "imgFileName": "berryTea.jpg",
             "price": "$4.49",
-            "description":"this is Berry Tea"
+            "description":"this is Berry Tea",
+            "type": "fruitTea",
+            "productId" : "berryTea"
         },
 
         {
@@ -45,7 +55,9 @@
             "title": "Passion Fruit QQ",
             "imgFileName": "passion.jpeg",
             "price": "$4.49",
-            "description":"this is Passion Fruit QQ"
+            "description":"this is Passion Fruit QQ",
+            "type": "fruitTea",
+            "productId" : "passionFruitTea"
         },
 
         {
@@ -53,7 +65,9 @@
             "title": "Matcha Creme",
             "imgFileName": "matcha.jpg",
             "price": "$4.49",
-            "description":"this is Matcha Creme"
+            "description":"this is Matcha Creme",
+            "type": "specialtyDrinks",
+            "productId" : "matchaTea"
         },
 
         {
@@ -61,7 +75,9 @@
             "title": "Thai Tea",
             "imgFileName": "thaiTea.jpg",
             "price": "$4.49",
-            "description":"this is Thai Tea"
+            "description":"this is Thai Tea",
+            "type": "specialtyDrinks",
+            "productId" : "thaiTea"
         },
 
         {
@@ -69,7 +85,9 @@
             "title": "Peach Oolong",
             "imgFileName": "coldTea.jfif",
             "price": "$4.49",
-            "description":"this is Peach Oolong"
+            "description":"this is Peach Oolong",
+            "type": "specialtyDrinks",
+            "productId" : "peachOolong"
         }
     ]
 }

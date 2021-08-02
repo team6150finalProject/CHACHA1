@@ -46,10 +46,11 @@ class App extends React.Component {
         <ScrollToLocation />
         <Switch>
             <Route exact path='/' component={MainPage}/>
-            <Route path='/tea-select/milkTea/:productId' component={MilkTeaSelect}/>
-            <Route path='/tea-select/fruitTea/:productId' component={FruitTeaSelect}/>
-            <Route path='/tea-select/specialtyDrinks/:productId' component={FruitTeaSelect}/>
-            <Route path='/order' component={Order}/>
+            <Route exact path='/order' component={Order}/>
+            <Route path='/order/milkTea/:productId' component={MilkTeaSelect}/>
+            <Route path='/order/fruitTea/:productId' component={FruitTeaSelect}/>
+            <Route path='/order/specialtyDrinks/:productId' component={FruitTeaSelect}/>
+            
             <Route path='/cart' component={Auth(Cart)}/>
 
             <Route path='/signin' component={AuthForLogin(SignInScreen)}/>
