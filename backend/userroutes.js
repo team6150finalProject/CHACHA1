@@ -238,7 +238,7 @@ module.exports = (app) => {
   })
 
 
-  app.get('/user/member', function (req,res) {
+  app.get('/user/member', async function (req,res) {
     console.log(req.user)
     const password =req.body.password
     if(req.user){
