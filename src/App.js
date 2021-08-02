@@ -13,10 +13,14 @@ import SignUpScreen from "./components/SigninScreen/SignUpScreen";
 import Users  from "./components/User/Users";
 import cookie from 'react-cookies';
 import Order from './components/Order';
+
 import Auth from '../src/utils/auth';
 import AuthForLogin from '../src/utils/authForLogin';
 import OrderHistory from "./components/User/OrderHistory";
 import ProfileScreen from "./components/User/ProfileScreen";
+
+import Auth from '../src/utils/auth'
+
 
 
 
@@ -40,12 +44,15 @@ class App extends React.Component {
             <Route path='/tea-select/specialtyDrinks/:productId' component={FruitTeaSelect}/>
             <Route path='/order' component={Order}/>
             <Route path='/cart' component={Auth(Cart)}/>
+
             <Route path='/signin' component={AuthForLogin(SignInScreen)}/>
             <Route path='/signup' component={AuthForLogin(SignUpScreen)}/>
 
             <Route path='/profile' component={Auth(ProfileScreen)}/>
             <Route path='/order-history' component={Auth(OrderHistory)}/>
 
+            <Route path='/signin' component={SignInScreen}/>
+            <Route path='/signup' component={SignUpScreen}/>
             <Route path='/user' component={Auth(Users)}/>
 
         </Switch>
