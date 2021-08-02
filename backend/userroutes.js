@@ -178,6 +178,41 @@ module.exports = (app) => {
     }
   });
 
+  app.post('/user/favorites', async function (req,res){
+    const {product, isFavorite} =req.body;
+    if(req.user){
+      Sample.findById(req.user.id, function (err, user){
+        if(err){
+          res.send({code:1, msg: 'Invalid ID'});
+        }else{
+          Sample.findOne({_id:user._id}, filter, function (err, data){
+              if (data) {
+                if (isFavorite) {
+                  Sample.updateOne({ _id: user._id }, { $addToSet: { favorites: product } }, function (err, data) {
+                    if (data.nModified === 1) {
+                      res.send({ code: 0, data: { product: product, isFavorite: isFavorite } });
+                    } else {
+                      res.send({ code: 1, msg: "Could not add favorite" });
+                    }
+                  });
+                } else {
+                  Sample.updateOne({ _id: user._id }, { $pull: { favorites: product } }, function (err, data) {
+                    if (data.nModified === 1) {
+                      res.send({ code: 0, data: { product: product, isFavorite: isFavorite } });
+                    } else {
+                      res.send({ code: 1, msg: "Could not remove favorite" });
+                    }
+                  });
+                }
+              }else{
+                res.send({ code: 1, msg: "Invalid password" });
+              }
+            })
+        }
+      })
+    }
+  });
+
 
 
 
