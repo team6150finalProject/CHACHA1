@@ -10,7 +10,6 @@ import {fetchData} from "../redux/actions";
 class ProductCard extends React.Component {
   toggleFavorite() {
     let favorites = this.props.user.userData.favorites;
-    if (!favorites) favorites = [];
     const isFavorite = favorites.includes(this.props.productId);
     reqUpdateFavorite({ product: this.props.productId, isFavorite: !isFavorite})
       .then(response => {
@@ -29,7 +28,7 @@ class ProductCard extends React.Component {
                onClick={this.toggleFavorite.bind(this)}/> : null}
         </div>
 
-        <Link to={'/tea-select/' + this.props.productType + "/"+ this.props.productId} title="click to order">
+        <Link to={'/tea-select/' + productInfo.type + "/"+ this.props.productId} title="click to order">
           <img className="tea" src={process.env.PUBLIC_URL + "/img/" + productInfo.imgFileName} alt="#" />
         </Link>
 
