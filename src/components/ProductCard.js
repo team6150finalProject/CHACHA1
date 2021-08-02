@@ -9,6 +9,7 @@ class ProductCard extends React.Component {
       <div className="card">
         <div className="card-body">
           <h4 className="card-title">{productInfo.title}</h4>
+          <img className="favorite-icon" src={process.env.PUBLIC_URL + "/img/" + (this.props.favorite ? "heart-foo.png" : "heart-empty.png")} />
         </div>
 
         <Link to={'/tea-select/' + this.props.productType + "/"+ this.props.productId} title="click to order">

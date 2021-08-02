@@ -12,6 +12,7 @@ module.exports = mongoose.model('project-register', {
     phone: { type: String, default: '' },
     address: { type: String, default: '' }
   },
+  favorites: { type: [String] },
   nextid: { type: Number, default: 0 },
   orders: [{
     orderid: { type: String, required: true },

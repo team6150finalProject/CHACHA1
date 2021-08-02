@@ -21,6 +21,17 @@ function checkFormat(data, type) {
   }
 }
 
+function userDataFromDocument(doc) {
+  return {
+    username: doc.username,
+    email: doc.email,
+    isadmin: doc.isadmin,
+    profile: doc.profile,
+    favorites: doc.favorites,
+    orders: doc.orders
+  };
+}
+
 module.exports = (app) => {
   app.post('/signup', function (req, res) {
     let { email, username, password } = req.body;
@@ -66,11 +77,10 @@ module.exports = (app) => {
             expiresIn: "1h"
           }
         );
-        const alldata = { _id: data._id, email: data.email, isadmin: data.isadmin, token }
         res.send({
           code: 0,
-          data: alldata,
-          token
+          data: userDataFromDocument(data),
+          token: token
         })
       } else {
         res.send({ code: 1, msg: "Invalid email or password" });
@@ -156,6 +166,23 @@ module.exports = (app) => {
               email: user.email,
               profile: user.profile
             }
+          });
+        }
+      });
+    } else {
+      res.send({ code: 1, msg: "Invalid login" });
+    }
+  })
+
+  app.get('/userdata', (req, res) => {
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({ code: 1, msg: "Invalid ID" });
+        } else {
+          res.send({
+            code: 0,
+            data: userDataFromDocument(user)
           });
         }
       });

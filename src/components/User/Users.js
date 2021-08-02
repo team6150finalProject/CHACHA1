@@ -5,6 +5,7 @@ import OrderHistory from './OrderHistory';
 import ProfileScreen from './ProfileScreen';
 import Settings from './Settings';
 import SideBar from './SideBar';
+import Auth from '../../utils/auth';
 import './User.css';
 
 class Users extends React.Component {
@@ -14,10 +15,10 @@ class Users extends React.Component {
         <SideBar id="user-sidebar" />
         <div id="user-main">
           <Switch>
-            <Route exact path='/user' component={ProfileScreen} />
-            <Route path='/user/order-history' component={OrderHistory} />
-            <Route path='/user/favorites' component={Favorites} />
-            <Route path='/user/settings' component={Settings} />
+            <Route exact path='/user' component={Auth(ProfileScreen)} />
+            <Route path='/user/order-history' component={Auth(OrderHistory)} />
+            <Route path='/user/favorites' component={Auth(Favorites)} />
+            <Route path='/user/settings' component={Auth(Settings)} />
           </Switch>
         </div>
       </div>
