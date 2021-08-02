@@ -31,8 +31,8 @@ export const login =(user)=>{
         const result =response.data
         if(result.code === 0){  //signin success
             dispatch(authSuccess(result.data))
-            localStorage.setItem('@#@TOKEN',result.data.token)
-            dispatch( syncInfoAc(decode(result.data.token)))
+            localStorage.setItem('@#@TOKEN',result.token)
+            dispatch( syncInfoAc(decode(result.token)))
         }else{     //sigin failure
             dispatch(errormsg(result.msg))
         }
