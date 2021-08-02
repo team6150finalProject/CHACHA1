@@ -1,10 +1,82 @@
 import React from 'react';
 import UserCard from "./UserCard";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {fetchData} from "../../redux/actions";
+import OrderCard from "./OrderCard"
+
+
 
 
 class OrderHistory extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            orders: [{
+                orderid: "",
+                timemillis: 0,
+                totalprice: 0,
+                products: [{
+                    name: "",
+                    size: "",
+                    ice: "",
+                    sweetness: "",
+                    extras:"",
+                    quantity: 0
+                }]
+            }]
+        }
+
+    }
+
+    formatOrderCards = () => {
+        return this.orders.map((reading, index) => <OrderCard reading={reading} key={index} />)
+    }
+
     render() {
+        const userData = this.props.user.userData;
+        this.orders = [{
+            orderid: "001",
+            timemillis: "08-02-2021",
+            totalprice: 20,
+            products: [{
+                name: "",
+                size: "",
+                ice: "",
+                sweetness: "",
+                extras:"",
+                quantity: 0
+            }]
+        },
+            {
+                orderid: "",
+                timemillis: "08-02-2021",
+                totalprice: 10,
+                products: [{
+                    name: "",
+                    size: "",
+                    ice: "",
+                    sweetness: "",
+                    extras:"",
+                    quantity: 0
+                }]
+            },
+            {
+                orderid: "",
+                timemillis: "07-31-2021",
+                totalprice: 30,
+                products: [{
+                    name: "",
+                    size: "",
+                    ice: "",
+                    sweetness: "",
+                    extras:"",
+                    quantity: 0
+                }]
+            }
+        ];
+
         return (
             <div>
                 <div className="userScreen">
@@ -17,40 +89,11 @@ class OrderHistory extends React.Component {
                                 <a href="">Cancelled Orders</a>
                             </b></nav>
                             <div className="orderContainer">
-                                <div className="card">
-                                    <div className="card-header">
-                                        Order on: March 24, 2021   Total: $10
-                                        <div className="headerLink">
-                                            <Link to="">View Detail</Link>
-                                        </div>
-                                    </div>
-                                    <div className="card-body">
-                                        <h4 className="card-title">Order Complete </h4>
-                                        <img className="orderImg" src="../../img/p7.jpg" />
-                                        <img className="orderImg" src="../../img/p7.jpg" />
-                                        <p className="card-text"></p>
-                                    </div>
-                                    <div className="card-footer">
-                                        <button>Order Again</button>
-                                    </div>
+
+                                <div>
+                                    {this.formatOrderCards()}
                                 </div>
-                                <div className="card">
-                                    <div className="card-header">
-                                        Order on: March 24, 2021   Total: $10
-                                        <div className="headerLink">
-                                            <Link to="">View Detail</Link>
-                                        </div>
-                                    </div>
-                                    <div className="card-body">
-                                        <h4 className="card-title">Order Complete </h4>
-                                        <img className="orderImg" src="../../img/p6.jpg" />
-                                        <img className="orderImg" src="../../img/p2.jpg" />
-                                        <p className="card-text"></p>
-                                    </div>
-                                    <div className="card-footer">
-                                        <button>Order Again</button>
-                                    </div>
-                                </div>
+
                             </div>
                             <div className="nextPage">
                                 <ul>
@@ -68,4 +111,7 @@ class OrderHistory extends React.Component {
     }
 }
 
-export default OrderHistory;
+export default connect(
+    state => ({user: state.fetchreducer}),
+    {fetchData}
+)(OrderHistory);

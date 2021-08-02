@@ -254,6 +254,27 @@ module.exports = (app) => {
     }
   })
 
+  app.get('/order-history', (req, res) => {
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({ code: 1, msg: "Invalid ID" });
+        } else {
+          res.send({
+            code: 0,
+            data: {
+              username: user.username,
+              email: user.email,
+              order: user.order
+            }
+          });
+        }
+      });
+    } else {
+      res.send({ code: 1, msg: "Invalid login" });
+    }
+  })
+
   app.get('/', (req, res) => {
 
     Sample.find(function (err, samples) {
@@ -263,6 +284,8 @@ module.exports = (app) => {
       res.json(samples);
     });
   });
+
+
 
 
 }
