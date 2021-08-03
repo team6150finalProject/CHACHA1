@@ -18,8 +18,7 @@ class Order extends React.Component {
     render() {
         return (
             <div>
-
-                <Tabs defaultActiveKey="all" id="uncontrolled-tab-example" className="mb-3">
+                <Tabs defaultActiveKey="all"  className="mb-3">
                     <Tab eventKey="all" title="ALL">
                         <div className = "teaContent">
                             <OrderMilkTea products = {this.state.productInfo}/>
@@ -27,17 +26,17 @@ class Order extends React.Component {
                             <OrderSpecial products = {this.state.productInfo}/>
                         </div>
                     </Tab>
-                    <Tab eventKey="milk" title="Milk Tea">
+                    <Tab eventKey="milk" title="Milk Tea" >
                         <div className = "teaContent">
                             <OrderMilkTea products = {this.state.productInfo}/>
                         </div>
                     </Tab>
-                    <Tab eventKey="fruit" title="Fruit Tea">
+                    <Tab eventKey="fruit" title="Fruit Tea" >
                         <div className = "teaContent">
                             <OrderFruitTea products = {this.state.productInfo}/>
                         </div>
                     </Tab>
-                    <Tab eventKey="special" title="Specialty Drinks">
+                    <Tab eventKey="special" title="Specialty Drinks" >
                         <div className = "teaContent">
                             <OrderSpecial products = {this.state.productInfo}/>
                         </div>

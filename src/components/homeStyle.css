@@ -161,14 +161,24 @@ nav {
   padding-right: 10rem;
 }
 
-.orderNav {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 60rem;
-  justify-content: center;
-  padding-left: 10rem;
-  padding-right: 10rem;
-  
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  font-weight:bolder ;
+  color: #742912;
+  background-color: #fff;
+  border-color: #e6e2de #e6e2de #fff;
+}
+
+.nav-link {
+  margin: 3px;
+  display: block;
+  padding: .5rem 1rem;
+  color: #808388;
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.nav-link:focus, .nav-link:hover {
+  color: #742912;
 }
 
 
@@ -187,11 +197,6 @@ nav {
 .product {
   margin:0px 10px 30px 30px;
   
-}
-
-
-.linkText{ 
-  color:#363535; 
 }
 
 
