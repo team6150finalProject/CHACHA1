@@ -86,6 +86,10 @@ export const fetchData = () => {
       const result = response.data;
       if(result.code === 0){
           dispatch(fetchUserData(result.data));
+      } else {
+        localStorage.removeItem('@#@TOKEN');
+        dispatch(syncInfoAc({}));
+        dispatch(fetchUserData());
       }
   }
 }
