@@ -281,7 +281,7 @@ module.exports = (app) => {
     }
   })
 
-  app.get('/order-history', (req, res) => {
+  app.get('/user/order-history', async (req, res) => {
     if (req.user) {
       Sample.findById(req.user.id, function (err, user) {
         if (err) {
@@ -303,8 +303,8 @@ module.exports = (app) => {
   })
 
 
-  app.get('/', (req, res) => {
 
+  app.get('/', (req, res) => {
     Sample.find(function (err, samples) {
       if (err)
         res.send(err);
@@ -312,8 +312,6 @@ module.exports = (app) => {
       res.json(samples);
     });
   });
-
-
 
 
 }

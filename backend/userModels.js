@@ -15,7 +15,7 @@ module.exports = mongoose.model('project-register', {
   favorites: { type: [String] },
   nextid: { type: Number, default: 0 },
   orders: [{
-    orderid: { type: String, required: true },
+    orderId: { type: String, required: true },
     timemillis: { type: Number, required: true },
     totalprice: { type: Number, required: true },
     products: [{

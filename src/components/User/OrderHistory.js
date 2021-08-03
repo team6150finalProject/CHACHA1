@@ -1,6 +1,4 @@
 import React from 'react';
-import UserCard from "./UserCard";
-import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {fetchData} from "../../redux/actions";
 import OrderCard from "./OrderCard"
@@ -14,7 +12,7 @@ class OrderHistory extends React.Component {
         super(props);
         this.state = {
             orders: [{
-                orderid: "",
+                orderId: "",
                 timemillis: 0,
                 totalprice: 0,
                 products: [{
@@ -27,7 +25,6 @@ class OrderHistory extends React.Component {
                 }]
             }]
         }
-
     }
 
     formatOrderCards = () => {
@@ -37,20 +34,29 @@ class OrderHistory extends React.Component {
     render() {
         const userData = this.props.user.userData;
         this.orders = [{
-            orderid: "001",
+            orderId: "001",
             timemillis: "08-02-2021",
             totalprice: 20,
             products: [{
-                name: "berryTea",
-                size: "",
-                ice: "",
-                sweetness: "",
-                extras:"",
-                quantity: 0
-            }]
+                name: "berry",
+                size: "small",
+                ice: "ice",
+                sweetness: "sweet",
+                extras:"ex",
+                quantity: 1
+            },
+                {
+                    name: "bubbleTea",
+                    size: "",
+                    ice: "",
+                    sweetness: "",
+                    extras:"",
+                    quantity: 0
+                },
+            ]
         },
             {
-                orderid: "",
+                orderId: "002",
                 timemillis: "08-02-2021",
                 totalprice: 10,
                 products: [{
@@ -63,7 +69,7 @@ class OrderHistory extends React.Component {
                 }]
             },
             {
-                orderid: "",
+                orderid: "003",
                 timemillis: "07-31-2021",
                 totalprice: 30,
                 products: [{
