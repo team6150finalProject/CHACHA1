@@ -51,7 +51,7 @@ const productInfoMap = {
   peachOolong: {
     title: 'Peach Oolong',
     type: 'specialtyDrinks',
-    imgFileName: 'coldTea.jfif',
+    imgFileName: 'brew.jpg',
     price: 'TBD'
   }
 };

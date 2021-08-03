@@ -83,7 +83,7 @@
         {
             "_id" : 9,
             "title": "Peach Oolong",
-            "imgFileName": "coldTea.jfif",
+            "imgFileName": "brew.jpg",
             "price": "$4.49",
             "description":"White Peach flavored Oolong Tea, freshly extracted by tea maker",
             "type": "specialtyDrinks",
