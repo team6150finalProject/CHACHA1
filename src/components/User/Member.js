@@ -3,7 +3,7 @@ import './Member.css'
 import logo from './logo.jpg'
 import vip from './vip.jpg'
 import {connect} from "react-redux";
-import {logOut} from "../../redux/actions";
+import {fetchData, logOut} from "../../redux/actions";
 import Carousel from "react-bootstrap/Carousel";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -42,11 +42,11 @@ class Member extends Component {
              password: this.state.password,
 
          };
-          reqGetMembership(data).catch(error => {
+         const response = await reqGetMembership(data).catch(error => {
               console.log(error.response)
           })
-         // const result =response.data
-         // alert(result.msg)
+          const result =response.data
+          alert(result.msg )
      }
     getPassword(e) {
         const {value} =e.target;
@@ -55,11 +55,6 @@ class Member extends Component {
             })
     }
     handleClickCheck = () => {
-        const data = {
-            password: this.state.password,
-
-        };
-        reqGetMembership(data)
     };
 
 
@@ -69,13 +64,14 @@ class Member extends Component {
                 <div className='member'>
                 <h1>Member Management</h1>
                 <hr/>
-
                     <h3>Card Information</h3>
                     <div className='cardStyle'>
                         <div className='card-info'>
-                            <span style={{paddingLeft: 10, marginTop:10, display:"inline-block"}}>Name  :   <span style={{fontWeight: 'bold',fontStyle:'unset'}}>{this.props.loginData.user.username}</span> </span>
+                            <span style={{paddingLeft: 10, marginTop:10, display:"inline-block"}}>Name  :   <span style={{fontWeight: 'bold',fontStyle:'unset'}}>{this.props.loginData.userData.username}</span> </span>
                             <br/>
-                            <span style={{paddingLeft: 10, marginTop:5,display:"inline-block"}}>Card ID : xxxxxxxxxxxxxxxxxx</span>
+                            <span style={{paddingLeft: 10, marginTop:5,display:"inline-block"}}>Card ID : {this.props.loginData.userData.isadmin?
+                                <span style={{fontSize:10}}>{this.props.loginid.user.id}</span>
+                                :<span>xxxxxxxxxxxxxxxxx</span>}</span>
                         </div>
                         <div className='card-logo'>
                             <img src={logo} style={{width:80, height:80}}/>
@@ -155,8 +151,10 @@ class Member extends Component {
 }
 
 export default connect(
-    state=>({loginData : state.syncInfo}),
-    {logOut}
+    state=>({loginData : state.fetchreducer,
+        loginid : state.syncInfo
+    }),
+    {fetchData,logOut}
 )(Member);
 
 

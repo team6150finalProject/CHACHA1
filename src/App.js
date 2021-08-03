@@ -55,15 +55,10 @@ class App extends React.Component {
             <Route path='/order/specialtyDrinks/:productId' component={FruitTeaSelect}/>
             
             <Route path='/cart' component={Auth(Cart)}/>
-
             <Route path='/signin' component={AuthForLogin(SignInScreen)}/>
             <Route path='/signup' component={AuthForLogin(SignUpScreen)}/>
-
             <Route path='/profile' component={Auth(ProfileScreen)}/>
             <Route path='/order-history' component={Auth(OrderHistory)}/>
-
-            <Route path='/signin' component={SignInScreen}/>
-            <Route path='/signup' component={SignUpScreen}/>
             <Route path='/user' component={Auth(Users)}/>
 
         </Switch>

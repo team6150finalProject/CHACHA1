@@ -69,6 +69,7 @@ module.exports = (app) => {
       if (data) {
         const token = jwt.sign({
           isAuth: true,
+          isadmin: data.isadmin,
           username: data.username,
           id: String(data._id)
         },
@@ -227,7 +228,8 @@ module.exports = (app) => {
             data: {
               username: user.username,
               email: user.email,
-              profile: user.profile
+              profile: user.profile,
+              isadmin: user.isadmin
             }
           });
         }
@@ -237,12 +239,9 @@ module.exports = (app) => {
     }
   })
 
-
-  app.get('/user/member', function (req,res) {
-    console.log(req.user)
+  app.post('/user/member', async function (req,res) {
     const password =req.body.password
     if(req.user){
-      console.log(req.user)
       Sample.findById(req.user.id, function (err, user){
         if(err){
           res.send({code:1, msg: 'Invalid ID'});
@@ -251,9 +250,9 @@ module.exports = (app) => {
             if(data){
               Sample.updateOne({ _id: user._id }, { isadmin: true }, function (err, data) {
                 if (data.nModified === 1) {
-                  res.send({ code: 0, msg: 'Get Membership Success' });
+                  res.send({ code: 0, msg: 'Get Membership Success', isadmin: true , _id: user._id});
                 } else {
-                  res.send({ code: 1, msg: "Could not get membership" });
+                  res.send({ code: 1, msg: "You are already Membership", isadmin: user.isadmin,  _id: user._id });
                 }
             })
           }else {
