@@ -1,14 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
+
+
 const OrderCard = ({reading}) => {
-    console.log(reading);
     return (
         <div className="card">
             <div className="card-header">
                 Order on: {reading.timemillis}   Total: ${reading.totalprice}
                 <div className="headerLink">
-                    <Link to="">View Detail</Link>
+                    <Link to={ {pathname:'/user/order-detail', query:{products: reading.products}}}>View Detail</Link>
                 </div>
             </div>
             <div className="card-body">

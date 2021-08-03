@@ -6,7 +6,10 @@ const port = 5000
 const expJWT = require ('express-jwt')
 const bodyParser = require('body-parser');
 const routes = require('./userroutes');
+
 const mongoose = require('mongoose');
+
+
 
 mongoose.connect('mongodb+srv://lidifeng00:q690519126@cluster0.pn5i0.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true ,useCreateIndex: true});
 
@@ -35,7 +38,9 @@ app.use(function(req, res, next) {
 });
 
 
+
 routes(app);
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

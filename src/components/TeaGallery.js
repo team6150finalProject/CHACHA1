@@ -24,7 +24,7 @@ class TeaGallery extends React.Component {
                     <ProductCard productId="bubbleTea" />
                   </td>
                   <td>
-                    <ProductCard productId="redBeanTea" />
+                    <ProductCard productId="taroTea" />
                   </td>
                   <td>
                     <ProductCard productId="cheeseTea" />
@@ -82,7 +82,7 @@ class TeaGallery extends React.Component {
                     <ProductCard productId="thaiTea" />
                   </td>
                   <td>
-                    <ProductCard productId="smoothie" />
+                    <ProductCard productId="peachOolong" />
                   </td>
                 </tr>
               </tbody>

@@ -73,21 +73,21 @@ class ProfileScreen extends Component {
         >
           {({ isSubmitting }) => (
             <Form>
-              <label htmlFor="username">User name</label>
+              <label id = "profileLable" htmlFor="username">User name</label>
               <Field type="text" name="username" disabled />
-              <label htmlFor="email">Email</label>
+              <label id = "profileLable" htmlFor="email">Email</label>
               <Field type="email" name="email" disabled />
               <ErrorMessage className="profile-error" name="email" component="div" />
-              <label htmlFor="firstname">First name</label>
+              <label id = "profileLable" htmlFor="firstname">First name</label>
               <Field type="text" name="firstname" />
               <ErrorMessage className="profile-error" name="firstname" component="div" />
-              <label htmlFor="lastname">Last name</label>
+              <label id = "profileLable" htmlFor="lastname">Last name</label>
               <Field type="text" name="lastname" />
               <ErrorMessage className="profile-error" name="lastname" component="div" />
-              <label htmlFor="phone">Phone number</label>
+              <label id = "profileLable" htmlFor="phone">Phone number</label>
               <Field type="text" name="phone" />
               <ErrorMessage className="profile-error" name="phone" component="div" />
-              <label htmlFor="address">Address</label>
+              <label id = "profileLable" htmlFor="address">Address</label>
               <Field type="text" name="address" />
               <ErrorMessage className="profile-error" name="address" component="div" />
               <button type="submit" disabled={isSubmitting}>

@@ -3,23 +3,23 @@ const productInfoMap = {
   bubbleTea: {
     title: 'Bubble Tea',
     type: 'milkTea',
-    imgFileName: 'bubble.jfif',
+    imgFileName: 'bubble.webp',
     price: '$4.49 - $4.99'
   },
-  redBeanTea: {
+  taroTea: {
     title: 'Taro Milk Tea',
     type: 'milkTea',
-    imgFileName: 'taro.jfif',
+    imgFileName: 'taro.webp',
     price: 'TBD'
   },
   cheeseTea: {
-    title: 'Cheese Milk Tea',
+    title: 'Cheese Foam Tea',
     type: 'milkTea',
-    imgFileName: 'cheese1.jfif',
+    imgFileName: 'cheese.webp',
     price: 'TBD'
   },
   mangoTea: {
-    title: 'Mango Tea',
+    title: 'Mango Iced Tea',
     type: 'fruitTea',
     imgFileName: 'mangoTea.jpg',
     price: 'TBD'
@@ -27,7 +27,7 @@ const productInfoMap = {
   berryTea: {
     title: 'Mix Berry Tea',
     type: 'fruitTea',
-    imgFileName: 'berryTea.jpg',
+    imgFileName: 'berry.jpg',
     price: 'TBD'
   },
   passionFruitTea: {
@@ -37,7 +37,7 @@ const productInfoMap = {
     price: 'TBD'
   },
   matchaTea: {
-    title: 'Matcha Creme',
+    title: 'Matcha Latte',
     type: 'specialtyDrinks',
     imgFileName: 'matcha.jpg',
     price: 'TBD'
@@ -45,13 +45,13 @@ const productInfoMap = {
   thaiTea: {
     title: 'Thai Tea',
     type: 'specialtyDrinks',
-    imgFileName: 'thaiTea.jpg',
+    imgFileName: 'thai.jpg',
     price: 'TBD'
   },
-  smoothie: {
+  peachOolong: {
     title: 'Peach Oolong',
     type: 'specialtyDrinks',
-    imgFileName: 'coldTea.jfif',
+    imgFileName: 'brew.jpg',
     price: 'TBD'
   }
 };
