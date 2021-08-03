@@ -1,5 +1,5 @@
 import {reqLogin, reqRegister, reqUserData} from "../api";
-
+import cookie from 'react-cookies';
 import {
     AUTH_SUCCESS,
     ERROR_MSG,
@@ -74,6 +74,8 @@ export const syncInfoAc =data => {
 export const logOut =data => {
     return dispatch =>{
         localStorage.removeItem('@#@TOKEN');
+        cookie.remove('orderNum');
+        cookie.remove('drinkNum');
         dispatch(syncInfoAc({}));
         dispatch(fetchUserData({}));
     }

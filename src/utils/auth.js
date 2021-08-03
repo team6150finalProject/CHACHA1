@@ -7,7 +7,7 @@ export default function (Comp){
         componentWillMount() {
             if(this.props.loginData.isAuth === false){
                 alert('Please Login' )
-                this.props.history.push ('/');
+                this.props.history.push ('/signin');
             }else{
             }
         }
