@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import cookie from 'react-cookies';
+import { Modal, Button } from 'react-bootstrap';
 
 const sizeOptions = [
     { value: "Regular", label: "Regular" },
@@ -29,14 +30,16 @@ class FruitTeaOption extends React.Component {
             size :"Regular",
             ice: 'Regular Ice',
             sweet: 'Standard Sweet',
-            qty: 1
+            qty: 1,
+            show: false
         };
 
         this.setSize = this.setSize.bind(this);
         this.setIce = this.setIce.bind(this);
         this.setSweet = this.setSweet.bind(this);
         this.setQty = this.setQty.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleShow = this.handleShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
 
     }
 
@@ -65,20 +68,21 @@ class FruitTeaOption extends React.Component {
         this.setState({qty: event.value});
     }
 
-
-    handleSubmit(event) {
-        alert('Size: ' + this.state.size +'\nPrice: ' + this.state.price + '\nIce: '+ this.state.ice
-              + '\nSweet: '+ this.state.sweet + '\nQty: ' + this.state.qty);
-        cookie.save('drinkNum', parseInt(cookie.load('drinkNum')) + parseInt(this.state.qty), {path:"/"});
-        cookie.save('orderNum', parseInt(cookie.load('orderNum')) + 1, {path:"/"});
-        cookie.save('order' + cookie.load('orderNum'), JSON.stringify(this.props.title + '\,' + this.state.size + '\,' + this.state.price + '\,'+ this.state.ice
-                      + '\,'+ this.state.sweet + '\,' + this.state.qty), {path:"/"});
-        window.open("/cart", "_self");
+    handleShow(event) {
+        this.setState({show:true});
         event.preventDefault();
     }
 
-    
+    handleClose() {
+        this.setState({show:false});
+        cookie.save('drinkNum', parseInt(cookie.load('drinkNum')) + parseInt(this.state.qty), {path:"/"});
+        cookie.save('orderNum', parseInt(cookie.load('orderNum')) + 1, {path:"/"});
+        cookie.save('order' + cookie.load('orderNum'), JSON.stringify(this.props.title + '\,' + this.state.size + '\,' + this.state.price + '\,'+ this.state.ice
+                      + '\,'+ this.state.sweet + '\,' + this.state.qty + '\,' + this.state.topping), {path:"/"});
+        window.open("/cart", "_self");
+    }
 
+    
     
     render() {
         var self = this;
@@ -126,7 +130,25 @@ class FruitTeaOption extends React.Component {
                 <Select options={qtyOptions} onChange={this.setQty}  defaultValue = {qtyOptions[0]}/>
                 <br /><br />
 
-            <input id = "addCart" type="submit" value="Add to Cart" />
+            <input id = "addCart" type="submit" onClick={this.handleShow} value="Add to Cart" />
+             
+             <Modal show={this.state.show} onHide={this.handleClose}>
+                <Modal.Header>
+                    <Modal.Title>Message</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div style={{'textAlign':'center'}}>
+                        <img src="https://img.icons8.com/color/96/000000/pass.png"/>
+                    </div>
+                    <br/>
+                    Woohoo, { this.props.title} Successfully Added to Cart!
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={this.handleClose}>
+                    OK
+                </Button>
+                </Modal.Footer>
+            </Modal>
 
 
             </form>    
