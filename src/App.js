@@ -47,6 +47,9 @@ class App extends React.Component {
         <Switch>
             <Route exact path='/' component={MainPage}/>
             <Route exact path='/order' component={Order}/>
+            <Route exact path='/order/milkTea' component={Order}/>
+            <Route exact path='/order/fruitTea' component={Order}/>
+            <Route exact path='/order/specialtyDrinks' component={Order}/>
             <Route path='/order/milkTea/:productId' component={MilkTeaSelect}/>
             <Route path='/order/fruitTea/:productId' component={FruitTeaSelect}/>
             <Route path='/order/specialtyDrinks/:productId' component={FruitTeaSelect}/>
