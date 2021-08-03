@@ -41,6 +41,12 @@ a {
     padding: 10px;
 }
 
+.detailImg{
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+    float: left;
+}
 .headerLink{
     display: inline-block;
     position: relative;
@@ -64,4 +70,16 @@ a {
 
 }
 
+.productDetail{
+    clear: both;
+}
 
+.quantity{
+    color: dimgray;
+}
+.productDescription{
+    color: dimgray;
+}
+.productName{
+    font-weight: bold;
+}

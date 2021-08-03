@@ -10,6 +10,7 @@ import './User.css';
 import Coupon from "./Coupon";
 import Auth from '../../utils/auth';
 import './User.css';
+import OrderDetail from "./OrderDetail";
 
 class Users extends React.Component {
   render() {
@@ -21,6 +22,7 @@ class Users extends React.Component {
                 <Route exact path='/user' component={Auth(ProfileScreen)} />
                 <Route path ='/user/member' component={Auth(Member)}/>
                 <Route path='/user/order-history' component={Auth(OrderHistory)} />
+                <Route path='/user/order-detail/' component={Auth(OrderDetail)} />
                 <Route path='/user/favorites' component={Auth(Favorites)} />
                 <Route path='/user/settings' component={Auth(Settings)} />
                 <Route path ='/user/coupon' component={Auth(Coupon)}/>
