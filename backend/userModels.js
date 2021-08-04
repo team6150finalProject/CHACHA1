@@ -6,6 +6,8 @@ module.exports = mongoose.model('project-register', {
   password: { type: String, default: '', required: true },
   username: { type: String, unique: true, default: '', required: true },
   isadmin: { type: Boolean, default: false, required: true },
+  firstmember: {type:Boolean,default:true, required:true},
+  memberdate: {type:String, default:' ',required:true},
   profile: {
     firstname: { type: String, default: '' },
     lastname: { type: String, default: '' },

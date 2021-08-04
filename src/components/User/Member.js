@@ -13,7 +13,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {reqGetMembership} from "../../api";
-import {Link} from "react-router-dom";
 
 class Member extends Component {
 
@@ -21,8 +20,9 @@ class Member extends Component {
         super(props);
         this.state = {
             open: false,
-            password:''
-        }
+            password:'',
+            memberdate: {}}
+
     }
     handleClickOpen = () => {
         this.setState({
@@ -41,7 +41,7 @@ class Member extends Component {
          })
          const data = {
              password: this.state.password,
-
+             memberdate: new Date()
          };
          const response = await reqGetMembership(data).catch(error => {
               console.log(error.response)
@@ -56,16 +56,34 @@ class Member extends Component {
             })
     }
     handleClickCheck = () => {
+        this.setState({
+            memberdate: new Date()
+        })
+
+    };
+
+    handleClickCheck1 = () => {
+       console.log(typeof this.state.memberdate)
     };
 
 
     render() {
+        const date= this.props.loginData.userData.memberdate;
+        const datetime =Date.parse(date)
+        const datetime2 =new Date(datetime)
+        const result1 =datetime2.toUTCString()
+        const result =datetime2.setDate(datetime2.getDate()+30)
+        const result2 = new Date(result).toUTCString()
         return (
             <div>
                 <div className='member'>
                 <h1>Member Management</h1>
                 <hr/>
                     <h3>Card Information</h3>
+                    <div>
+                            <p>{this.props.loginData.userData.isadmin?
+                                <p style={{color:'blue'}}>{result1}<span style={{color:"black", fontWeight:"bold"}}> TO </span>{result2}</p>: 'Not a Member'} </p>
+                    </div>
                     <div className='cardStyle'>
                         <div className='card-info'>
                             <span style={{paddingLeft: 10, marginTop:10, display:"inline-block"}}>Name  :   <span style={{fontWeight: 'bold',fontStyle:'unset'}}>{this.props.loginData.userData.username}</span> </span>
@@ -82,6 +100,7 @@ class Member extends Component {
                         </div>
                     </div>
                 </div>
+                <br/>
                 <div>
                     <h3>Membership privileges</h3>
                     <div className='member-privileges'>
@@ -118,7 +137,7 @@ class Member extends Component {
                                 <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                                 <DialogContent>
                                     <DialogContentText>
-                                        Do you want to try 15 days free membership? Enter your Password
+                                        Do you want to try 30 days free membership? Enter your Password
                                     </DialogContentText>
                                     <TextField
                                         autoFocus
@@ -141,7 +160,7 @@ class Member extends Component {
                             </Dialog>
                         </div>
                         <hr/>
-                        <button>Renewal Membership</button>
+                        <button onClick={this.handleClickCheck1}>Renewal Membership</button>
                     </div>
 
                 </div>

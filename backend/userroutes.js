@@ -28,7 +28,8 @@ function userDataFromDocument(doc) {
     isadmin: doc.isadmin,
     profile: doc.profile,
     favorites: doc.favorites,
-    orders: doc.orders
+    orders: doc.orders,
+    memberdate: doc.memberdate
   };
 }
 
@@ -173,7 +174,7 @@ module.exports = (app) => {
               }else{
                 res.send({ code: 1, msg: "Invalid password" });
               }
-            })
+            });
         }
       })
     }
@@ -248,15 +249,21 @@ module.exports = (app) => {
         }else{
           Sample.findOne({_id:user._id, password: md5(password)}, filter, function (err, data){
             if(data){
-              Sample.updateOne({ _id: user._id }, { isadmin: true }, function (err, data) {
-                if (data.nModified === 1) {
-                  res.send({ code: 0, msg: 'Get Membership Success', isadmin: true , _id: user._id});
-                } else {
-                  res.send({ code: 1, msg: "You are already Membership", isadmin: user.isadmin,  _id: user._id });
+              Sample.findOne({_id:user._id, firstmember: true}, filter, function (err, data){
+                if(data){
+                    Sample.updateOne({ _id: user._id }, { isadmin: true, firstmember: false,  memberdate: req.body.memberdate}, function (err, data) {
+                      if (data.nModified === 1) {
+                        res.send({ code: 0, msg: 'Get Membership Success', isadmin: true , _id: user._id});
+                      } else {
+                        res.send({ code: 1, msg: "You are already Membership", isadmin: user.isadmin,  _id: user._id });
+                      }
+                  })
+                }else{
+                  res.send({code: 1, msg: 'You have used free membership'})
                 }
-            })
+              })
           }else {
-              res.send({code:1, msg: 'Invalid ID'});
+              res.send({code:1, msg: 'Invalid Password'});
             }
           })
         }
@@ -270,10 +277,28 @@ module.exports = (app) => {
         if (err) {
           res.send({ code: 1, msg: "Invalid ID" });
         } else {
-          res.send({
-            code: 0,
-            data: userDataFromDocument(user)
-          });
+          if(user.isadmin === false){
+            res.send({
+              code: 0,
+              data: userDataFromDocument(user)
+            });
+          }else{
+            const lastdate = new Date(Date.parse(user.memberdate))
+            const lastdate1 = new Date(lastdate.setDate(lastdate.getDate() +30))
+            const currentdate = new Date()
+            if(lastdate1> currentdate){
+              res.send({
+                code: 0,
+                data: userDataFromDocument(user)
+              });
+            }else{
+              user.isadmin = false;
+              res.send({
+                code: 0,
+                data: userDataFromDocument(user)
+              })
+            }
+          }
         }
       });
     } else {
