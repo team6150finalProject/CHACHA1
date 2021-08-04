@@ -33,8 +33,14 @@ class Cart extends React.Component {
     formatCards = () => {
         return this.orders.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
-    handleOrder() {
-        this.props.addorder(this.state)
+    handleOrder(state) {
+        this.props.addorder(state);
+        for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
+            cookie.remove('order' + i);
+        }
+        cookie.save('drinkNum', 0, { path: "/" });
+        cookie.save('orderNum', 0, { path: "/" });
+        window.open("/", "_self");
     }
     render() {
         return(
@@ -53,7 +59,7 @@ class Cart extends React.Component {
                   <option value="3">22 W 5rd St, New York, NY 10019</option>
                   <option value="3">800 Marlins Way, Miami, FL 33125</option>
                 </Form.Select>
-                <Button variant="secondary" onClick={this.handleOrder}>Place Order</Button>
+                <Button variant="secondary" onClick={() => this.handleOrder(this.state)}>Place Order</Button>
                 </div>
             </div>
         )
