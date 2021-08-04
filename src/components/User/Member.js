@@ -13,6 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {reqGetMembership} from "../../api";
+import {Link} from "react-router-dom";
 
 class Member extends Component {
 
@@ -108,6 +109,7 @@ class Member extends Component {
                     </div>
                     <hr/>
                     <div>
+                        <h3>Free MemberShip for New</h3>
                         <div>
                             <Button variant="outlined" color="default" onClick={this.handleClickOpen}>
                                 Try Free Membership
