@@ -1,4 +1,4 @@
-import {reqLogin, reqRegister, reqUserData} from "../api";
+import {reqLogin, reqRegister, reqUserData, reqAddOrder} from "../api";
 import cookie from 'react-cookies';
 import {
     AUTH_SUCCESS,
@@ -94,4 +94,17 @@ export const fetchData = () => {
         dispatch(fetchUserData());
       }
   }
+}
+
+export const addorder =(user) =>{
+    const {timemillis, price, products} =user
+    return async dispatch =>{
+        const response = await reqAddOrder(user)
+        const result =response.data
+        if(result.code ===0){
+            dispatch(authSuccess(result.data))
+        }else{
+            dispatch(errormsgreg(result.msg))
+        }
+    }
 }

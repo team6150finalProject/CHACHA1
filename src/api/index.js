@@ -11,3 +11,4 @@ export const reqGetMembership =(user) => ajax('/user/member',user,'POST')
 export const reqUserData =(user) =>ajax('/userdata',user,'GET')
 export const reqUpdateFavorite =(user) =>ajax('/user/favorites',user,'POST')
 
+export const reqAddOrder =(user) => ajax('/addorder', user, 'POST')

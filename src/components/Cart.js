@@ -2,14 +2,18 @@ import React from 'react';
 import cookie from 'react-cookies';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import CartCard from "./CartCard"
+import CartCard from "./CartCard";
+import {connect} from "react-redux";
+import {addorder} from "../redux/actions";
 
 class Cart extends React.Component {
     constructor(props) {
         super(props);
         this.orders = [];
         this.state = {
-            price: 0
+            timemillis: "",
+            price: 0,
+            products: ""
         };
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             var tmp = JSON.parse(cookie.load('order' + i)).split(",");
@@ -29,6 +33,9 @@ class Cart extends React.Component {
     formatCards = () => {
         return this.orders.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
+    handleOrder() {
+        this.props.addorder(this.state)
+    }
     render() {
         return(
             <div>
@@ -39,18 +46,22 @@ class Cart extends React.Component {
                     </div>
                 </div>
                 <div style={{textAlign: "center"}}>
-                <div>Total: {(this.state.price).toFixed(2)}</div>
+                <div>Total: ${(this.state.price).toFixed(2)}</div>
                 <Form.Select aria-label="Default select example">
                   <option value="1">75 Service St, San Jose, CA 95112</option>
                   <option value="2">52 N Carson St, Carson City, NV 89701</option>
                   <option value="3">22 W 5rd St, New York, NY 10019</option>
                   <option value="3">800 Marlins Way, Miami, FL 33125</option>
                 </Form.Select>
-                <Button variant="secondary">Place Order</Button>
+                <Button variant="secondary" onClick={this.handleOrder}>Place Order</Button>
                 </div>
             </div>
         )
     }
 }
 
-export default Cart;
+export default connect(
+    state =>({}),
+    {addorder}
+)
+(Cart);
