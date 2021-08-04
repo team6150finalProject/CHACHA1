@@ -14,6 +14,7 @@ import SignUpScreen from "./components/SigninScreen/SignUpScreen";
 import Users from "./components/User/Users";
 import cookie from 'react-cookies';
 import Order from './components/Order';
+import Location from './components/Location';
 
 import AuthForLogin from '../src/utils/authForLogin';
 import OrderHistory from "./components/User/OrderHistory";
@@ -55,6 +56,7 @@ class App extends React.Component {
           <Route path='/order/milkTea/:productId' component={MilkTeaSelect} />
           <Route path='/order/fruitTea/:productId' component={FruitTeaSelect} />
           <Route path='/order/specialtyDrinks/:productId' component={FruitTeaSelect} />
+          <Route path='/location' component={Location} />
 
           <Route path='/cart' component={Auth(Cart)} />
           <Route path='/signin' component={AuthForLogin(SignInScreen)} />
