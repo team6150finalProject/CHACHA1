@@ -32,7 +32,7 @@ class MainNav extends React.Component {
                 <NavDropdown.Item href="/#specialty">Specialty Drinks</NavDropdown.Item>
               </NavDropdown>
               <Nav.Item>
-                <Nav.Link href="/#findStore">Location</Nav.Link>
+                <Nav.Link href="/location">Location</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/order">Online Order</Nav.Link>

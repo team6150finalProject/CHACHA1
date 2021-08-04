@@ -3,7 +3,7 @@ import productInfo from "../model/productInfo.json"
 import OrderMilkTea from './orderMilkTea';
 import OrderFruitTea from './orderFruitTea';
 import OrderSpecial from './orderSpecial';
-import { Nav , Tab, Tabs } from 'react-bootstrap';
+import { Tab, Tabs } from 'react-bootstrap';
 
 
 class Order extends React.Component {
