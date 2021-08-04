@@ -71,7 +71,7 @@ export const syncInfoAc =data => {
     }
 }
 
-export const logOut =data => {
+export const logOut =() => {
     return dispatch =>{
         localStorage.removeItem('@#@TOKEN');
         cookie.remove('orderNum');

@@ -6,7 +6,7 @@ import './SideBar.css';
 class SideBar extends React.Component {
   render() {
     return (
-      <div className="sidebar">
+      <div className="sidebar" style={{height:800}}>
         <ListGroup>
           <ListGroup.Item as="li"><Link className='sidebar-link' to='/user'>Profile</Link></ListGroup.Item>
           <ListGroup.Item as="li"><Link className='sidebar-link' to='/user/member'>Member Management</Link></ListGroup.Item>

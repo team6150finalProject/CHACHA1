@@ -29,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -53,6 +54,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -74,7 +76,7 @@
       <workItem from="1627944381895" duration="7085000" />
       <workItem from="1627975559549" duration="18495000" />
       <workItem from="1628021160706" duration="7153000" />
-      <workItem from="1628042475157" duration="9772000" />
+      <workItem from="1628042475157" duration="13591000" />
     </task>
     <servers />
   </component>

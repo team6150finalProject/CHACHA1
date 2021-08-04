@@ -1,0 +1,38 @@
+.coupon{
+    float: left;
+    width: 80%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coupon_left{
+    background-color: #11cfea;
+    border-right: dashed #ba5353 1px;
+    display: block;
+    float: left;
+    height: 70px;
+    width: 15%;
+    border-radius: 6px 6px 6px 6px;
+    text-align: center;
+}
+.coupon_left button{
+    border: none;
+    margin-top: 10px;
+    border-radius: 2px 2px 2px 2px;
+    width: 80%;
+    background-color: #677eff;
+}
+.coupon_left span{
+    margin-top: 5px;
+}
+
+
+.coupon_right{
+    background-color: #757979;
+    width: 30%;
+    display: block;
+    height: 70px;
+    border-radius: 6px 6px 6px 6px;
+}
