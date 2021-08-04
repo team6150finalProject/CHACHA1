@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Card } from 'react-bootstrap';
 import { Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Heart from './Heart';
 
 
 class OrderFruitTea extends Component {
@@ -29,6 +30,7 @@ class OrderFruitTea extends Component {
                     {this.props.products.slice(3, 6).map(product => (
                         <Card key={product.title} className = "product" style={cardStyle}>
                             <img style = {imgStyle} src= {"../../img/" + product.imgFileName} alt = {product.title}/>
+                            <Heart productId={product.productId} className="order-heart" />
                             <Card.Body>
                                 <Card.Title>{product.title}</Card.Title>
                                 <Card.Text className="mb-2 text-muted">
