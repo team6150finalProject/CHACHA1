@@ -28,7 +28,7 @@ class MainNav extends React.Component {
               </Nav.Item>
               <NavDropdown title="Menu">
                 <NavDropdown.Item href="/#milkTea">Milk Tea</NavDropdown.Item>
-                <NavDropdown.Item href="/#fruitTea">Fruit Teaa</NavDropdown.Item>
+                <NavDropdown.Item href="/#fruitTea">Fruit Tea</NavDropdown.Item>
                 <NavDropdown.Item href="/#specialty">Specialty Drinks</NavDropdown.Item>
               </NavDropdown>
               <Nav.Item>
