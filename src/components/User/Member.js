@@ -13,6 +13,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {reqGetMembership} from "../../api";
+import ReactDOM from 'react-dom'
+
+const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 class Member extends Component {
 
@@ -21,9 +24,11 @@ class Member extends Component {
         this.state = {
             open: false,
             password:'',
-            memberdate: {}}
-
+            memberdate: {},
+            memeberday:false
+        }
     }
+
     handleClickOpen = () => {
         this.setState({
             open: true
@@ -59,20 +64,37 @@ class Member extends Component {
         this.setState({
             memberdate: new Date()
         })
-
     };
 
-    handleClickCheck1 = () => {
-       console.log(typeof this.state.memberdate)
-    };
+    createOrder(data, actions) {
+        return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [
+                {
+                    description: 'Renew CHA-CHA Membership',
+                    amount: {
+                        value: 10,
+                    },
+                },
+            ],
+        });
+    }
 
+    onApprove(data, actions) {
+        alert('You have been renewed your membership')
+        this.setState({
+            memeberday: true
+        })
+        return actions.order.capture();
+    }
 
     render() {
         const date= this.props.loginData.userData.memberdate;
         const datetime =Date.parse(date)
         const datetime2 =new Date(datetime)
         const result1 =datetime2.toUTCString()
-        const result =datetime2.setDate(datetime2.getDate()+30)
+        const result = this.state.memeberday?datetime2.setDate(datetime2.getDate()+60):
+            datetime2.setDate(datetime2.getDate()+30)
         const result2 = new Date(result).toUTCString()
         return (
             <div>
@@ -160,7 +182,14 @@ class Member extends Component {
                             </Dialog>
                         </div>
                         <hr/>
-                        <button onClick={this.handleClickCheck1}>Renewal Membership</button>
+                        <h3> Want to Renew Membership</h3>
+                        <hr/>
+                        <div className='paypal-button'>
+                            <PayPalButton
+                                createOrder={(data, actions) => this.createOrder(data, actions)}
+                                onApprove={(data, actions) => this.onApprove(data, actions)}
+                            />
+                        </div>
                     </div>
 
                 </div>

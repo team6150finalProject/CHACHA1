@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import CartCard from "./CartCard";
 import {connect} from "react-redux";
 import {addorder} from "../redux/actions";
+import {reqAddOrder} from "../api";
 
 class Cart extends React.Component {
     constructor(props) {
@@ -41,6 +42,13 @@ class Cart extends React.Component {
         cookie.save('drinkNum', 0, { path: "/" });
         cookie.save('orderNum', 0, { path: "/" });
         window.open("/", "_self");
+        const data ={
+            timemillis: '',
+            price: this.state.price,
+            products: this.state.products
+        }
+        reqAddOrder(data);
+
     }
     render() {
         return(
