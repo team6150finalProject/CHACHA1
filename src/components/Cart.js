@@ -11,16 +11,15 @@ import {addorder} from "../redux/actions";
 class Cart extends React.Component {
     constructor(props) {
         super(props);
-        this.orders = [];
         this.state = {
-            timemillis: "",
+            timemillis: Date.now(),
             price: 0,
-            products: ""
+            products: []
         };
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             var tmp = JSON.parse(cookie.load('order' + i)).split(",");
             var price = tmp[2]*tmp[5];
-            this.orders.push({
+            this.state.products.push({
                 product: tmp[0],
                 size: tmp[1],
                 price: price,
@@ -30,10 +29,11 @@ class Cart extends React.Component {
             });
             this.state.price += price;
         }
-        console.log(this.orders);
+        console.log(this.state.products);
+        console.log(this.state.timemillis);
     }
     formatCards = () => {
-        return this.orders.map((reading, index) => <CartCard reading={reading} key={index} />)
+        return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
         this.props.addorder(state);
