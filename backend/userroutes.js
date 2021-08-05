@@ -102,7 +102,7 @@ module.exports = (app) => {
           const newOrder = {
             orderid: nextid,
             timemillis: timemillis,
-            totalprice: totalprice,
+            totalprice: price,
             products: products
           }
           Sample.updateOne({ _id: user._id }, { nextid: nextid + 1, $push: { orders: newOrder } }, function (err, data) {
