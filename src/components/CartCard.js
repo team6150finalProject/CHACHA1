@@ -1,4 +1,5 @@
 import React from 'react';
+import cookie from 'react-cookies';
 import {Link} from "react-router-dom";
 import productInfo from "../model/productInfo.json"
 
@@ -34,7 +35,16 @@ const CartCard = ({reading}) => {
             </div>
             <div className="card-footer">
                 <div>Price: ${reading.price}</div>
-                <button>Delete</button>
+                <button onClick={() => {
+                    var n = parseInt(cookie.load('orderNum'));
+                    for (var i = reading.index; i < n; i++) {
+                        cookie.save('order' + i, cookie.load('order' + (i+1)), {path:"/"});
+                    }
+                    cookie.remove('order' + n);
+                    cookie.save('drinkNum', parseInt(cookie.load('drinkNum')) - parseInt(reading.qty), {path:"/"});
+                    cookie.save('orderNum', n - 1, {path:"/"});
+                    window.open("/cart", "_self");
+                }}>Delete</button>
             </div>
         </div>
     );

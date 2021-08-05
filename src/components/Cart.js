@@ -20,6 +20,7 @@ class Cart extends React.Component {
             var tmp = JSON.parse(cookie.load('order' + i)).split(",");
             var price = tmp[2]*tmp[5];
             this.state.products.push({
+                index: i,
                 product: tmp[0],
                 size: tmp[1],
                 price: price,
@@ -70,8 +71,8 @@ class Cart extends React.Component {
                     </div>
                     <div style={{textAlign: "center", padding: 10}}>
                     <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-                    <h3 style={{width: "200px"}}>Your Location: </h3>
-                    <Form.Select aria-label="Default select example" style={{width: "340px"}}>
+                    <h3 style={{width: "250px"}}>Pick Up Location: </h3>
+                    <Form.Select aria-label="Default select example" style={{width: "290px"}}>
                       <option value="1">75 Service St, San Jose, CA 95112</option>
                       <option value="2">52 N Carson St, Carson City, NV 89701</option>
                       <option value="3">22 W 5rd St, New York, NY 10019</option>
