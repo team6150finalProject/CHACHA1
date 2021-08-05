@@ -9,6 +9,7 @@ import MilkTeaSelect from './components/MilkTeaSelect';
 import FruitTeaSelect from './components/FruitTeaSelect';
 import './App.css';
 import Cart from "./components/Cart";
+import ConfirmationPage from "./components/ConfirmationPage";
 import SignInScreen from "./components/SigninScreen/SignInScreen";
 import SignUpScreen from "./components/SigninScreen/SignUpScreen";
 import Users from "./components/User/Users";
@@ -17,7 +18,6 @@ import Order from './components/Order';
 import Location from './components/Location';
 
 import AuthForLogin from '../src/utils/authForLogin';
-import OrderHistory from "./components/User/OrderHistory";
 import ProfileScreen from "./components/User/ProfileScreen";
 
 import { connect } from "react-redux";
@@ -59,6 +59,7 @@ class App extends React.Component {
           <Route path='/location' component={Location} />
 
           <Route path='/cart' component={Auth(Cart)} />
+          <Route path='/confirmation' component={(ConfirmationPage)} />
           <Route path='/signin' component={AuthForLogin(SignInScreen)} />
           <Route path='/signup' component={AuthForLogin(SignUpScreen)} />
           <Route path='/profile' component={Auth(ProfileScreen)} />

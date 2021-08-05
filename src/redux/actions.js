@@ -74,6 +74,9 @@ export const syncInfoAc =data => {
 export const logOut =() => {
     return dispatch =>{
         localStorage.removeItem('@#@TOKEN');
+        for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
+            cookie.remove('order' + i);
+        }
         cookie.remove('orderNum');
         cookie.remove('drinkNum');
         dispatch(syncInfoAc({}));
