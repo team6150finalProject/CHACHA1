@@ -12,7 +12,7 @@ class OrderHistory extends React.Component {
         super(props);
         this.state = {
             orders: [{
-                orderId: "",
+                orderid: "",
                 timemillis: 0,
                 totalprice: 0,
                 products: [{
@@ -38,7 +38,7 @@ class OrderHistory extends React.Component {
             timemillis: "08-02-2021",
             totalprice: 20,
             products: [{
-                name: "berry",
+                name: "berryTea",
                 size: "small",
                 ice: "ice",
                 sweetness: "sweet",
@@ -46,7 +46,7 @@ class OrderHistory extends React.Component {
                 quantity: 1
             },
                 {
-                    name: "bubbleTea",
+                    name: "berryTea",
                     size: "",
                     ice: "",
                     sweetness: "",
