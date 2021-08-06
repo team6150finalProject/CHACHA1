@@ -122,7 +122,8 @@ class Member extends Component {
                         </div>
                     </div>
                 </div>
-                <br/>
+
+                <hr/>
                 <div>
                     <h3>Membership privileges</h3>
                     <div className='member-privileges'>
@@ -142,6 +143,7 @@ class Member extends Component {
                         </Carousel>
                     </div>
                 </div>
+                <hr/>
                 <div>
                     <div>
                         <p>Member points: </p>
@@ -182,7 +184,7 @@ class Member extends Component {
                             </Dialog>
                         </div>
                         <hr/>
-                        <h3> Want to Renew Membership</h3>
+                        <h3> Want to Renew Membership? </h3>
                         <hr/>
                         <div className='paypal-button'>
                             <PayPalButton

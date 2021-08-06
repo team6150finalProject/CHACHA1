@@ -2,7 +2,7 @@ import React from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import { reqUpdatePassword} from "../../api";
-
+import "./Profile.css"
 const passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,12}$/;
 
 class Settings extends React.Component {
@@ -56,14 +56,14 @@ class Settings extends React.Component {
                   >
                       {({ isSubmitting }) => (
                           <Form>
-                              <label htmlFor="oldPassword">Old Password</label>
-                              <Field type="password" name="oldPassword"/>
+                              <label  className="profile-screen-label" htmlFor="oldPassword">Old Password</label>
+                              <Field className="profile-screen-input" type="password" name="oldPassword"/>
                               <ErrorMessage className="profile-error" name="oldPassword" component="div" />
-                              <label htmlFor="newPassword">New Password</label>
-                              <Field type="password" name="newPassword" />
+                              <label  className="profile-screen-label" htmlFor="newPassword">New Password</label>
+                              <Field className="profile-screen-input" type="password" name="newPassword" />
                               <ErrorMessage className="profile-error" name="newPassword" component="div" />
-                              <label htmlFor="conPassword">Confirm Password</label>
-                              <Field type="password" name="conPassword" />
+                              <label  className="profile-screen-label" htmlFor="conPassword">Confirm Password</label>
+                              <Field className="profile-screen-input" type="password" name="conPassword" />
                               <ErrorMessage className="profile-error" name="conPassword" component="div" />
                               <button type="submit" disabled={isSubmitting}>
                                   Update
