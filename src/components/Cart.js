@@ -39,6 +39,9 @@ class Cart extends React.Component {
             });
             this.state.price += price;
         }
+        if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
+            this.state.price -= 2;
+        }
         console.log(this.state.products);
     }
     formatCards = () => {
