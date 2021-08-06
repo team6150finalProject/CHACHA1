@@ -58,16 +58,17 @@ class Cart extends React.Component {
         const isEmpty = parseInt(cookie.load('orderNum')) == 0;
         if (isEmpty) {
             return (
-                <div style={{height:800, justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-                    <Card className="text-center">
-                      <Card.Header>The Cart is emptied</Card.Header>
-                      <Card.Body>
-                        <Link to={'/order'} >
-                            <Button variant="secondary">Go to Order page</Button>
-                        </Link>
-                      </Card.Body>
-                    </Card>
+              <div style={{height: '60vh', width: '40%', margin: '0 auto', backgroundColor: '#e5e1cd'}}>
+              <div style={{height: '50%', width: '100%', paddingTop: '10vh'}}>
+                  <img src={process.env.PUBLIC_URL + "/img/empty-cart.png"} style={{display: 'block', height: '100%', marginLeft: 'auto', marginRight: 'auto'}} />
                 </div>
+                <div style={{display:'block', height: '50%', width: '100%', textAlign: 'center'}}>
+                  <h1 style={{marginTop: '10vh'}}>Your cart is currently empty</h1>
+                  <Link to={'/order'} >
+                      <Button variant="secondary">Go to Order page</Button>
+                  </Link>
+                </div>
+            </div>
             )
         } else {
             return(
