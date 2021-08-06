@@ -40,7 +40,7 @@ class OrderSpecial extends Component {
                                     {product.price}
                                 </Card.Title>
                                 <Link to={'/order/' + product.type + "/"+ product.productId} >
-                                    <Button variant="light">ADD to Cart &nbsp;<i class="fas fa-cart-plus fa-lg"></i> </Button>
+                                    <Button variant="light">ADD to Cart &nbsp;<i className="fas fa-cart-plus fa-lg"></i> </Button>
                                 </Link>
                             </Card.Body>
                         </Card>

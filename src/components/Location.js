@@ -62,7 +62,7 @@ class Location extends React.Component {
       return (
         <li key={name} className="list-group-item" onClick={this.setLocation.bind(this, name)}>
           {data.address}
-          <button style={buttonStyle}><img src="https://img.icons8.com/color/32/000000/google-maps-new.png" /></button>
+          <button style={buttonStyle}><img src="https://img.icons8.com/color/32/000000/google-maps-new.png"  alt = 'search'/></button>
         </li>
       );
     });

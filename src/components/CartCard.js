@@ -1,6 +1,5 @@
 import React from 'react';
 import cookie from 'react-cookies';
-import {Link} from "react-router-dom";
 import productInfo from "../model/productInfo.json"
 
 const CartCard = ({reading}) => {
@@ -12,7 +11,7 @@ const CartCard = ({reading}) => {
             break;
         }
     }
-    const isExtra = reading.extras.length == 0;
+    const isExtra = reading.extras.length === 0;
     return (
         <div className="card" style={{width: "30vw", marginTop: "10px", borderRadius: "20px"}}>
             <div className="card-body" >
@@ -36,7 +35,7 @@ const CartCard = ({reading}) => {
                 </h4>
                 
 
-                <img className="orderImg" style ={{ float: 'left', borderRadius: "20px" }} src={"../../img/" + imgFile} />
+                <img className="orderImg" style ={{ float: 'left', borderRadius: "20px" }} src={"../../img/" + imgFile} alt = {reading.name}/>
                 <div style={{display: "inline-block", clear: 'left'}}>
                     <p className="card-text">
                         Size: {reading.size}

@@ -69,13 +69,13 @@ class Cart extends React.Component {
     }
 
     render() {
-        const isEmpty = parseInt(cookie.load('orderNum')) == 0;
+        const isEmpty = parseInt(cookie.load('orderNum')) === 0;
         const is2OFF = this.props.user.userData.isadmin && (this.state.price >= 10);
         if (isEmpty) {
             return (
               <div style={{height: '60vh', width: '40%', margin: '0 auto', backgroundColor: '#e5e1cd'}}>
               <div style={{height: '50%', width: '100%', paddingTop: '10vh'}}>
-                  <img src={process.env.PUBLIC_URL + "/img/empty-cart.png"} style={{display: 'block', height: '100%', marginLeft: 'auto', marginRight: 'auto'}} />
+                  <img src={process.env.PUBLIC_URL + "/img/empty-cart.png"}  alt = 'empty cart' style={{display: 'block', height: '100%', marginLeft: 'auto', marginRight: 'auto'}} />
                 </div>
                 <div style={{display:'block', height: '50%', width: '100%', textAlign: 'center'}}>
                   <h1 style={{marginTop: '10vh'}}>Your cart is currently empty</h1>
@@ -118,11 +118,12 @@ class Cart extends React.Component {
                         </Tabs>
                         <br/>
                         <hr style={{textAlign:'center',width:'80%'}}/>
-                        <h3 style={{fontWeight: "bold" , margin:'5px'}}>Total: ${(this.state.price).toFixed(2)}</h3>
+                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
                         {is2OFF
                             ? <nobr> ($2 off for member order of $10+) </nobr>
                             : <nobr></nobr>
                         }
+                        </h3>
                         <p>
                             <Link to={'/order'} >
                             <Button variant="primary" style={{margin:'5px'}}>Continue Shopping</Button>
