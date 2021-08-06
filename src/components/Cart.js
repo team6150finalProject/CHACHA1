@@ -7,7 +7,6 @@ import {Link} from 'react-router-dom';
 import CartCard from "./CartCard";
 import {connect} from "react-redux";
 import {addorder} from "../redux/actions";
-import {reqAddOrder} from "../api";
 
 class Cart extends React.Component {
     constructor(props) {
