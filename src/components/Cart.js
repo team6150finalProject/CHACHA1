@@ -1,7 +1,7 @@
 import React from 'react';
 import cookie from 'react-cookies';
 import {Button} from 'react-bootstrap';
-import {Form} from 'react-bootstrap';
+import {Form, Tabs, Tab} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import CartCard from "./CartCard";
 import {connect} from "react-redux";
@@ -14,9 +14,11 @@ class Cart extends React.Component {
             timemillis: Date.now(),
             price: 0,
             products: [],
-            location: "75 Service St, San Jose, CA 95112"
+            method: 'Pick up',
+            location: "",
         };
         this.handleLocationSelected = this.handleLocationSelected.bind(this);
+        this.handleShippingMethod = this.handleShippingMethod.bind(this);
 
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             var tmp = JSON.parse(cookie.load('order' + i)).split(",");
@@ -39,8 +41,8 @@ class Cart extends React.Component {
             });
             this.state.price += price;
         }
-        console.log(this.state.products);
-        console.log(this.state.timemillis);
+        // console.log(this.state.products);
+        // console.log(this.state.timemillis);
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
@@ -57,8 +59,11 @@ class Cart extends React.Component {
     }
 
     handleLocationSelected(event){
-        var index = event.target.selectedIndex
-        this.setState({location: event.target[index].text});
+        this.setState({location: event.target.value});
+    }
+
+    handleShippingMethod(event) {
+        this.setState({method: event.target.value});
     }
 
     render() {
@@ -79,32 +84,47 @@ class Cart extends React.Component {
             )
         } else {
             return(
-                <div style={{minHeight: '50vh'}}>
-                    <h1 style={{textAlign: "center", padding: 10}}>Cart</h1>
-                    <div className="content-warp">
-                        <div>
-                            {this.formatCards()}
+                <div  style={{minHeight: '50vh', paddingBottom:'20px'}}>
+                    <div  className="leftSide" style={{width: '70%', float: 'left'}}>
+                        <h2 style={{textAlign: "center", padding: 10, }}>Order Summary</h2>
+                        <div className="content-warp">
+                            <div>
+                                {this.formatCards()}
+                            </div>
                         </div>
                     </div>
-                    <div style={{textAlign: "center", padding:20}}>
-                        <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-                            <h5 style={{width: "260px"}}>Select Your Pick Up Store: </h5>
-                            <Form.Select aria-label="Default select example" style={{width: "320px"}}>
-                            <option value="1">75 Service St, San Jose, CA 95112</option>
-                            <option value="2">52 N Carson St, Carson City, NV 89701</option>
-                            <option value="3">22 W 5rd St, New York, NY 10019</option>
-                            <option value="3">800 Marlins Way, Miami, FL 33125</option>
-                            </Form.Select>
-                        </div>
-                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}</h3>
+                    <div className="rightSide" style={{marginLeft:'70%', padding: 10, marginTop: '0.9em'}}>
+                        <Tabs style={{justifyContent: 'left', width:'80%',marginTop: '2em', alignItems: 'center', display: 'flex'}} defaultActiveKey="pickUp" id="shipping" className="mb-3">
+                            <Tab eventKey="delivery" title="Delivery">
+                                <Form.Label>Street Address:</Form.Label>
+                                <Form.Control type="text" placeholder="Please enter your address" onBlur= {this.handleLocationSelected} />
+                                <br/>
+                                <Button variant="primary" >Confirm</Button>
+                            </Tab>
+                            <Tab eventKey="pickUp" title="Pick up" style={{textAlign: 'left', display: 'block'}}>
+                                <input type="radio" id="CA" name="pickup" value="75 Service St, San Jose, CA 95112" checked={this.state.location === '75 Service St, San Jose, CA 95112'}  onChange={this.handleLocationSelected}/><label> 75 Service St, San Jose, CA 95112</label>
+                                <br />
+                                <input type="radio" id="NV" name="pickup" value="52 N Carson St, Carson City, NV 89701" checked={this.state.location === '52 N Carson St, Carson City, NV 89701'}  onChange={this.handleLocationSelected}/><label> 52 N Carson St, Carson City, NV 89701</label>
+                                <br />
+                                <input type="radio" id="NY" name="pickup" value="22 W 5rd St, New York, NY 10019" checked={this.state.location === '22 W 5rd St, New York, NY 10019'}  onChange={this.handleLocationSelected}/><label> 22 W 5rd St, New York, NY 10019</label>
+                                <br />
+                                <input type="radio" id="FL" name="pickup" value="800 Marlins Way, Miami, FL 33125" checked={this.state.location === '800 Marlins Way, Miami, FL 33125'}  onChange={this.handleLocationSelected}/><label> 800 Marlins Way, Miami, FL 33125</label>
+                                <br />
+                            </Tab>
+                            
+                        </Tabs>
+                        <br/>
+                        <hr style={{textAlign:'center',width:'80%'}}/>
+                        <h3 style={{fontWeight: "bold" , margin:'5px'}}>Total: ${(this.state.price).toFixed(2)}</h3>
                         <p>
                             <Link to={'/order'} >
-                            <Button variant="primary">Continue Shopping</Button>
+                            <Button variant="primary" style={{margin:'5px'}}>Continue Shopping</Button>
                             </Link>
-                            &nbsp; &nbsp; &nbsp; &nbsp;
-                            <Button variant="dark" onClick={() => this.handleOrder(this.state)}>Place Order</Button>
+                            &nbsp; &nbsp; 
+                            <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}}>Place Order</Button>
                         </p>
                     </div>
+                    <br className="clear"  style={{clear:'left'}}/>
                 </div>
             )
         }

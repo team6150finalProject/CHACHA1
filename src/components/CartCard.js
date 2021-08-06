@@ -20,8 +20,8 @@ const CartCard = ({reading}) => {
                 <h4 className="card-title" >
                     {reading.name}
                     
-                    <div class="dialog" style={{position: 'relative'}} >
-                        <button style={{borderRadius: "20px", position: 'absolute', top: -30, right: 0,  backgroundColor:'transparent',
+                    <div className="dialog" style={{position: 'relative'}} >
+                        <button style={{borderRadius: "20px", position: 'absolute', top: -30, right: 10,  backgroundColor:'transparent',
             borderStyle:'none'}} 
                             onClick={() => {
                             var n = parseInt(cookie.load('orderNum'));
@@ -32,7 +32,7 @@ const CartCard = ({reading}) => {
                             cookie.save('drinkNum', parseInt(cookie.load('drinkNum')) - parseInt(reading.quantity), {path:"/"});
                             cookie.save('orderNum', n - 1, {path:"/"});
                             window.open("/cart", "_self");
-                        }}><img src="https://img.icons8.com/color/36/000000/cancel.png"/></button>
+                        }}><i className="fas fa-trash-alt"></i></button>
                     </div>
                 </h4>
                 
