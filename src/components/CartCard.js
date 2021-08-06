@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import productInfo from "../model/productInfo.json"
 
 const CartCard = ({reading}) => {
-    console.log("reading:" + reading);
     var products = productInfo.products;
     var imgFile = "";
     for (var i = 0; i < products.length; i++) {
@@ -21,7 +20,7 @@ const CartCard = ({reading}) => {
                     {reading.name}
                     
                     <div className="dialog" style={{position: 'relative'}} >
-                        <button style={{borderRadius: "20px", position: 'absolute', top: -30, right: 10,  backgroundColor:'transparent',
+                        <button style={{borderRadius: "20px", position: 'absolute', top: -30, right: 0,  backgroundColor:'transparent',
             borderStyle:'none'}} 
                             onClick={() => {
                             var n = parseInt(cookie.load('orderNum'));

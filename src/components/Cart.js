@@ -41,8 +41,10 @@ class Cart extends React.Component {
             });
             this.state.price += price;
         }
-        // console.log(this.state.products);
-        // console.log(this.state.timemillis);
+        if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
+            this.state.price -= 2;
+        }
+        console.log(this.state.products);
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
@@ -68,6 +70,7 @@ class Cart extends React.Component {
 
     render() {
         const isEmpty = parseInt(cookie.load('orderNum')) == 0;
+        const is2OFF = this.props.user.userData.isadmin && (this.state.price >= 10);
         if (isEmpty) {
             return (
               <div style={{height: '60vh', width: '40%', margin: '0 auto', backgroundColor: '#e5e1cd'}}>
@@ -111,16 +114,20 @@ class Cart extends React.Component {
                                 <input type="radio" id="FL" name="pickup" value="800 Marlins Way, Miami, FL 33125" checked={this.state.location === '800 Marlins Way, Miami, FL 33125'}  onChange={this.handleLocationSelected}/><label> 800 Marlins Way, Miami, FL 33125</label>
                                 <br />
                             </Tab>
-                            
+
                         </Tabs>
                         <br/>
                         <hr style={{textAlign:'center',width:'80%'}}/>
                         <h3 style={{fontWeight: "bold" , margin:'5px'}}>Total: ${(this.state.price).toFixed(2)}</h3>
+                        {is2OFF
+                            ? <nobr> ($2 off for member order of $10+) </nobr>
+                            : <nobr></nobr>
+                        }
                         <p>
                             <Link to={'/order'} >
                             <Button variant="primary" style={{margin:'5px'}}>Continue Shopping</Button>
                             </Link>
-                            &nbsp; &nbsp; 
+                            &nbsp; &nbsp;
                             <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}}>Place Order</Button>
                         </p>
                     </div>
@@ -132,7 +139,7 @@ class Cart extends React.Component {
 }
 
 export default connect(
-    state =>({}),
+    state =>({user: state.fetchreducer}),
     {addorder}
 )
 (Cart);

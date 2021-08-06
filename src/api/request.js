@@ -19,7 +19,7 @@ axios.interceptors.request.use(config =>{
 axios.interceptors.response.use( response=>{
     const {status, msg} =response.data;
     if(status ===1  && msg === 'TOKEN ERROR'){
-        window.location.href ='/';
+        window.location.href ='/signin';
         localStorage.removeItem('@#@TOKEN');
     }
     return response;

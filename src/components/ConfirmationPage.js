@@ -2,7 +2,9 @@ import React from 'react';
 import {connect} from "react-redux";
 import {fetchData} from "../redux/actions";
 import OrderCard from "./User/OrderCard";
+import ReactDOM from "react-dom";
 
+const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 class ConfirmationPage extends React.Component {
 
     constructor(props) {
@@ -30,7 +32,23 @@ class ConfirmationPage extends React.Component {
             }
         }
     }
+    createOrder(data, actions) {
+        return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [
+                {
+                    description: 'purchase',
+                    amount: {
+                        value: this.state.order.price,
+                    },
+                },
+            ],
+        });
+    }
 
+    onApprove(data, actions) {
+        return actions.order.capture();
+    }
     componentDidMount(){
         const orderData = this.props.location.state.order;
         const userData = this.props.user.userData;
@@ -73,18 +91,6 @@ class ConfirmationPage extends React.Component {
                     </div>
                 </div>
 
-                <div className="card" id="paymentConfirm">
-                    <div className="card-body">
-                        <h4>Select Payment Method</h4>
-                        <hr className="solid"></hr>
-                        <h5 id="selectPayment">Paypal</h5>
-                        <input type="radio" id="selectPayment2"/>
-                        <hr className="solid"></hr>
-                        <h5 id="selectPayment">Pay with credit card</h5>
-                        <input type="radio" id="selectPayment2"/>
-                    </div>
-                </div>
-
                 <div className="card" id="PickUpConfirm">
                     <div className="card-body">
                         <h4>Choose Your Coupon</h4>
@@ -106,6 +112,18 @@ class ConfirmationPage extends React.Component {
                         <p>Discounts</p>
                         <h4 className="priceConfirm1">Total</h4>
                         <h4 className="priceConfirm2">${this.state.order.price}</h4>
+                    </div>
+                </div>
+
+                <div className="card" id="paymentConfirm">
+                    <div className="card-body">
+                        <h4>Select Payment Method</h4>
+                        <div className='paypal-button'>
+                            <PayPalButton
+                                createOrder={(data, actions) => this.createOrder(data, actions)}
+                                onApprove={(data, actions) => this.onApprove(data, actions)}
+                            />
+                        </div>
                     </div>
                 </div>
 
