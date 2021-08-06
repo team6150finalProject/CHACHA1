@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import decode from 'jwt-decode'
 import store from "./redux/store";
+import cookie from 'react-cookies';
 import {Provider} from "react-redux";
 import {syncInfoAc} from "./redux/actions";
 
@@ -12,6 +13,11 @@ if(tk) {
   store.dispatch( syncInfoAc(decode(tk)));
 } catch (err){
   localStorage.removeItem('@#@TOKEN');
+  for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
+      cookie.remove('order' + i);
+  }
+  cookie.remove('orderNum');
+  cookie.remove('drinkNum');
   alert('Login timeout, please login again');
   window.location.href ='/signin';
   }

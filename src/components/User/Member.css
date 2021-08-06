@@ -34,3 +34,8 @@
     line-height: 170px;
     font-size: 100px;
 }
+.paypal-button{
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+}

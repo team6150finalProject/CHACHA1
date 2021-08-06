@@ -8,7 +8,7 @@ const ProductDetail = ({reading}) => {
     return (
         <div className="productDetail">
             <div className="card-body">
-                <img className="detailImg" src={"../../img/" + reading.name + ".jpg"}/>
+                <img className="detailImg" src={"../../../img/" + reading.imgFile}/>
                 <h5 className="productName">{reading.name}</h5>
                 <h5 className="productDescription">{reading.size} / {reading.ice} / {reading.sweetness} /
                     "{reading.extras}"</h5>
