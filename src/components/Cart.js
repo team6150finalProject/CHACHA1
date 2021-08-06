@@ -19,13 +19,13 @@ class Cart extends React.Component {
         };
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             var tmp = JSON.parse(cookie.load('order' + i)).split(",");
-            var price = tmp[2]*tmp[5];
             var extras = [];
             var topping = 6;
             while(tmp[topping]) {
                 extras.push(tmp[topping]);
                 topping++;
             }
+            var price = tmp[2]*tmp[5] + extras.length*0.5;
             this.state.products.push({
                 index: i,
                 name: tmp[0],
