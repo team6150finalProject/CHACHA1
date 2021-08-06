@@ -82,8 +82,8 @@ export const logOut =() => {
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             cookie.remove('order' + i);
         }
-        cookie.remove('orderNum');
-        cookie.remove('drinkNum');
+        cookie.remove('orderNum', { path: "/" });
+        cookie.remove('drinkNum', { path: "/" });
         dispatch(syncInfoAc({}));
         dispatch(fetchUserData({}));
     }

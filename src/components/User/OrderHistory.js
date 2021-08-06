@@ -12,10 +12,11 @@ class OrderHistory extends React.Component {
         super(props);
         this.state = {
             orders: [{
-                orderid: "",
+                _id: "",
                 timemillis: 0,
                 totalprice: 0,
                 products: [{
+                    _id: "",
                     name: "",
                     size: "",
                     ice: "",
@@ -27,66 +28,24 @@ class OrderHistory extends React.Component {
         }
     }
 
+    componentDidMount(){
+        const userData = this.props.user.userData;
+        this.setState({orders: userData.orders});
+    }
+
     formatOrderCards = () => {
-        return this.orders.map((reading, index) => <OrderCard reading={reading} key={index} />)
+        if(this.state.orders){
+
+            return this.state.orders.map((reading, index) => <OrderCard reading={reading} key={index} />)
+        }
     }
 
     render() {
-        const userData = this.props.user.userData;
-        this.orders = [{
-            orderId: "001",
-            timemillis: "08-02-2021",
-            totalprice: 20,
-            products: [{
-                name: "berryTea",
-                size: "small",
-                ice: "ice",
-                sweetness: "sweet",
-                extras:"ex",
-                quantity: 1
-            },
-                {
-                    name: "berryTea",
-                    size: "",
-                    ice: "",
-                    sweetness: "",
-                    extras:"",
-                    quantity: 0
-                },
-            ]
-        },
-            {
-                orderId: "002",
-                timemillis: "08-02-2021",
-                totalprice: 10,
-                products: [{
-                    name: "bubbleTea",
-                    size: "",
-                    ice: "",
-                    sweetness: "",
-                    extras:"",
-                    quantity: 0
-                }]
-            },
-            {
-                orderid: "003",
-                timemillis: "07-31-2021",
-                totalprice: 30,
-                products: [{
-                    name: "mangoTea",
-                    size: "",
-                    ice: "",
-                    sweetness: "",
-                    extras:"",
-                    quantity: 0
-                }]
-            }
-        ];
 
         return (
             <div>
                 <div className="userScreen">
-                    <h2>Order History</h2>
+                    <h1>Order History</h1>
                     <div>
                         <div className="content-warp">
                             <nav id="order_history_nav"><b>

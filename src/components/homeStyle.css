@@ -152,6 +152,10 @@ nav {
   border-radius: 5px;
 }
 
+#addCart:disabled {
+  color:grey;
+}
+
 
 .teaContent {
   display: flex;

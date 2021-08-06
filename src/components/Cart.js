@@ -14,8 +14,11 @@ class Cart extends React.Component {
         this.state = {
             timemillis: Date.now(),
             price: 0,
-            products: []
+            products: [],
+            location: "75 Service St, San Jose, CA 95112"
         };
+        this.handleLocationSelected = this.handleLocationSelected.bind(this);
+
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             var tmp = JSON.parse(cookie.load('order' + i)).split(",");
             var extras = [];
@@ -24,7 +27,7 @@ class Cart extends React.Component {
                 extras.push(tmp[topping]);
                 topping++;
             }
-            var price = tmp[2]*tmp[5] + extras.length*0.5;
+            var price = (parseFloat(tmp[2]) + parseFloat(extras.length*0.5))*tmp[5];
             this.state.products.push({
                 index: i,
                 name: tmp[0],
@@ -44,33 +47,40 @@ class Cart extends React.Component {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
+        state.price = (state.price).toFixed(2);
         this.props.addorder(state);
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             cookie.remove('order' + i);
         }
         cookie.save('drinkNum', 0, { path: "/" });
         cookie.save('orderNum', 0, { path: "/" });
-        window.open("/", "_self");
-
+        this.props.history.push({pathname:'/confirmation', state:{order: state}})
     }
+
+    handleLocationSelected(event){
+        var index = event.target.selectedIndex
+        this.setState({location: event.target[index].text});
+    }
+
     render() {
         const isEmpty = parseInt(cookie.load('orderNum')) == 0;
         if (isEmpty) {
             return (
-                <div style={{height:800, justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-                    <Card className="text-center">
-                      <Card.Header>The Cart is emptied</Card.Header>
-                      <Card.Body>
-                        <Link to={'/order'} >
-                            <Button variant="secondary">Go to Order page</Button>
-                        </Link>
-                      </Card.Body>
-                    </Card>
+              <div style={{height: '60vh', width: '40%', margin: '0 auto', backgroundColor: '#e5e1cd'}}>
+              <div style={{height: '50%', width: '100%', paddingTop: '10vh'}}>
+                  <img src={process.env.PUBLIC_URL + "/img/empty-cart.png"} style={{display: 'block', height: '100%', marginLeft: 'auto', marginRight: 'auto'}} />
                 </div>
+                <div style={{display:'block', height: '50%', width: '100%', textAlign: 'center'}}>
+                  <h1 style={{marginTop: '10vh'}}>Your cart is currently empty</h1>
+                  <Link to={'/order'} >
+                      <Button variant="secondary">Go to Order page</Button>
+                  </Link>
+                </div>
+            </div>
             )
         } else {
             return(
-                <div style={{minHeight:800}}>
+                <div style={{minHeight: '50vh'}}>
                     <h1 style={{textAlign: "center", padding: 10}}>Cart</h1>
                     <div className="content-warp">
                         <div>
@@ -80,14 +90,15 @@ class Cart extends React.Component {
                     <div style={{textAlign: "center", padding: 10}}>
                     <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
                     <h3 style={{width: "250px"}}>Pick Up Location: </h3>
-                    <Form.Select aria-label="Default select example" style={{width: "290px"}}>
+                    <Form.Select aria-label="Default select example" style={{width: "290px"}} onChange={this.handleLocationSelected}>
                       <option value="1">75 Service St, San Jose, CA 95112</option>
                       <option value="2">52 N Carson St, Carson City, NV 89701</option>
                       <option value="3">22 W 5rd St, New York, NY 10019</option>
-                      <option value="3">800 Marlins Way, Miami, FL 33125</option>
+                      <option value="4">800 Marlins Way, Miami, FL 33125</option>
                     </Form.Select>
+
                     </div>
-                    <h3>Total: ${(this.state.price).toFixed(2)}</h3>
+                    <h3 style={{fontWeight: "bold"}}>Total: ${(this.state.price).toFixed(2)}</h3>
                     <Button variant="secondary" onClick={() => this.handleOrder(this.state)}>Place Order</Button>
                     </div>
                 </div>

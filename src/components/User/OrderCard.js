@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import productInfo from "../../model/productInfo.json"
-
+var moment = require('moment');
 
 const OrderCard = ({reading}) => {
 
@@ -9,7 +9,7 @@ const OrderCard = ({reading}) => {
 
     for(var i=0; i<reading.products.length; i++){
         for(var j=0; j<productsInfo.length; j++){
-            if(productsInfo[j].productId == reading.products[i].name){
+            if(productsInfo[j].title == reading.products[i].name){
                 reading.products[i].imgFile = productsInfo[j].imgFileName;
             }
         }
@@ -31,11 +31,15 @@ const OrderCard = ({reading}) => {
         imgFile = <img className="orderImg" src={"../../../img/" + reading.products[0].imgFile} />
     }
 
+    let date = new Date();
+    date.setTime(reading.timemillis);
+    const orderTime = moment(date).format('MMMM Do YYYY, h:mm a');
+
 
     return (
         <div className="card">
             <div className="card-header">
-                Order on: {reading.timemillis}   Total: ${reading.totalprice}
+                {orderTime} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total: ${reading.totalprice}
                 <div className="headerLink">
                     <Link to={ {pathname:'/user/order-detail', query:{products: reading.products}}}>View Detail</Link>
                 </div>

@@ -15,10 +15,10 @@ const CartCard = ({reading}) => {
     }
     const isExtra = reading.extras.length == 0;
     return (
-        <div className="card" style={{width: "540px"}}>
+        <div className="card" style={{width: "30vw", marginTop: "10px", borderRadius: "20px"}}>
             <div className="card-body">
                 <h4 className="card-title">{reading.name}</h4>
-                <img className="orderImg" src={"../../img/" +imgFile} />
+                <img className="orderImg" src={"../../img/" + imgFile} />
                 <div style={{display: "inline-block"}}>
                 <p className="card-text">
                     Size: {reading.size}
@@ -38,8 +38,8 @@ const CartCard = ({reading}) => {
                 }
                 </div>
             </div>
-            <div className="card-footer">
-                <div>Price: ${reading.price}</div>
+            <div className="card-footer" style={{backgroundColor: '#e5e1cd', borderRadius: "20px"}}>
+                <div style={{fontSize: '20px', fontWeight: 'bold'}}>Price: ${(reading.price).toFixed(2)}</div>
                 <button onClick={() => {
                     var n = parseInt(cookie.load('orderNum'));
                     for (var i = reading.index; i < n; i++) {

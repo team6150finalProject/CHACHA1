@@ -7,6 +7,7 @@ import './Signin.css'
 import {connect} from "react-redux";
 import {register} from "../../redux/actions";
 import {Redirect} from 'react-router-dom'
+
 class SignUpScreen extends Component{
     constructor(props) {
         super(props);
@@ -17,7 +18,7 @@ class SignUpScreen extends Component{
             confirmPassword:"",
             emailChangstyle: false,
             passwordChangestyle:false,
-            shown: false,
+            shown: false
         };
     }
 
@@ -67,12 +68,15 @@ class SignUpScreen extends Component{
         })
     }
 
+    
     render() {
-        const {msg, redirectTo} =this.props.userregister
+        const {msg, redirectTo} = this.props.userregister
         if(redirectTo){
-            alert("Register Success")
-            return <Redirect to ={redirectTo}/>
+            return (
+                <Redirect to ={redirectTo}/>   
+            )
         }
+
         return(
             <div>
                 <section>
@@ -119,6 +123,7 @@ class SignUpScreen extends Component{
                 </div>
             </div>
                 </section>
+                
             </div>
         )
     }
