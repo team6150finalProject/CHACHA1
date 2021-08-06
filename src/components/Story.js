@@ -8,7 +8,7 @@ class Story extends React.Component {
         <h2>ABOUT US | OUR STORY</h2>
         <h5>
           Our drinks originated from an instant inspiration of mixing cheese with tea. In 2020, with this spark of inspiration,we opened
-          the first shop. Our mission is to bridge cultures and change the way people thaink about tea. We support artistic creation,make
+          the first shop. Our mission is to bridge cultures and change the way people think about tea. We support artistic creation,make
           drinking tea become a style, a way of life.
         </h5>
 

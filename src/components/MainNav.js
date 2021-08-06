@@ -17,7 +17,7 @@ class MainNav extends React.Component {
     return (
       <Navbar expand="lg" variant="dark" style={{ backgroundColor: "#2E0000" }}>
         <Container>
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="/">
             <Image src={process.env.PUBLIC_URL + "/img/logo.jpg"} alt="logo" width="70" height="70" />
           </Navbar.Brand>
           <Navbar.Toggle />
@@ -38,16 +38,6 @@ class MainNav extends React.Component {
                 <Nav.Link href="/order">Online Order</Nav.Link>
               </Nav.Item>
             </Nav>
-            <Nav.Item>
-              <Form className="d-flex">
-                <Form.Control className="me-2" type="search" placeholder="Search" aria-label="Search" />
-              </Form>
-            </Nav.Item>
-            <Nav.Item>
-              <a className="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="search" role="button">
-                <i className="fas fa-search" style={{ color: "#616161" }}></i>
-              </a>
-            </Nav.Item>
             <Nav.Item>
               <a className="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="shopping cart" href="/cart" role="button">
                 <i className="fas fa-shopping-cart fa-lg" style={{ color: "#616161" }}></i>

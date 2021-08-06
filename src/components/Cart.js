@@ -2,7 +2,6 @@ import React from 'react';
 import cookie from 'react-cookies';
 import {Button} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
-import {Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import CartCard from "./CartCard";
 import {connect} from "react-redux";
@@ -40,8 +39,10 @@ class Cart extends React.Component {
             });
             this.state.price += price;
         }
+        if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
+            this.state.price -= 2;
+        }
         console.log(this.state.products);
-        console.log(this.state.timemillis);
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
@@ -64,6 +65,7 @@ class Cart extends React.Component {
 
     render() {
         const isEmpty = parseInt(cookie.load('orderNum')) == 0;
+        const is2OFF = this.props.user.userData.isadmin && (this.state.price >= 10);
         if (isEmpty) {
             return (
               <div style={{height: '60vh', width: '40%', margin: '0 auto', backgroundColor: '#e5e1cd'}}>
@@ -87,19 +89,29 @@ class Cart extends React.Component {
                             {this.formatCards()}
                         </div>
                     </div>
-                    <div style={{textAlign: "center", padding: 10}}>
-                    <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-                    <h3 style={{width: "250px"}}>Pick Up Location: </h3>
-                    <Form.Select aria-label="Default select example" style={{width: "290px"}} onChange={this.handleLocationSelected}>
-                      <option value="1">75 Service St, San Jose, CA 95112</option>
-                      <option value="2">52 N Carson St, Carson City, NV 89701</option>
-                      <option value="3">22 W 5rd St, New York, NY 10019</option>
-                      <option value="4">800 Marlins Way, Miami, FL 33125</option>
-                    </Form.Select>
-
-                    </div>
-                    <h3 style={{fontWeight: "bold"}}>Total: ${(this.state.price).toFixed(2)}</h3>
-                    <Button variant="secondary" onClick={() => this.handleOrder(this.state)}>Place Order</Button>
+                    <div style={{textAlign: "center", padding:20}}>
+                        <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
+                            <h5 style={{width: "260px"}}>Select Your Pick Up Store: </h5>
+                            <Form.Select aria-label="Default select example" style={{width: "320px"}}>
+                            <option value="1">75 Service St, San Jose, CA 95112</option>
+                            <option value="2">52 N Carson St, Carson City, NV 89701</option>
+                            <option value="3">22 W 5rd St, New York, NY 10019</option>
+                            <option value="3">800 Marlins Way, Miami, FL 33125</option>
+                            </Form.Select>
+                        </div>
+                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
+                        {is2OFF
+                            ? <nobr> ($2 off for member order of $10+) </nobr>
+                            : <nobr></nobr>
+                        }
+                        </h3>
+                        <p>
+                            <Link to={'/order'} >
+                            <Button variant="primary">Continue Shopping</Button>
+                            </Link>
+                            &nbsp; &nbsp; &nbsp; &nbsp;
+                            <Button variant="dark" onClick={() => this.handleOrder(this.state)}>Place Order</Button>
+                        </p>
                     </div>
                 </div>
             )
@@ -108,7 +120,7 @@ class Cart extends React.Component {
 }
 
 export default connect(
-    state =>({}),
+    state =>({user: state.fetchreducer}),
     {addorder}
 )
 (Cart);

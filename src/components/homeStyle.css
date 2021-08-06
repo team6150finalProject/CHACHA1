@@ -147,13 +147,15 @@ nav {
 
 #addCart {
   padding : 10px;
-  background-color:rgb(175, 148, 110);
+  background-color:rgb(27, 26, 23);
   color:aliceblue;
   border-radius: 5px;
 }
 
 #addCart:disabled {
-  color:grey;
+  color:rgb(61, 61, 61);
+  background-color: #868686;
+  opacity: 0.8;
 }
 
 
