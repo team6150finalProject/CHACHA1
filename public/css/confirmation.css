@@ -34,3 +34,12 @@
     right: 5%;
     position: absolute;
 }
+
+.geryP {
+    display: inline;
+    color: slategray;
+}
+
+.inlineP{
+    display: inline;
+}
