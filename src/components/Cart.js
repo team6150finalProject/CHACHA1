@@ -20,14 +20,21 @@ class Cart extends React.Component {
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             var tmp = JSON.parse(cookie.load('order' + i)).split(",");
             var price = tmp[2]*tmp[5];
+            var extras = [];
+            var topping = 6;
+            while(tmp[topping]) {
+                extras.push(tmp[topping]);
+                topping++;
+            }
             this.state.products.push({
                 index: i,
-                product: tmp[0],
+                name: tmp[0],
                 size: tmp[1],
                 price: price,
                 ice: tmp[3],
-                sweet: tmp[4],
-                qty: tmp[5]
+                sweetness: tmp[4],
+                quantity: tmp[5],
+                extras: extras
             });
             this.state.price += price;
         }
@@ -45,12 +52,6 @@ class Cart extends React.Component {
         cookie.save('drinkNum', 0, { path: "/" });
         cookie.save('orderNum', 0, { path: "/" });
         window.open("/", "_self");
-        const data ={
-            timemillis: '',
-            price: this.state.price,
-            products: this.state.products
-        }
-        reqAddOrder(data);
 
     }
     render() {
