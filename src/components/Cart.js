@@ -40,7 +40,6 @@ class Cart extends React.Component {
             this.state.price += price;
         }
         console.log(this.state.products);
-        console.log(this.state.timemillis);
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
@@ -63,6 +62,7 @@ class Cart extends React.Component {
 
     render() {
         const isEmpty = parseInt(cookie.load('orderNum')) == 0;
+        const is2OFF = this.props.user.userData.isadmin && (this.state.price >= 10);
         if (isEmpty) {
             return (
               <div style={{height: '60vh', width: '40%', margin: '0 auto', backgroundColor: '#e5e1cd'}}>
@@ -96,7 +96,12 @@ class Cart extends React.Component {
                             <option value="3">800 Marlins Way, Miami, FL 33125</option>
                             </Form.Select>
                         </div>
-                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}</h3>
+                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
+                        {is2OFF
+                            ? <nobr> ($2 off for member order of $10+) </nobr>
+                            : <nobr></nobr>
+                        }
+                        </h3>
                         <p>
                             <Link to={'/order'} >
                             <Button variant="primary">Continue Shopping</Button>
@@ -112,7 +117,7 @@ class Cart extends React.Component {
 }
 
 export default connect(
-    state =>({}),
+    state =>({user: state.fetchreducer}),
     {addorder}
 )
 (Cart);

@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import productInfo from "../model/productInfo.json"
 
 const CartCard = ({reading}) => {
-    console.log("reading:" + reading);
     var products = productInfo.products;
     var imgFile = "";
     for (var i = 0; i < products.length; i++) {
@@ -20,7 +19,7 @@ const CartCard = ({reading}) => {
                 <h4 className="card-title" >
                     {reading.name}
                     
-                    <div class="dialog" style={{position: 'relative'}} >
+                    <div className="dialog" style={{position: 'relative'}} >
                         <button style={{borderRadius: "20px", position: 'absolute', top: -30, right: 0,  backgroundColor:'transparent',
             borderStyle:'none'}} 
                             onClick={() => {
