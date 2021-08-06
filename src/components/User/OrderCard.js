@@ -9,7 +9,7 @@ const OrderCard = ({reading}) => {
 
     for(var i=0; i<reading.products.length; i++){
         for(var j=0; j<productsInfo.length; j++){
-            if(productsInfo[j].productId == reading.products[i].name){
+            if(productsInfo[j].title == reading.products[i].name){
                 reading.products[i].imgFile = productsInfo[j].imgFileName;
             }
         }
