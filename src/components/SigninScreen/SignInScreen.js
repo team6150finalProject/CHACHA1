@@ -9,6 +9,7 @@ import {login} from "../../redux/actions";
 import showlogo from './img/show.png'
 import hidelogo from './img/hide.png'
 
+
 class SignInScreen extends Component {
 
     constructor(props) {
@@ -54,7 +55,7 @@ class SignInScreen extends Component {
                 shown:! this.state.shown
             })
         }
-
+    
 
     render() {
         const{msg, redirectTo} =this.props.user
@@ -105,6 +106,8 @@ class SignInScreen extends Component {
             </div>
             </div>
                 </section>
+
+               
             </div>
         )
     }

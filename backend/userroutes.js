@@ -50,7 +50,7 @@ module.exports = (app) => {
                   if (error) res.send({ code: 1, msg: 'Server disconnected' })
                   const data = { email, username, _id: email._id }
                   res.cookie('emailid', email._id, { maxAge: 1000 * 60 * 60 * 24 })
-                  res.send({ code: 0, data })
+                  res.send({ code: 0, data})
                 })
               }
             })

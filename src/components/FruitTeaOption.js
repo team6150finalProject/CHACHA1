@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import {connect} from "react-redux";
 import cookie from 'react-cookies';
 import { Modal, Button } from 'react-bootstrap';
 
@@ -130,7 +131,7 @@ class FruitTeaOption extends React.Component {
                 <Select options={qtyOptions} onChange={this.setQty}  defaultValue = {qtyOptions[0]}/>
                 <br /><br />
 
-            <input id = "addCart" type="submit" onClick={this.handleShow} value="Add to Cart" />
+            <input id = "addCart" type="submit" onClick={this.handleShow} value={this.props.loginData.isAuth ? "Add to Cart" : "Login to order"} disabled={!this.props.loginData.isAuth}/>
              
              <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header>
@@ -150,11 +151,11 @@ class FruitTeaOption extends React.Component {
                 </Modal.Footer>
             </Modal>
 
-
             </form>    
         )
     }
 }
 
-
-export default FruitTeaOption;
+export default connect(
+  state=>({loginData : state.syncInfo})
+)(FruitTeaOption);
