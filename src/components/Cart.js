@@ -72,7 +72,7 @@ class Cart extends React.Component {
             )
         } else {
             return(
-                <div style={{minHeight:800}}>
+                <div style={{minHeight: '50vh'}}>
                     <h1 style={{textAlign: "center", padding: 10}}>Cart</h1>
                     <div className="content-warp">
                         <div>
@@ -89,7 +89,7 @@ class Cart extends React.Component {
                       <option value="3">800 Marlins Way, Miami, FL 33125</option>
                     </Form.Select>
                     </div>
-                    <h3>Total: ${(this.state.price).toFixed(2)}</h3>
+                    <h3 style={{fontWeight: "bold"}}>Total: ${(this.state.price).toFixed(2)}</h3>
                     <Button variant="secondary" onClick={() => this.handleOrder(this.state)}>Place Order</Button>
                     </div>
                 </div>
