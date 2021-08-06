@@ -29,7 +29,8 @@ function userDataFromDocument(doc) {
     profile: doc.profile,
     favorites: doc.favorites,
     orders: doc.orders,
-    memberdate: doc.memberdate
+    memberdate: doc.memberdate,
+    coupon :doc.coupon
   };
 }
 
@@ -215,9 +216,6 @@ module.exports = (app) => {
     }
   });
 
-
-
-
   app.get('/profile', (req, res) => {
     if (req.user) {
       Sample.findById(req.user.id, function (err, user) {
@@ -251,7 +249,7 @@ module.exports = (app) => {
             if(data){
               Sample.findOne({_id:user._id, firstmember: true}, filter, function (err, data){
                 if(data){
-                    Sample.updateOne({ _id: user._id }, { isadmin: true, firstmember: false,  memberdate: req.body.memberdate}, function (err, data) {
+                    Sample.updateOne({ _id: user._id }, { isadmin: true, firstmember: false, memberdate: req.body.memberdate, membercoupon :true }, function (err, data) {
                       if (data.nModified === 1) {
                         res.send({ code: 0, msg: 'Get Membership Success', isadmin: true , _id: user._id});
                       } else {
@@ -270,6 +268,50 @@ module.exports = (app) => {
       })
     }
   });
+
+  app.post('/user/coupon', function (req,res){
+    if (req.user) {
+      Sample.findById(req.user.id, function (err, user) {
+        if (err) {
+          res.send({code: 1, msg: "Invalid ID"});
+        } else {
+          Sample.findOne({_id:user._id, isadmin: req.body.isadmin}, function (err, data) {
+            if(data){
+              Sample.findOne({_id:user._id, membercoupon :true}, function (err, data) {
+                if (data){
+                  const nextid = user.nextCouponid;
+                  const newCoupon = [{
+                    couponType: 1
+                  },
+                    {
+                      couponType: 1
+                    },
+                    {
+                      couponType: 2
+                    },
+                    {
+                      couponType: 2
+                    }
+                  ]
+                  Sample.updateOne({ _id: user._id }, {nextCouponid: nextid+1, membercoupon :false, $push: { coupon: newCoupon  }}, function (err, data) {
+                    if (data.nModified === 1) {
+                      res.send({ code: 0, data: { coupon: newCoupon } });
+                    } else {
+                      res.send({ code: 1, msg: "Could not get coupon" });
+                    };
+                  });
+                }else {
+                  res.send({code: 1, msg: "You have used member coupon"});
+                }
+              })
+            }else{
+              res.send({code: 1, msg: "Invalid membership"});
+            }
+          })
+        }
+      });
+    }
+  })
 
   app.get('/userdata', (req, res) => {
     if (req.user) {
@@ -326,6 +368,8 @@ module.exports = (app) => {
       res.send({ code: 1, msg: "Invalid login" });
     }
   })
+
+
 
 
 

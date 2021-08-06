@@ -12,3 +12,4 @@ export const reqUserData =(user) =>ajax('/userdata',user,'GET')
 export const reqUpdateFavorite =(user) =>ajax('/user/favorites',user,'POST')
 
 export const reqAddOrder =(user) => ajax('/addorder', user, 'POST')
+export const reqGetCoupon =(user) => ajax('/user/coupon', user, 'POST')

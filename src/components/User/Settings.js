@@ -3,6 +3,8 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import { reqUpdatePassword} from "../../api";
 import "./Profile.css"
+import BootstrapSwitchButton from "bootstrap-switch-button-react";
+
 const passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,12}$/;
 
 class Settings extends React.Component {
@@ -71,6 +73,30 @@ class Settings extends React.Component {
                           </Form>
                       )}
                   </Formik>
+              </div>
+              <hr/>
+              <div className='life-style'>
+                  <h4>Lifestyle & Notification Preferences</h4>
+                    <br/>
+                  <div className='life-style-content'>
+                      <div className='life-style-content-signin'>
+                          <p>
+                              Sign up to get special deals, exclusive Sprouts content and offers via email.
+                          </p>
+                          <div className='life-style-content-signin-switch'><BootstrapSwitchButton checked={true} onstyle="dark" /></div>
+                      </div>
+
+                      <div className='life-style-content-signin'>
+                          <p >
+                              Sign up to get special deals, exclusive Sprouts content and offers via email.
+                          </p>
+                          <div className='life-style-content-signin-switch'><BootstrapSwitchButton checked={true} onstyle="dark" /></div>
+                      </div>
+                      <br/>
+                      <p>By signing up for text alert I agree to receive
+                      recurring automated promotional and personalized marketing
+                      text messages from CHA-CHA</p>
+                  </div>
               </div>
           </div>
       </div>

@@ -8,6 +8,7 @@ module.exports = mongoose.model('project-register', {
   isadmin: { type: Boolean, default: false, required: true },
   firstmember: {type:Boolean,default:true, required:true},
   memberdate: {type:String, default:' ',required:true},
+  membercoupon: {type:Boolean, default:false,required:true},
   profile: {
     firstname: { type: String, default: '' },
     lastname: { type: String, default: '' },
@@ -28,5 +29,10 @@ module.exports = mongoose.model('project-register', {
       extras: { type: [String] },
       quantity: { type: Number, required: true }
     }]
+  }],
+  nextCouponid: { type: Number, default: 0 },
+  coupon: [{
+    couponId: { type: String, required: true },
+    couponType: {type: Number, required: true},
   }]
 });
