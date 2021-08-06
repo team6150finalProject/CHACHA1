@@ -35,6 +35,11 @@ export const login =(user)=>{
             dispatch(authSuccess(result.data))
             localStorage.setItem('@#@TOKEN',result.token)
             dispatch( syncInfoAc(decode(result.token)))
+            const fetchResponse = await reqUserData();
+            const fetchResult = fetchResponse.data;
+            if(fetchResult.code === 0) {
+                dispatch(fetchUserData(fetchResult.data));
+            }
         }else{     //sigin failure
             dispatch(errormsg(result.msg))
         }
