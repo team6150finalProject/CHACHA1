@@ -2,7 +2,6 @@ import React from 'react';
 import cookie from 'react-cookies';
 import {Button} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
-import {Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import CartCard from "./CartCard";
 import {connect} from "react-redux";

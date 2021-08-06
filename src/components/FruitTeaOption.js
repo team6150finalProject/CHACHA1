@@ -80,7 +80,7 @@ class FruitTeaOption extends React.Component {
         cookie.save('orderNum', parseInt(cookie.load('orderNum')) + 1, {path:"/"});
         cookie.save('order' + cookie.load('orderNum'), JSON.stringify(this.props.title + '\,' + this.state.size + '\,' + this.state.price + '\,'+ this.state.ice
                       + '\,'+ this.state.sweet + '\,' + this.state.qty), {path:"/"});
-        window.open("/cart", "_self");
+        window.open("/order", "_self");
     }
 
     
