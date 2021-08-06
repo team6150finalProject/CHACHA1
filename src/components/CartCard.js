@@ -39,7 +39,7 @@ const CartCard = ({reading}) => {
                 </div>
             </div>
             <div className="card-footer">
-                <div>Price: ${reading.price}</div>
+                <div>Price: ${(reading.price).toFixed(2)}</div>
                 <button onClick={() => {
                     var n = parseInt(cookie.load('orderNum'));
                     for (var i = reading.index; i < n; i++) {

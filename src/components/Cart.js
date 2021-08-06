@@ -25,7 +25,7 @@ class Cart extends React.Component {
                 extras.push(tmp[topping]);
                 topping++;
             }
-            var price = tmp[2]*tmp[5] + extras.length*0.5;
+            var price = (parseFloat(tmp[2]) + parseFloat(extras.length*0.5))*tmp[5];
             this.state.products.push({
                 index: i,
                 name: tmp[0],
@@ -45,6 +45,7 @@ class Cart extends React.Component {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
+        state.price = (state.price).toFixed(2);
         this.props.addorder(state);
         for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
             cookie.remove('order' + i);
