@@ -31,27 +31,21 @@ class OrderHistory extends React.Component {
     componentDidMount(){
         const userData = this.props.user.userData;
         this.setState({orders: userData.orders});
-        console.log("Mount");
-        console.log(userData.orders);
-        console.log(this.state.orders);
-
     }
 
     formatOrderCards = () => {
-        console.log("format");
-        console.log(this.state.orders);
         if(this.state.orders){
+
             return this.state.orders.map((reading, index) => <OrderCard reading={reading} key={index} />)
         }
     }
 
     render() {
-        console.log("render");
-        console.log(this.state.orders);
+
         return (
             <div>
                 <div className="userScreen">
-                    <h2>Order History</h2>
+                    <h1>Order History</h1>
                     <div>
                         <div className="content-warp">
                             <nav id="order_history_nav"><b>

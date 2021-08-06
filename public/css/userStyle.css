@@ -3,11 +3,7 @@ a {
 }
 
 .userScreen {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    margin: auto;
-    position: relative;
-    left: 20%;
+
 }
 
 #profileCards{
@@ -27,8 +23,8 @@ a {
 
 .orderContainer .card{
     width: 900px;
-    position: relative;
-    right: 22.5%;
+
+    display: block;
     margin-top: 25px ;
 }
 
@@ -47,7 +43,7 @@ a {
 .headerLink{
     display: inline-block;
     position: relative;
-    left: 60%;
+    left: 55%;
 }
 
 .card-footer button{
@@ -59,7 +55,9 @@ a {
 
 .nextPage {
     list-style-type: none;
+    text-align: center;
     margin: auto;
+    display: block;
 }
 .nextPage li{
     display: inline-block;
