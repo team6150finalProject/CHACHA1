@@ -41,7 +41,9 @@ class Coupon extends Component {
                                   <span>$ 2.00</span>
                                   <br/>
                                   <button>
-                                      Use
+                                      <a href='/order' style={{color:"black"}}>
+                                          Use
+                                      </a>
                                   </button>
                               </div>
                               <div className='coupon_right'>
@@ -58,14 +60,16 @@ class Coupon extends Component {
                   } else if (this.state.coupons[index].couponType === 2){
                       return (
                           <div className='coupon'>
-                              <div className='coupon_left'>
+                              <div className='coupon_left_type2'>
                                   <span>Free Drink</span>
                                   <br/>
                                   <button>
-                                      Use
+                                      <a href='/order' style={{color:"black"}}>
+                                          Use
+                                      </a>
                                   </button>
                               </div>
-                              <div className='coupon_right'>
+                              <div className='coupon_right_type2'>
                         <span>
                           Membership Coupon #2
                         </span>
