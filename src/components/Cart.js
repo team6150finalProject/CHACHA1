@@ -13,6 +13,7 @@ class Cart extends React.Component {
         this.state = {
             timemillis: Date.now(),
             price: 0,
+            subtotal: 0,
             products: [],
             method: 'Pick up',
             location: "",
@@ -40,17 +41,19 @@ class Cart extends React.Component {
                 extras: extras
             });
             this.state.price += price;
+            console.log("price: "+this.state.price);
         }
-        if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
+        this.state.subtotal = this.state.price;
+        /*if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
             this.state.price -= 2;
-        }
+        }*/
         console.log(this.state.products);
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
-        state.price = (state.price).toFixed(2);
+        state.price = (state.price);
         this.props.history.push({pathname:'/payment', state:{order: state}})
     }
 
@@ -111,11 +114,11 @@ class Cart extends React.Component {
                         </Tabs>
                         <br/>
                         <hr style={{textAlign:'center',width:'80%'}}/>
-                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
-                        {is2OFF
+                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price)}
+                        {/*{is2OFF
                             ? <nobr> ($2 off for member order of $10+) </nobr>
                             : <nobr></nobr>
-                        }
+                        }*/}
                         </h3>
                         <p>
                             <Link to={'/order'} >
