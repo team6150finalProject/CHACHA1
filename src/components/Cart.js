@@ -51,13 +51,7 @@ class Cart extends React.Component {
     }
     handleOrder(state) {
         state.price = (state.price).toFixed(2);
-        this.props.addorder(state);
-        for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
-            cookie.remove('order' + i);
-        }
-        cookie.save('drinkNum', 0, { path: "/" });
-        cookie.save('orderNum', 0, { path: "/" });
-        this.props.history.push({pathname:'/confirmation', state:{order: state}})
+        this.props.history.push({pathname:'/payment', state:{order: state}})
     }
 
     handleLocationSelected(event){
@@ -140,7 +134,6 @@ class Cart extends React.Component {
 }
 
 export default connect(
-    state =>({user: state.fetchreducer}),
-    {addorder}
+    state =>({user: state.fetchreducer})
 )
 (Cart);
