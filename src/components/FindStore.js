@@ -8,7 +8,7 @@ class FindStore extends React.Component {
           <h2 style={{ marginBottom: "4%" }}>Find a store near you</h2>
           <div className="alert alert-warning" role="alert">
             Due to COVID-19, locations may be operating under reduced capacity. See your
-                  <a href="#stores" className="alert-link">local store</a> for details.
+                  <a href="/location" className="alert-link"> local store</a> for details.
                 </div>
           <a href="#">
             <img src={process.env.PUBLIC_URL + "/img/img-map.png"} width="100%" height="auto" />

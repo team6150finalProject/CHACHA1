@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c40043bd-3461-4440-825e-32e612b8209a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PaymentPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PaymentPage.js" afterDir="false" />
-    </list>
+    <list default="true" id="c40043bd-3461-4440-825e-32e612b8209a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,11 +87,10 @@
       <workItem from="1628225827653" duration="3422000" />
       <workItem from="1628254144810" duration="77000" />
       <workItem from="1628254322746" duration="10336000" />
-
       <workItem from="1628294081084" duration="5215000" />
-
       <workItem from="1628294081084" duration="1035000" />
       <workItem from="1628329894614" duration="17061000" />
+      <workItem from="1628358671940" duration="4765000" />
     </task>
     <servers />
   </component>

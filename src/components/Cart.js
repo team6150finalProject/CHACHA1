@@ -5,7 +5,6 @@ import {Form, Tabs, Tab} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import CartCard from "./CartCard";
 import {connect} from "react-redux";
-import {addorder} from "../redux/actions";
 
 class Cart extends React.Component {
     constructor(props) {
@@ -17,6 +16,7 @@ class Cart extends React.Component {
             products: [],
             pickUp: true,
             location: "",
+            isOrder: false
         };
         this.handleLocationSelected = this.handleLocationSelected.bind(this);
         this.handleShippingMethod = this.handleShippingMethod.bind(this);
@@ -59,7 +59,12 @@ class Cart extends React.Component {
     }
 
     handleLocationSelected(event){
+        if(event.target.value){
         this.setState({location: event.target.value});
+        this.setState({isOrder: true});
+        }else {
+            this.setState({isOrder: false});
+        }
     }
 
     handleShippingMethod(key) {
@@ -126,7 +131,10 @@ class Cart extends React.Component {
                             <Button variant="primary" style={{margin:'5px'}}>Continue Shopping</Button>
                             </Link>
                             &nbsp; &nbsp;
-                            <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}}>Place Order</Button>
+                            {this.state.isOrder? <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}}>Place Order</Button>:
+                                <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}} disabled="disabled">Place Order</Button>
+                            }
+
                         </p>
                     </div>
                     <br className="clear"  style={{clear:'left'}}/>

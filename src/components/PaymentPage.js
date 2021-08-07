@@ -2,7 +2,6 @@ import React from 'react';
 import cookie from 'react-cookies';
 import { connect } from "react-redux";
 import { addorder } from "../redux/actions";
-import { Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
@@ -143,7 +142,11 @@ class PaymentPage extends React.Component {
     const listCoupons = this.state.coupon.map((coupon) =>
     {
       if(coupon.couponType == 1){
-        return <option value="1">$2 Off (Over $10)</option>
+        if(this.state.order.price >= 10) {
+          return <option value="1">$2 Off (Over $10)</option>
+        }else{
+          return 0;
+        }
       }else if(coupon.couponType == 2){
         return <option value="2">Get A Free Drink</option>
       }
@@ -169,8 +172,8 @@ class PaymentPage extends React.Component {
           <div className="card-body">
             {pickUp ? <h4>Pick-Up ASAP</h4> : <h4>Delivery Now</h4>}
             <hr className="solid"></hr>
-            <h4>Contact Information</h4>
-            <h6>{this.state.profile.firstname} {this.state.profile.lastname}, {this.state.profile.phone}</h6>
+            <h4 style={{display:"block"}}>Contact Information</h4>
+            <p style={{display:"block", float:'right', fontWeight:'bold'}}>{this.state.profile.firstname} {this.state.profile.lastname}, {this.state.profile.phone}</p>
           </div>
         </div>
 
