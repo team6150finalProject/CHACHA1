@@ -11,7 +11,6 @@ class Cart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pickUp : true,
             timemillis: Date.now(),
             price: 0,
             subtotal: 0,
