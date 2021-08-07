@@ -45,10 +45,11 @@ class ConfirmationPage extends React.Component {
             ],
         });
     }
-
     onApprove(data, actions) {
+
         return actions.order.capture();
     }
+
     componentDidMount(){
         const orderData = this.props.location.state.order;
         const userData = this.props.user.userData;
