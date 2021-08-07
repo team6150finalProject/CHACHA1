@@ -98,7 +98,7 @@ class SignUpScreen extends Component{
                                 </div>
                                 <div className="form_signup_password">
                                     <input type={this.state.shown ? 'text' : 'password'} id="password" placeholder="Create PassWord" className= "signup_input" onChange={this.passwordChange.bind(this)}/>
-                                    <button className='password-button' type='button' onClick={this.setShow.bind(this)}><img src={this.state.shown ?hidelogo: showlogo}/></button>
+                                    <button className='password-button' type='button' onClick={this.setShow.bind(this)}><img src={this.state.shown ?hidelogo: showlogo} alt=''/></button>
                                 </div>
                                 <div className= {this.state.passwordChangestyle?"errorMsgEmailtrue":"errorMsgEmailfalse"}>
                                     <span>6-12 characters, at least 1 Upper case, Lower case, Number</span>
@@ -118,7 +118,7 @@ class SignUpScreen extends Component{
                                     </div>
                             </form>
                         </div>
-                        <div className="imgBx"><img src={imglogo}/> </div>
+                        <div className="imgBx"><img src={imglogo} alt=''/> </div>
                     </div>
                 </div>
             </div>

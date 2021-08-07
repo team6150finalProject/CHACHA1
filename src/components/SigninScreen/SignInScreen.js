@@ -24,7 +24,7 @@ class SignInScreen extends Component {
 
         getEmail(e) {
             const{value} = e.target;
-            const reg = /([\w\.]+)@([\w\.]+)\.(\w+)/;
+            const reg = /([\w]+)@([\w]+)\.(\w+)/;
             if(reg.test(value) || value===""){
             this.setState({
                 email: e.target.value,
@@ -68,7 +68,7 @@ class SignInScreen extends Component {
             <div className="body_signin_container">
                 <div className="body_signin_Bx">
                     <div className='body_user'>
-                    <div className="imgBx"><img src={imglogo}/> </div>
+                    <div className="imgBx"><img src={imglogo} alt=''/> </div>
                     <div className="container_form_signIn">
                         <form action="#" className="form_signIn" id="form_for_signIn">
                             <h2>Sign In</h2>
@@ -83,7 +83,7 @@ class SignInScreen extends Component {
                         <div className="form_signin_email">
                             <img src={img2URL} alt=''/>
                             <input type={this.state.shown ? 'text' : 'password'} placeholder="Enter PassWord" className= "signIn_input" onChange={this.getPassword.bind(this)}/>
-                            <button className='password-button' type='button' onClick={this.setShow.bind(this)}><img src={this.state.shown ?hidelogo: showlogo}/></button>
+                            <button className='password-button' type='button' onClick={this.setShow.bind(this)}><img src={this.state.shown ?hidelogo: showlogo} alt=''/></button>
                         </div>
                             <div className= {this.state.passworddisplay?"errorMsgEmailtrue":"errorMsgEmailfalse"}>
                                 <span>The Password field can not exceed 12 characters in length.</span>

@@ -129,7 +129,8 @@ class FruitTeaOption extends React.Component {
 
                 <h6>Quantity <span style={{color: "red"}}>*</span>:</h6>
                 <Select options={qtyOptions} onChange={this.setQty}  defaultValue = {qtyOptions[0]}/>
-                <br /><br />
+                <br />
+                <br />
 
             <input id = "addCart" type="submit" onClick={this.handleShow} value={this.props.loginData.isAuth ? "Add to Cart" : "Login to order"} disabled={!this.props.loginData.isAuth}/>
              

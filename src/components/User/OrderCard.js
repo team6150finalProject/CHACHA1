@@ -9,7 +9,7 @@ const OrderCard = ({reading}) => {
 
     for(var i=0; i<reading.products.length; i++){
         for(var j=0; j<productsInfo.length; j++){
-            if(productsInfo[j].title == reading.products[i].name){
+            if(productsInfo[j].title === reading.products[i].name){
                 reading.products[i].imgFile = productsInfo[j].imgFileName;
             }
         }
@@ -18,17 +18,17 @@ const OrderCard = ({reading}) => {
 
     if(reading.products[2]){
         imgFile = <div>
-            <img className="orderImg" src={"../../../img/" + reading.products[0].imgFile} />
-            <img className="orderImg" src={"../../../img/" + reading.products[1].imgFile} />
+            <img className="orderImg" src={"../../../img/" + reading.products[0].imgFile} alt='img'/>
+            <img className="orderImg" src={"../../../img/" + reading.products[1].imgFile} alt='img'/>
             <img className="orderImg" src={"../../../img/ellipsis.png"} />
         </div>
     } else if(reading.products[1]){
         imgFile = <div>
-            <img className="orderImg" src={"../../../img/" + reading.products[0].imgFile} />
-            <img className="orderImg" src={"../../../img/" + reading.products[1].imgFile} />
+            <img className="orderImg" src={"../../../img/" + reading.products[0].imgFile} alt='img'/>
+            <img className="orderImg" src={"../../../img/" + reading.products[1].imgFile} alt='img'/>
         </div>
     } else {
-        imgFile = <img className="orderImg" src={"../../../img/" + reading.products[0].imgFile} />
+        imgFile = <img className="orderImg" src={"../../../img/" + reading.products[0].imgFile} alt='img'/>
     }
 
     let date = new Date();

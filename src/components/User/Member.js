@@ -115,7 +115,7 @@ class Member extends Component {
                                 :<span>xxxxxxxxxxxxxxxxx</span>}</span>
                         </div>
                         <div className='card-logo'>
-                            <img src={logo} style={{width:80, height:80}}/>
+                            <img src={logo} style={{width:80, height:80}} alt='img'/>
                         </div>
                         <div className='card-button'>
                             <p>V I P</p>

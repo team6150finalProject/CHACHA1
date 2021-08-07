@@ -33,7 +33,7 @@ class Settings extends React.Component {
                       }}
                       validate={values => {
                           let errors = {};
-                          if(values.newPassword.length >12 || values.newPassword.length<6 && values.newPassword !== ''){
+                          if((values.newPassword.length >12 || values.newPassword.length<6) && values.newPassword !== ''){
                               errors.newPassword = 'Password should be 6-12 characters '
                           }
                           if(values.newPassword !== values.conPassword ){

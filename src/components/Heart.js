@@ -1,6 +1,5 @@
 import React from 'react';
 import { reqUpdateFavorite } from "../api";
-
 import {connect} from "react-redux";
 import {fetchData} from "../redux/actions";
 
@@ -20,7 +19,9 @@ class Heart extends React.Component {
         {this.props.loginData.isAuth ?
           <img className="favorite-icon"
                src={process.env.PUBLIC_URL + "/img/" + (favorites && favorites.includes(this.props.productId) ? "heart-solid.png" : "heart-empty.png")}
-               onClick={this.toggleFavorite.bind(this)}/> : null}
+               onClick={this.toggleFavorite.bind(this)}
+               alt=''
+          /> : null}
       </div>
     );
   }

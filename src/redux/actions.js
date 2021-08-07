@@ -8,7 +8,6 @@ import {
     SYNC_STATE_INFO,
     FETCH_USER_DATA
 } from "./action-types";
-import data from "bootstrap/js/src/dom/data";
 import decode from "jwt-decode";
 
 //signin action
