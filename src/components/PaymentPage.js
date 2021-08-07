@@ -46,19 +46,24 @@ class PaymentPage extends React.Component {
 
 
   handleCouponSelected(event){
-    console.log("event");
-    console.log(event.target.value)
-    this.state.order.usedCoupon = event.target.value;
-    this.setState({order: this.state.order});
+    let minPrice;
+    if(event.target.value == 1)
+      minPrice = 10; //
+    else if(event.target.value == 2)
+      minPrice = 0;
+    if(this.state.order.price < minPrice){
 
-    let usedCoupon = this.state.order.usedCoupon;
-    let subtotal = this.state.order.subtotal;
-    let products = this.state.order.products;
-    let discount = this.discount(usedCoupon, products);
-    let totalPrice = subtotal - discount;
-    this.state.order.discount = discount;
-    this.state.order.price = totalPrice;
-    this.setState({order: this.state.order})
+    }else {
+      this.state.order.usedCoupon = event.target.value;
+      let usedCoupon = this.state.order.usedCoupon;
+      let subtotal = this.state.order.subtotal;
+      let products = this.state.order.products;
+      let discount = this.discount(usedCoupon, products);
+      let totalPrice = subtotal - discount;
+      this.state.order.discount = discount;
+      this.state.order.price = totalPrice;
+      this.setState({order: this.state.order})
+    }
   }
 
   createOrder(data, actions) {
@@ -105,9 +110,12 @@ class PaymentPage extends React.Component {
         return off;
       case "2":
         var min = products[0].price;
+        console.log("min:");
+        console.log(products);
         for(var i=0; i<products.length; i++){
           if(products[i].price < min){
             min = products[i].price;
+            console.log("product price:" +min);
           }
         }
         return min;
