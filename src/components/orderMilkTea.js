@@ -18,14 +18,9 @@ class OrderMilkTea extends Component {
             height : '25rem',
         }
 
-        var hStyle = {
-            marginLeft: '30px',
-            marginTop:'20px'
-        }
         return (
 
             <div>
-                <h1 id = "milkTeaOrder" style = {hStyle}>Milk Tea</h1>
                 <div className = "products">
                     {this.props.products.slice(0, 3).map(product => (
                         <Card  key={product.title} className = "product" style={cardStyle}>

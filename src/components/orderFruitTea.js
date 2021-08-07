@@ -18,14 +18,10 @@ class OrderFruitTea extends Component {
             height : '25rem',
         }
 
-        var hStyle = {
-            marginLeft: '30px',
-            marginTop:'20px'
-        }
+        
         return (
 
             <div>
-                <h1 id = "fruitTeaOrder" style = {hStyle} >Fruit Tea</h1>
                 <div className = "products">
                     {this.props.products.slice(3, 6).map(product => (
                         <Card key={product.title} className = "product" style={cardStyle}>
@@ -40,7 +36,7 @@ class OrderFruitTea extends Component {
                                     {product.price}
                                 </Card.Title>
                                 <Link to={'/order/' + product.type + "/"+ product.productId} >
-                                    <Button variant="light">ADD to Cart &nbsp;<i class="fas fa-cart-plus fa-lg"></i> </Button>
+                                    <Button variant="light">ADD to Cart &nbsp;<i className="fas fa-cart-plus fa-lg"></i> </Button>
                                 </Link>
                             </Card.Body>
                         </Card>

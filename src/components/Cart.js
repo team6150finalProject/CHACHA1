@@ -96,7 +96,6 @@ class Cart extends React.Component {
                                 <Form.Label>Street Address:</Form.Label>
                                 <Form.Control type="text" placeholder="Please enter your address" onBlur= {this.handleLocationSelected} />
                                 <br/>
-                                <Button variant="primary" >Confirm</Button>
                             </Tab>
                             <Tab eventKey="pickUp" title="Pick up" style={{textAlign: 'left', display: 'block'}}>
                                 <input type="radio" id="CA" name="pickup" value="75 Service St, San Jose, CA 95112" checked={this.state.location === '75 Service St, San Jose, CA 95112'}  onChange={this.handleLocationSelected}/><label> 75 Service St, San Jose, CA 95112</label>

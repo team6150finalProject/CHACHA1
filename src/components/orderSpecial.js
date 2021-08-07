@@ -18,14 +18,11 @@ class OrderSpecial extends Component {
             height : '25rem',
         }
 
-        var hStyle = {
-            marginLeft: '30px',
-            marginTop:'20px'
-        }
+        
         return (
 
             <div>
-                <h1 id = "specialOrder" style = {hStyle} >Specialty Drinks</h1>
+                
                 <div  className = "products">
                     {this.props.products.slice(6, 9).map(product => (
                         <Card key={product.title} className = "product" style={cardStyle}>
