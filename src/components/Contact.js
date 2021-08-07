@@ -19,14 +19,11 @@ class Contact extends React.Component {
   render() {
     return (
       <>
-        <Button onClick={() => this.toggleCollapse()} aria-expanded="false" aria-controls="collapseExample" className="btn-default">
-          Contact us
-        </Button>
-        <Collapse in={this.state.open} id="collapseExample">
-          <div className="card card-body">
-            Phone: 555-234-6456
-          </div>
-        </Collapse>
+        <div className = 'socialMedia' style = {{textAlign:'center', marginBottom:'4px'}}>
+          <img src="https://img.icons8.com/material-outlined/48/000000/instagram-new--v1.png"/>
+          <img src="https://img.icons8.com/material-outlined/48/000000/twitter--v1.png"/>
+          <img src="https://img.icons8.com/material-outlined/48/000000/facebook.png"/>
+        </div>
       </>
     );
   }

@@ -10,7 +10,7 @@ class MainFooter extends React.Component {
               <img src={process.env.PUBLIC_URL + "/img/logo.jpg"} className="rounded-circle" alt="logo" width="70" height="70" />
             </div>
           </div>
-          <div className="copyright">
+          <div className="copyright" > 
             <p>
               <br /> Copyright &copy; 2021 CHACHA
                   <br /> CONTACT EMAIL:
@@ -18,6 +18,7 @@ class MainFooter extends React.Component {
               <br />
             </p>
           </div>
+          
         </footer>
       </div>
     );
