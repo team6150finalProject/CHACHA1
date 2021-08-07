@@ -69,6 +69,10 @@ class Cart extends React.Component {
 
     handleShippingMethod(key) {
         this.state.pickUp = (key === "pickUp") ? true : false;
+        this.setState({
+            isOrder: false,
+            location: ""
+        });
     }
 
     render() {
@@ -103,7 +107,7 @@ class Cart extends React.Component {
                         <Tabs defaultActiveKey={"pickUp"} onSelect={this.handleShippingMethod} style={{justifyContent: 'left', width:'80%',marginTop: '2em', alignItems: 'center', display: 'flex'}} defaultActiveKey="pickUp" id="shipping" className="mb-3">
                             <Tab eventKey="delivery" title="Delivery">
                                 <Form.Label>Street Address:</Form.Label>
-                                <Form.Control type="text" placeholder="Please enter your address" onBlur= {this.handleLocationSelected} />
+                                <Form.Control type="text" placeholder="Please enter your address" onChange= {this.handleLocationSelected} value={this.state.location}/>
                                 <br/>
                             </Tab>
                             <Tab eventKey="pickUp" title="Pick up" style={{textAlign: 'left', display: 'block'}}>
