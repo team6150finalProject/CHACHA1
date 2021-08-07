@@ -56,6 +56,10 @@
     width: 80%;
     background-color: #b2b4bf;
 }
+
+.coupon_left_type2 button a{
+    display: block;
+}
 .coupon_right_type2{
     background-color: #dbaa1a;
     width: 30%;

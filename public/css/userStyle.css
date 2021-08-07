@@ -42,8 +42,7 @@ a {
 }
 .headerLink{
     display: inline-block;
-    position: relative;
-    left: 55%;
+    float: right;
 }
 
 .card-footer button{

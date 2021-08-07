@@ -5,7 +5,6 @@ import {Form, Tabs, Tab} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import CartCard from "./CartCard";
 import {connect} from "react-redux";
-import {addorder} from "../redux/actions";
 
 class Cart extends React.Component {
     constructor(props) {
@@ -13,9 +12,11 @@ class Cart extends React.Component {
         this.state = {
             timemillis: Date.now(),
             price: 0,
+            subtotal: 0,
             products: [],
-            method: 'Pick up',
+            pickUp: true,
             location: "",
+            isOrder: false
         };
         this.handleLocationSelected = this.handleLocationSelected.bind(this);
         this.handleShippingMethod = this.handleShippingMethod.bind(this);
@@ -33,6 +34,7 @@ class Cart extends React.Component {
                 index: i,
                 name: tmp[0],
                 size: tmp[1],
+                unitPrice: tmp[2],
                 price: price,
                 ice: tmp[3],
                 sweetness: tmp[4],
@@ -40,26 +42,37 @@ class Cart extends React.Component {
                 extras: extras
             });
             this.state.price += price;
+            console.log("price: "+this.state.price);
         }
-        if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
+        this.state.subtotal = this.state.price;
+        /*if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
             this.state.price -= 2;
-        }
+        }*/
         console.log(this.state.products);
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
-        state.price = (state.price).toFixed(2);
+        state.price = (state.price);
         this.props.history.push({pathname:'/payment', state:{order: state}})
     }
 
     handleLocationSelected(event){
+        if(event.target.value){
         this.setState({location: event.target.value});
+        this.setState({isOrder: true});
+        }else {
+            this.setState({isOrder: false});
+        }
     }
 
-    handleShippingMethod(event) {
-        this.setState({method: event.target.value});
+    handleShippingMethod(key) {
+        this.state.pickUp = (key === "pickUp") ? true : false;
+        this.setState({
+            isOrder: false,
+            location: ""
+        });
     }
 
     render() {
@@ -91,10 +104,10 @@ class Cart extends React.Component {
                         </div>
                     </div>
                     <div className="rightSide" style={{marginLeft:'70%', padding: 10, marginTop: '0.9em'}}>
-                        <Tabs style={{justifyContent: 'left', width:'80%',marginTop: '2em', alignItems: 'center', display: 'flex'}} defaultActiveKey="pickUp" id="shipping" className="mb-3">
+                        <Tabs defaultActiveKey={"pickUp"} onSelect={this.handleShippingMethod} style={{justifyContent: 'left', width:'80%',marginTop: '2em', alignItems: 'center', display: 'flex'}} defaultActiveKey="pickUp" id="shipping" className="mb-3">
                             <Tab eventKey="delivery" title="Delivery">
                                 <Form.Label>Street Address:</Form.Label>
-                                <Form.Control type="text" placeholder="Please enter your address" onBlur= {this.handleLocationSelected} />
+                                <Form.Control type="text" placeholder="Please enter your address" onChange= {this.handleLocationSelected} value={this.state.location}/>
                                 <br/>
                             </Tab>
                             <Tab eventKey="pickUp" title="Pick up" style={{textAlign: 'left', display: 'block'}}>
@@ -111,18 +124,21 @@ class Cart extends React.Component {
                         </Tabs>
                         <br/>
                         <hr style={{textAlign:'center',width:'80%'}}/>
-                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
-                        {is2OFF
+                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price)}
+                        {/*{is2OFF
                             ? <nobr> ($2 off for member order of $10+) </nobr>
                             : <nobr></nobr>
-                        }
+                        }*/}
                         </h3>
                         <p>
                             <Link to={'/order'} >
                             <Button variant="primary" style={{margin:'5px'}}>Continue Shopping</Button>
                             </Link>
                             &nbsp; &nbsp;
-                            <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}}>Place Order</Button>
+                            {this.state.isOrder? <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}}>Place Order</Button>:
+                                <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}} disabled="disabled">Place Order</Button>
+                            }
+
                         </p>
                     </div>
                     <br className="clear"  style={{clear:'left'}}/>

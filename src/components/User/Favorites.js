@@ -19,9 +19,9 @@ class Favorites extends React.Component {
     return (
       <div>
         <h1>Favorites</h1>
-        <div id="favorites-grid">
-          {products}
-        </div>
+              <div id="favorites-grid">
+                  {products}
+              </div>
       </div>
     );
   }
