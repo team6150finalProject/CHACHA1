@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c40043bd-3461-4440-825e-32e612b8209a" name="Default Changelist" comment="" />
+    <list default="true" id="c40043bd-3461-4440-825e-32e612b8209a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PaymentPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PaymentPage.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +91,11 @@
       <workItem from="1628225827653" duration="3422000" />
       <workItem from="1628254144810" duration="77000" />
       <workItem from="1628254322746" duration="10336000" />
+
       <workItem from="1628294081084" duration="5215000" />
+
+      <workItem from="1628294081084" duration="1035000" />
+      <workItem from="1628329894614" duration="17061000" />
     </task>
     <servers />
   </component>
@@ -105,5 +113,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="647" y="309" width="670" height="676" key="search.everywhere.popup" timestamp="1628338958036">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="647" y="309" width="670" height="676" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1628338958036" />
   </component>
 </project>

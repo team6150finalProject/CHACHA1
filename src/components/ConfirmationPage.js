@@ -1,11 +1,10 @@
 import React from 'react';
-import {connect} from "react-redux";
-import {fetchData} from "../redux/actions";
-import OrderCard from "./User/OrderCard";
+import cookie from 'react-cookies';
+import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 
-const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 class ConfirmationPage extends React.Component {
+
 
     constructor(props) {
         super(props);
@@ -131,8 +130,21 @@ class ConfirmationPage extends React.Component {
             </div>
         );
     }
+
+  render() {
+    return (
+      <div className="container-confirm">
+        <div className="card" id="paymentConfirm">
+          <div className="card-body">
+            <h4>Order processed!</h4>
+          </div>
+        </div>
+
+      </div>
+    );
+  }
+
 }
 export default connect(
-    state => ({user: state.fetchreducer}),
-    {fetchData}
+  state => ({ user: state.fetchreducer })
 )(ConfirmationPage);

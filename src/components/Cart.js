@@ -13,8 +13,9 @@ class Cart extends React.Component {
         this.state = {
             timemillis: Date.now(),
             price: 0,
+            subtotal: 0,
             products: [],
-            method: 'Pick up',
+            pickUp: true,
             location: "",
         };
         this.handleLocationSelected = this.handleLocationSelected.bind(this);
@@ -33,6 +34,7 @@ class Cart extends React.Component {
                 index: i,
                 name: tmp[0],
                 size: tmp[1],
+                unitPrice: tmp[2],
                 price: price,
                 ice: tmp[3],
                 sweetness: tmp[4],
@@ -40,32 +42,28 @@ class Cart extends React.Component {
                 extras: extras
             });
             this.state.price += price;
+            console.log("price: "+this.state.price);
         }
-        if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
+        this.state.subtotal = this.state.price;
+        /*if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
             this.state.price -= 2;
-        }
+        }*/
         console.log(this.state.products);
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
-        state.price = (state.price).toFixed(2);
-        this.props.addorder(state);
-        for (var i = 1; i <= parseInt(cookie.load('orderNum')); i++) {
-            cookie.remove('order' + i);
-        }
-        cookie.save('drinkNum', 0, { path: "/" });
-        cookie.save('orderNum', 0, { path: "/" });
-        this.props.history.push({pathname:'/confirmation', state:{order: state}})
+        state.price = (state.price);
+        this.props.history.push({pathname:'/payment', state:{order: state}})
     }
 
     handleLocationSelected(event){
         this.setState({location: event.target.value});
     }
 
-    handleShippingMethod(event) {
-        this.setState({method: event.target.value});
+    handleShippingMethod(key) {
+        this.state.pickUp = (key === "pickUp") ? true : false;
     }
 
     render() {
@@ -97,12 +95,11 @@ class Cart extends React.Component {
                         </div>
                     </div>
                     <div className="rightSide" style={{marginLeft:'70%', padding: 10, marginTop: '0.9em'}}>
-                        <Tabs style={{justifyContent: 'left', width:'80%',marginTop: '2em', alignItems: 'center', display: 'flex'}} defaultActiveKey="pickUp" id="shipping" className="mb-3">
+                        <Tabs defaultActiveKey={"pickUp"} onSelect={this.handleShippingMethod} style={{justifyContent: 'left', width:'80%',marginTop: '2em', alignItems: 'center', display: 'flex'}} defaultActiveKey="pickUp" id="shipping" className="mb-3">
                             <Tab eventKey="delivery" title="Delivery">
                                 <Form.Label>Street Address:</Form.Label>
                                 <Form.Control type="text" placeholder="Please enter your address" onBlur= {this.handleLocationSelected} />
                                 <br/>
-                                <Button variant="primary" >Confirm</Button>
                             </Tab>
                             <Tab eventKey="pickUp" title="Pick up" style={{textAlign: 'left', display: 'block'}}>
                                 <input type="radio" id="CA" name="pickup" value="75 Service St, San Jose, CA 95112" checked={this.state.location === '75 Service St, San Jose, CA 95112'}  onChange={this.handleLocationSelected}/><label> 75 Service St, San Jose, CA 95112</label>
@@ -118,11 +115,11 @@ class Cart extends React.Component {
                         </Tabs>
                         <br/>
                         <hr style={{textAlign:'center',width:'80%'}}/>
-                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
-                        {is2OFF
+                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price)}
+                        {/*{is2OFF
                             ? <nobr> ($2 off for member order of $10+) </nobr>
                             : <nobr></nobr>
-                        }
+                        }*/}
                         </h3>
                         <p>
                             <Link to={'/order'} >
@@ -140,7 +137,6 @@ class Cart extends React.Component {
 }
 
 export default connect(
-    state =>({user: state.fetchreducer}),
-    {addorder}
+    state =>({user: state.fetchreducer})
 )
 (Cart);

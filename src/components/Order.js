@@ -18,7 +18,7 @@ class Order extends React.Component {
     render() {
         return (
             <div>
-                <Tabs defaultActiveKey="all"  className="mb-3">
+                <Tabs style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}} defaultActiveKey="all"  className="mb-3">
                     <Tab eventKey="all" title="ALL">
                         <div className = "teaContent">
                             <OrderMilkTea products = {this.state.productInfo}/>

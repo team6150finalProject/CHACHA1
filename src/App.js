@@ -10,6 +10,7 @@ import FruitTeaSelect from './components/FruitTeaSelect';
 import './App.css';
 import Cart from "./components/Cart";
 import ConfirmationPage from "./components/ConfirmationPage";
+import PaymentPage from "./components/PaymentPage";
 import SignInScreen from "./components/SigninScreen/SignInScreen";
 import SignUpScreen from "./components/SigninScreen/SignUpScreen";
 import Users from "./components/User/Users";
@@ -59,7 +60,8 @@ class App extends React.Component {
           <Route path='/location' component={Location} />
 
           <Route path='/cart' component={Auth(Cart)} />
-          <Route path='/confirmation' component={(ConfirmationPage)} />
+          <Route path='/payment' component={Auth(PaymentPage)} />
+          <Route path='/confirmation' component={Auth(ConfirmationPage)} />
           <Route path='/signin' component={AuthForLogin(SignInScreen)} />
           <Route path='/signup' component={AuthForLogin(SignUpScreen)} />
           <Route path='/profile' component={Auth(ProfileScreen)} />
