@@ -16,6 +16,7 @@ class PaymentPage extends React.Component {
         subtotal: 0,
         discount: 0,
         price: 0,
+        pickUp: true,
         location: "",
         usedCoupon: 0,
         products: [{
@@ -130,8 +131,7 @@ class PaymentPage extends React.Component {
     console.log("this.state");
     console.log(this.state);
 
-
-
+    const pickUp = this.state.order.pickUp;
 
     const listProducts = this.state.order.products.map((products) =>
       <div>
@@ -154,11 +154,12 @@ class PaymentPage extends React.Component {
       window.open("/confirmation", "_self");
     }
 
+    console.log("pickup"+ pickUp);
     return (
       <div className="container-confirm">
         <div className="card" id="LocationConfirm">
           <div className="card-body">
-            <h6>Pick-Up from</h6>
+            {pickUp ? <h6>Pick-Up from</h6> : <h6>Delivery to</h6>}
             <h3>{street}</h3>
             <h6 className="greyP">{this.state.order.location} </h6>
           </div>
@@ -166,7 +167,7 @@ class PaymentPage extends React.Component {
 
         <div className="card" id="PickUpConfirm">
           <div className="card-body">
-            <h4>Pick-Up ASAP</h4>
+            {pickUp ? <h4>Pick-Up ASAP</h4> : <h4>Delivery Now</h4>}
             <hr className="solid"></hr>
             <h4>Contact Information</h4>
             <h6>{this.state.profile.firstname} {this.state.profile.lastname}, {this.state.profile.phone}</h6>
