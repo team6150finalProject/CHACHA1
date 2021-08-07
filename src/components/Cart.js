@@ -15,7 +15,7 @@ class Cart extends React.Component {
             price: 0,
             subtotal: 0,
             products: [],
-            method: 'Pick up',
+            pickUp: true,
             location: "",
         };
         this.handleLocationSelected = this.handleLocationSelected.bind(this);
@@ -34,6 +34,7 @@ class Cart extends React.Component {
                 index: i,
                 name: tmp[0],
                 size: tmp[1],
+                unitPrice: tmp[2],
                 price: price,
                 ice: tmp[3],
                 sweetness: tmp[4],
@@ -61,8 +62,8 @@ class Cart extends React.Component {
         this.setState({location: event.target.value});
     }
 
-    handleShippingMethod(event) {
-        this.setState({method: event.target.value});
+    handleShippingMethod(key) {
+        this.state.pickUp = (key === "pickUp") ? true : false;
     }
 
     render() {
@@ -94,7 +95,7 @@ class Cart extends React.Component {
                         </div>
                     </div>
                     <div className="rightSide" style={{marginLeft:'70%', padding: 10, marginTop: '0.9em'}}>
-                        <Tabs style={{justifyContent: 'left', width:'80%',marginTop: '2em', alignItems: 'center', display: 'flex'}} defaultActiveKey="pickUp" id="shipping" className="mb-3">
+                        <Tabs defaultActiveKey={"pickUp"} onSelect={this.handleShippingMethod} style={{justifyContent: 'left', width:'80%',marginTop: '2em', alignItems: 'center', display: 'flex'}} defaultActiveKey="pickUp" id="shipping" className="mb-3">
                             <Tab eventKey="delivery" title="Delivery">
                                 <Form.Label>Street Address:</Form.Label>
                                 <Form.Control type="text" placeholder="Please enter your address" onBlur= {this.handleLocationSelected} />
