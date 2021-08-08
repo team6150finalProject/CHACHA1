@@ -92,7 +92,7 @@ module.exports = (app) => {
   });
 
   app.post("/addorder", async function (req, res) {
-    const { timemillis, price, products } = req.body;
+    const {timemillis, subtotal, discount, price, pickUp, location, usedCoupon, products} = req.body;
     // todo: validate products
     if (req.user) {
       Sample.findById(req.user.id, function (err, user) {
@@ -101,9 +101,14 @@ module.exports = (app) => {
         } else {
           const nextid = user.nextid;
           const newOrder = {
-            orderid: nextid,
+            orderId: nextid,
             timemillis: timemillis,
-            totalprice: price,
+            subtotal: subtotal,
+            discount: discount,
+            totalPrice: price,
+            pickUp: pickUp,
+            location: location,
+            usedCoupon: usedCoupon,
             products: products
           }
           Sample.updateOne({ _id: user._id }, { nextid: nextid + 1, $push: { orders: newOrder } }, function (err, data) {

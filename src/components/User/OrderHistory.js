@@ -7,18 +7,24 @@ import OrderCard from "./OrderCard"
 
 
 class OrderHistory extends React.Component {
-
+//{timemillis, subtotal, discount, price, pickUp, location, usedCoupon, products}
     constructor(props) {
         super(props);
         this.state = {
             orders: [{
                 _id: "",
                 timemillis: 0,
-                totalprice: 0,
+                subtotal: 0,
+                discount: 0,
+                totalPrice: 0,
+                pickUp: true,
+                location: "",
+                usedCoupon: 0,
                 products: [{
                     _id: "",
                     name: "",
                     size: "",
+                    price: 0,
                     ice: "",
                     sweetness: "",
                     extras:"",
@@ -35,13 +41,11 @@ class OrderHistory extends React.Component {
 
     formatOrderCards = () => {
         if(this.state.orders){
-
-            return this.state.orders.map((reading, index) => <OrderCard reading={reading} key={index} />)
+            return this.state.orders.slice(0).reverse().map((reading, index) => <OrderCard reading={reading} key={index} />)
         }
     }
 
     render() {
-
         return (
             <div>
                 <div className="userScreen">

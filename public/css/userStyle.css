@@ -35,14 +35,21 @@ a {
 }
 
 .detailImg{
-    width: 150px;
-    height: 150px;
-    padding: 20px;
+    width: 120px;
+    height: 120px;
     float: left;
+    padding-right: 10px;
+    padding-bottom: 20px;
 }
-.headerLink{
+.showInRight{
     display: inline-block;
     float: right;
+}
+.productDetail .showInRight{
+    display: inline-block;
+    float: right;
+    position: absolute;
+    right: 50px;
 }
 
 .card-footer button{
@@ -76,4 +83,8 @@ a {
 }
 .productName{
     font-weight: bold;
+}
+
+#orderAgain{
+    padding: 5px;
 }

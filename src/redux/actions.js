@@ -104,7 +104,7 @@ export const fetchData = () => {
 }
 
 export const addorder =(user) =>{
-    const {timemillis, price, products} =user
+    const {timemillis, subtotal, discount, price, pickUp, location, usedCoupon, products} =user
     return async dispatch =>{
         const response = await reqAddOrder(user)
         const result =response.data
