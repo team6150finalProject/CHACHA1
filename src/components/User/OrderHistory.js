@@ -35,8 +35,7 @@ class OrderHistory extends React.Component {
 
     formatOrderCards = () => {
         if(this.state.orders){
-
-            return this.state.orders.map((reading, index) => <OrderCard reading={reading} key={index} />)
+            return this.state.orders.slice(0).reverse().map((reading, index) => <OrderCard reading={reading} key={index} />)
         }
     }
 
