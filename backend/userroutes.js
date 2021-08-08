@@ -300,7 +300,7 @@ module.exports = (app) => {
                   ]
                   Sample.updateOne({ _id: user._id }, {nextCouponid: nextid+1, membercoupon :false, $push: { coupon: newCoupon  }}, function (err, data) {
                     if (data.nModified === 1) {
-                      res.send({ code: 0, data: { coupon: newCoupon } });
+                      res.send({ code: 0, data: { coupon: newCoupon }, msg: "Wow! You get 4 coupon" });
                     } else {
                       res.send({ code: 1, msg: "Could not get coupon" });
                     };
