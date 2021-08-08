@@ -54,7 +54,7 @@ class Cart extends React.Component {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
-        state.price = (state.price).toFixed(2);
+        state.price = (state.price);
         console.log(state);
         this.props.history.push({pathname:'/payment', state:{order: state}})
     }
