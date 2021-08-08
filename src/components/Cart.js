@@ -125,7 +125,7 @@ class Cart extends React.Component {
                         </Tabs>
                         <br/>
                         <hr style={{textAlign:'center',width:'80%'}}/>
-                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price)}
+                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
                         {/*{is2OFF
                             ? <nobr> ($2 off for member order of $10+) </nobr>
                             : <nobr></nobr>

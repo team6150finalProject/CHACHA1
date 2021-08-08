@@ -12,12 +12,12 @@ class PaymentPage extends React.Component {
     this.state = {
       order: {
         timemillis: 0,
-        subtotal: 0, //new
-        discount: 0, //new
+        subtotal: 0,
+        discount: 0,
         price: 0,
-        pickUp: true, //new
-        location: "", //new
-        usedCoupon: 0, //new
+        pickUp: true,
+        location: "",
+        usedCoupon: 0,
         products: [{
           name: "",
           size: "",
@@ -192,14 +192,15 @@ class PaymentPage extends React.Component {
             <h4>Your Order</h4>
             <hr className="solid"></hr>
             <p>{listProducts}</p>
-            <hr className="solid"></hr>
-            <p className="priceConfirm2">${this.state.order.subtotal}</p>
-            <p className="priceConfirm1">Subtotal</p>
-            <p className="priceConfirm2">${this.state.order.discount}</p>
-            <p className="priceConfirm1">Discounts</p>
-            <h4 className="priceConfirm2">${this.state.order.price}</h4>
-            <h4 className="priceConfirm1">Total</h4>
-
+            <div>
+              <hr className="solid"></hr>
+              <p className="priceConfirm2">${(this.state.order.subtotal).toFixed(2)}</p>
+              <p className="priceConfirm1">Subtotal</p>
+              <p className="priceConfirm2">${this.state.order.discount}</p>
+              <p className="priceConfirm1">Discounts</p>
+              <h4 className="priceConfirm2">${(this.state.order.price).toFixed(2)}</h4>
+              <h4 className="priceConfirm1">Total</h4>
+            </div>
           </div>
         </div>
 

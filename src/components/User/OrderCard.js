@@ -39,9 +39,9 @@ const OrderCard = ({reading}) => {
     return (
         <div className="card">
             <div className="card-header">
-                {orderTime} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total: ${reading.totalprice}
-                <div className="headerLink">
-                    <Link to={ {pathname:'/user/order-detail', query:{products: reading.products}}}>View Detail</Link>
+                {orderTime} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total: ${reading.totalPrice}
+                <div className="showInRight">
+                    <Link to={ {pathname:'/user/order-detail', query:{products: reading.products, orderInfo: reading}}}>View Detail</Link>
                 </div>
             </div>
             <div className="card-body">

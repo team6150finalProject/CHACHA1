@@ -41,9 +41,15 @@ a {
     padding-right: 10px;
     padding-bottom: 20px;
 }
-.headerLink{
+.showInRight{
     display: inline-block;
     float: right;
+}
+.productDetail .showInRight{
+    display: inline-block;
+    float: right;
+    position: absolute;
+    right: 50px;
 }
 
 .card-footer button{

@@ -7,18 +7,24 @@ import OrderCard from "./OrderCard"
 
 
 class OrderHistory extends React.Component {
-
+//{timemillis, subtotal, discount, price, pickUp, location, usedCoupon, products}
     constructor(props) {
         super(props);
         this.state = {
             orders: [{
                 _id: "",
                 timemillis: 0,
-                totalprice: 0,
+                subtotal: 0,
+                discount: 0,
+                totalPrice: 0,
+                pickUp: true,
+                location: "",
+                usedCoupon: 0,
                 products: [{
                     _id: "",
                     name: "",
                     size: "",
+                    price: 0,
                     ice: "",
                     sweetness: "",
                     extras:"",
@@ -40,11 +46,6 @@ class OrderHistory extends React.Component {
     }
 
     render() {
-        console.log("this.props.user.userData");
-        console.log(this.props.user.userData)
-        console.log("this.state");
-        console.log(this.state);
-
         return (
             <div>
                 <div className="userScreen">

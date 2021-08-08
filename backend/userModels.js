@@ -30,6 +30,8 @@ module.exports = mongoose.model('project-register', {
       name: { type: String, required: true },
       size: { type: String, default: '' },
       ice: { type: String, default: '' },
+      unitPrice: { type: Number, required: true },
+      price: { type: Number, required: true },
       sweetness: { type: String, default: '' },
       extras: { type: [String] },
       quantity: { type: Number, required: true }
