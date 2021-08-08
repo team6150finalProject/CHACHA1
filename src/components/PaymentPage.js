@@ -109,12 +109,12 @@ class PaymentPage extends React.Component {
         off = 2;
         return off;
       case "2":
-        var min = products[0].price;
+        var min = products[0].unitPrice;
         console.log("min:");
         console.log(products);
         for(var i=0; i<products.length; i++){
           if(products[i].price < min){
-            min = products[i].price;
+            min = products[i].unitPrice;
             console.log("product price:" +min);
           }
         }
@@ -173,7 +173,8 @@ class PaymentPage extends React.Component {
             {pickUp ? <h4>Pick-Up ASAP</h4> : <h4>Delivery Now</h4>}
             <hr className="solid"></hr>
             <h4 style={{display:"block"}}>Contact Information</h4>
-            <p style={{display:"block", float:'right', fontWeight:'bold'}}>{this.state.profile.firstname} {this.state.profile.lastname}, {this.state.profile.phone}</p>
+            <p></p>
+            <p style={{display:"block", float: "left", fontWeight:'bold'}}>{this.state.profile.firstname} {this.state.profile.lastname}, {this.state.profile.phone}</p>
           </div>
         </div>
 

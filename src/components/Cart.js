@@ -55,6 +55,7 @@ class Cart extends React.Component {
     }
     handleOrder(state) {
         state.price = (state.price);
+        console.log(state);
         this.props.history.push({pathname:'/payment', state:{order: state}})
     }
 
