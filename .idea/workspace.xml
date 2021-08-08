@@ -53,7 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/WebstormProjects/assignment1" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -90,7 +90,7 @@
       <workItem from="1628294081084" duration="5215000" />
       <workItem from="1628294081084" duration="1035000" />
       <workItem from="1628329894614" duration="17061000" />
-      <workItem from="1628358671940" duration="4765000" />
+      <workItem from="1628358671940" duration="10042000" />
     </task>
     <servers />
   </component>
@@ -108,11 +108,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="647" y="309" width="670" height="676" key="search.everywhere.popup" timestamp="1628338958036">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="647" y="309" width="670" height="676" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1628338958036" />
   </component>
 </project>
