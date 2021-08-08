@@ -8,7 +8,7 @@ class TeaGallery extends React.Component {
         <div className="content-warp">
           <div className="table-responsive">
             <h2 id="milkTea">Milk Tea</h2>
-            <h5 style={{ display: "inline" }}><span className="badge bg-info">cold</span> /<span className="badge bg-warning text-dark">hot</span></h5>
+            <h5 style={{ display: "inline" }}><span className="badge bg-info">cold</span> / <span className="badge bg-warning text-dark">hot</span></h5>
             
             <table className="table table-hover table-borderless " style={{ textAlign: "center" }}>
               <thead>

@@ -13,6 +13,8 @@ class Cart extends React.Component {
             timemillis: Date.now(),
             price: 0,
             subtotal: 0,
+            discount: 0,
+            memberDiscount: 0,
             products: [],
             pickUp: true,
             location: "",
@@ -44,9 +46,12 @@ class Cart extends React.Component {
             this.state.price += price;
             console.log("price: "+this.state.price);
         }
+        this.state.price = (this.state.price).toFixed(2);
         this.state.subtotal = this.state.price;
         if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
             this.state.price -= 2;
+            this.state.discount += 2;
+            this.state.memberDiscount += 2;
         }
         console.log(this.state.products);
     }
@@ -54,7 +59,6 @@ class Cart extends React.Component {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
-        state.price = (state.price);
         console.log(state);
         this.props.history.push({pathname:'/payment', state:{order: state}})
     }
@@ -125,7 +129,7 @@ class Cart extends React.Component {
                         </Tabs>
                         <br/>
                         <hr style={{textAlign:'center',width:'80%'}}/>
-                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
+                        <h3 style={{fontWeight: "bold", padding:20}}>Total: ${this.state.price}
                         {is2OFF
                             ? <div> ($2 off for member order of $10+) </div>
                             : <div></div>

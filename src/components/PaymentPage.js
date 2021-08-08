@@ -14,6 +14,7 @@ class PaymentPage extends React.Component {
         timemillis: 0,
         subtotal: 0,
         discount: 0,
+        memberDiscount: 0,
         price: 0,
         pickUp: true,
         location: "",
@@ -51,19 +52,19 @@ class PaymentPage extends React.Component {
       minPrice = 10; //
     else if(event.target.value == 2)
       minPrice = 0;
-    if(this.state.order.price < minPrice){
+    // if(this.state.order.price < minPrice){
 
-    }else {
+    // }else {
       this.state.order.usedCoupon = event.target.value;
       let usedCoupon = this.state.order.usedCoupon;
       let subtotal = this.state.order.subtotal;
       let products = this.state.order.products;
-      let discount = this.discount(usedCoupon, products);
+      let discount = this.discount(usedCoupon, products) + this.state.order.memberDiscount;
       let totalPrice = subtotal - discount;
       this.state.order.discount = discount;
       this.state.order.price = totalPrice;
       this.setState({order: this.state.order})
-    }
+    // }
   }
 
   createOrder(data, actions) {
@@ -115,7 +116,7 @@ class PaymentPage extends React.Component {
             min = products[i].unitPrice;
           }
         }
-        return min;
+        return parseFloat(min);
       default:
         return 0;
     }
@@ -139,7 +140,7 @@ class PaymentPage extends React.Component {
     const listCoupons = this.state.coupon.map((coupon) =>
     {
       if(coupon.couponType == 1){
-        if(this.state.order.price >= 10) {
+        if(this.state.order.subtotal >= 10) {
           return <option value="1">$2 Off (Over $10)</option>
         }else{
           return 0;
@@ -154,7 +155,6 @@ class PaymentPage extends React.Component {
       window.open("/confirmation", "_self");
     }
 
-    console.log("pickup"+ pickUp);
     return (
       <div className="container-confirm">
         <div className="card" id="LocationConfirm">
@@ -180,7 +180,8 @@ class PaymentPage extends React.Component {
             <h4>Choose Your Coupon</h4>
             <hr className="solid"></hr>
             <select id="selectCoupon" onChange={this.handleCouponSelected}>
-              <option disabled selected value> -- select coupon -- </option>
+              {/*<option disabled selected value> -- select coupon -- </option>*/}
+              <option value="0">No Coupon</option>
               {listCoupons}
             </select>
           </div>
@@ -194,11 +195,11 @@ class PaymentPage extends React.Component {
             <p>{listProducts}</p>
             <div>
               <hr className="solid"></hr>
-              <p className="priceConfirm2">${(this.state.order.subtotal).toFixed(2)}</p>
+              <p className="priceConfirm2">${this.state.order.subtotal}</p>
               <p className="priceConfirm1">Subtotal</p>
               <p className="priceConfirm2">${this.state.order.discount}</p>
               <p className="priceConfirm1">Discounts</p>
-              <h4 className="priceConfirm2">${(this.state.order.price).toFixed(2)}</h4>
+              <h4 className="priceConfirm2">${this.state.order.price}</h4>
               <h4 className="priceConfirm1">Total</h4>
             </div>
           </div>
