@@ -34,7 +34,6 @@ class OrderDetail extends React.Component {
                                 <div className="card">
                                     <div className="card-header">
                                         <h4>Order Complete</h4>
-                                        <h7>{orderTime}</h7>
                                     </div>
                                     <div className="card-body">
                                         {this.formatProductCards()}
