@@ -40,6 +40,10 @@ class OrderHistory extends React.Component {
     }
 
     render() {
+        console.log("this.props.user.userData");
+        console.log(this.props.user.userData)
+        console.log("this.state");
+        console.log(this.state);
 
         return (
             <div>

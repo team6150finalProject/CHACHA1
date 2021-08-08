@@ -12,16 +12,17 @@ class PaymentPage extends React.Component {
     this.state = {
       order: {
         timemillis: 0,
-        subtotal: 0,
-        discount: 0,
+        subtotal: 0, //new
+        discount: 0, //new
         price: 0,
-        pickUp: true,
-        location: "",
-        usedCoupon: 0,
+        pickUp: true, //new
+        location: "", //new
+        usedCoupon: 0, //new
         products: [{
           name: "",
           size: "",
-          price: "",
+          price: 0,
+          unitPrice: 0, //new
           ice: "",
           sweetness: "",
           extras: [],
@@ -41,7 +42,6 @@ class PaymentPage extends React.Component {
       processed: false
     }
     this.handleCouponSelected = this.handleCouponSelected.bind(this);
-
   }
 
 
@@ -110,12 +110,9 @@ class PaymentPage extends React.Component {
         return off;
       case "2":
         var min = products[0].unitPrice;
-        console.log("min:");
-        console.log(products);
         for(var i=0; i<products.length; i++){
           if(products[i].price < min){
             min = products[i].unitPrice;
-            console.log("product price:" +min);
           }
         }
         return min;

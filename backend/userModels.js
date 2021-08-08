@@ -20,7 +20,12 @@ module.exports = mongoose.model('project-register', {
   orders: [{
     orderId: { type: String, required: true },
     timemillis: { type: Number, required: true },
-    totalprice: { type: Number, required: true },
+    subtotal: { type: Number, required: true },
+    discount: { type: Number, required: true },
+    totalPrice: { type: Number, required: true },
+    pickUp: { type: Boolean, required: true },
+    location: { type: String, required: true },
+    usedCoupon: { type: Number, required: true },
     products: [{
       name: { type: String, required: true },
       size: { type: String, default: '' },
