@@ -45,16 +45,16 @@ class Cart extends React.Component {
             console.log("price: "+this.state.price);
         }
         this.state.subtotal = this.state.price;
-        /*if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
+        if (this.props.user.userData.isadmin && (this.state.price >= 10)) {
             this.state.price -= 2;
-        }*/
+        }
         console.log(this.state.products);
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
-        state.price = (state.price);
+        state.price = (state.price).toFixed(2);
         console.log(state);
         this.props.history.push({pathname:'/payment', state:{order: state}})
     }
@@ -126,10 +126,10 @@ class Cart extends React.Component {
                         <br/>
                         <hr style={{textAlign:'center',width:'80%'}}/>
                         <h3 style={{fontWeight: "bold", padding:20}}>Total: ${(this.state.price).toFixed(2)}
-                        {/*{is2OFF
-                            ? <nobr> ($2 off for member order of $10+) </nobr>
-                            : <nobr></nobr>
-                        }*/}
+                        {is2OFF
+                            ? <div> ($2 off for member order of $10+) </div>
+                            : <div></div>
+                        }
                         </h3>
                         <p>
                             <Link to={'/order'} >
