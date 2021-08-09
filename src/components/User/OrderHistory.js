@@ -30,7 +30,10 @@ class OrderHistory extends React.Component {
                     extras:"",
                     quantity: 0
                 }]
-            }]
+            }],
+            flag: 0,
+            from: 0,
+            end: 5
         }
     }
 
@@ -39,9 +42,42 @@ class OrderHistory extends React.Component {
         this.setState({orders: userData.orders});
     }
 
+    changePage(page){
+        const NUM = 5;
+        if(page == -1){ //previous
+            if(this.state.flag <= 0){
+                this.state.flag = 0;
+            }else {
+                this.state.flag = this.state.flag - 1;
+            }
+            this.state.from = this.state.flag*NUM;
+            this.state.end = this.state.from + NUM;
+        }else { //next
+            if(this.state.orders.length % NUM == 0){
+                if(this.flag >= this.state.orders.length/NUM -1){
+                    this.state.flag = this.state.orders.length/NUM - 1;
+                }else {
+                    this.state.flag = this.state.flag + 1;
+                }
+                this.state.from = this.state.flag*NUM;
+                this.state.end = this.state.from + NUM;
+            }else{ //%NUM != 0
+                if(this.flag >= Math.floor(this.state.orders.length/NUM)){
+                    this.state.flag = Math.floor(this.state.orders.length/NUM);
+                }else {
+                    this.state.flag = this.state.flag + 1;
+                }
+                this.state.from = this.state.flag*NUM;
+                this.state.end = this.state.from + NUM;
+            }
+        }
+        this.setState({flag:this.state.flag, from: this.state.from, end: this.state.end});
+    }
+
+
     formatOrderCards = () => {
         if(this.state.orders){
-            return this.state.orders.slice(0).reverse().map((reading, index) => <OrderCard reading={reading} key={index} />)
+            return this.state.orders.slice().reverse().slice(this.state.from,this.state.end).map((reading, index) => <OrderCard reading={reading} key={index} />)
         }
     }
 
@@ -58,18 +94,16 @@ class OrderHistory extends React.Component {
                                 <a href="">Cancelled Orders</a>
                             </b></nav>
                             <div className="orderContainer">
-
                                 <div>
                                     {this.formatOrderCards()}
                                 </div>
-
                             </div>
                             <div className="nextPage">
                                 <ul>
-                                    <li><a href="/" >Previous</a></li>
+                                    <li><a href="javascript:void(0)" onClick={()=>this.changePage(-1)}>Previous</a></li>
                                     <li><a href="/" >1</a></li>
                                     <li><a href="/" >2</a></li>
-                                    <li><a href="/" >Next</a></li>
+                                    <li><a href="javascript:void(0)" onClick={()=>this.changePage(1)}>Next</a></li>
                                 </ul>
                             </div>
                         </div>
