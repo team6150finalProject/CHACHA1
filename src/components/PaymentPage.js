@@ -146,7 +146,9 @@ class PaymentPage extends React.Component {
           return 0;
         }
       }else if(coupon.couponType == 2){
-        return <option value="2">Get A Free Drink</option>
+        if(this.state.order.products.length > 1){
+          return <option value="2">Get A Free Drink</option>
+        }
       }
     })
     const street = this.state.order.location.split(',')[0];
