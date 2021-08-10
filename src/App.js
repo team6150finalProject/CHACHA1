@@ -59,7 +59,7 @@ class App extends React.Component {
           <Route path='/order/specialtyDrinks/:productId' component={FruitTeaSelect} />
           <Route path='/location' component={Location} />
 
-          <Route path='/cart' component={Auth(Cart)} />
+          <Route path='/cart' component={Cart} />
           <Route path='/payment' component={Auth(PaymentPage)} />
           <Route path='/confirmation' component={Auth(ConfirmationPage)} />
           <Route path='/signin' component={AuthForLogin(SignInScreen)} />
