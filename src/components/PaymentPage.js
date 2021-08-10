@@ -146,7 +146,7 @@ class PaymentPage extends React.Component {
           return 0;
         }
       }else if(coupon.couponType == 2){
-        if(this.state.order.products.length > 1){
+        if(parseInt(cookie.load('drinkNum')) > 1){
           return <option value="2">Get A Free Drink</option>
         }
       }
