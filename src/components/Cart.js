@@ -18,7 +18,8 @@ class Cart extends React.Component {
             products: [],
             pickUp: true,
             location: "",
-            isOrder: false
+            isOrder: false,
+            profileChecked: true
         };
         this.handleLocationSelected = this.handleLocationSelected.bind(this);
         this.handleShippingMethod = this.handleShippingMethod.bind(this);
@@ -53,14 +54,19 @@ class Cart extends React.Component {
             this.state.discount += 2;
             this.state.memberDiscount += 2;
         }
-        console.log(this.state.products);
+        this.profileCheck = 1;
     }
     formatCards = () => {
         return this.state.products.map((reading, index) => <CartCard reading={reading} key={index} />)
     }
     handleOrder(state) {
-        console.log(state);
-        this.props.history.push({pathname:'/payment', state:{order: state}})
+        const profile = this.props.user.userData.profile
+        if(profile && profile.phone && profile.lastname){
+            this.props.history.push({pathname:'/payment', state:{order: state}})
+        }else {
+            this.state.profileChecked = false;
+            this.setState({state: this.state});
+        }
     }
 
     handleLocationSelected(event){
@@ -143,8 +149,10 @@ class Cart extends React.Component {
                             {this.state.isOrder? <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}}>Place Order</Button>:
                                 <Button variant="dark" onClick={() => this.handleOrder(this.state)} style={{margin:'5px'}} disabled="disabled">Place Order</Button>
                             }
-
                         </p>
+                        { this.state.profileChecked ? <span/> : <span>
+                            <p className="redWarning">Please update your profile first!</p>
+                        </span>}
                     </div>
                     <br className="clear"  style={{clear:'left'}}/>
                 </div>
