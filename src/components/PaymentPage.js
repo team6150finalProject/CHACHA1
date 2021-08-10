@@ -133,7 +133,7 @@ class PaymentPage extends React.Component {
     const listProducts = this.state.order.products.map((products) =>
       <div>
         <p className="inlineP">{products.name}, </p>
-        <p className="geryP">{products.size} size, {products.ice}, {products.sweetness}, x{products.quantity}</p>
+        <p className="geryP">{products.size} size, {products.ice}, {products.sweetness}, {products.extras}, x{products.quantity}</p>
       </div>
     );
 

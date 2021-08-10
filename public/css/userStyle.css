@@ -88,3 +88,9 @@ a {
 #orderAgain{
     padding: 5px;
 }
+
+.middleWarning{
+    font-style: italic;
+    padding: 50px;
+    text-align: center;
+}
