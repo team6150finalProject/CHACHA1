@@ -133,7 +133,7 @@ class PaymentPage extends React.Component {
     const listProducts = this.state.order.products.map((products) =>
       <div>
         <p className="inlineP">{products.name}, </p>
-        <p className="geryP">{products.size} size, {products.ice}, {products.sweetness}, x{products.quantity}</p>
+        <p className="geryP">{products.size} size, {products.ice}, {products.sweetness}, {products.extras}, x{products.quantity}</p>
       </div>
     );
 
@@ -146,7 +146,9 @@ class PaymentPage extends React.Component {
           return 0;
         }
       }else if(coupon.couponType == 2){
-        return <option value="2">Get A Free Drink</option>
+        if(parseInt(cookie.load('drinkNum')) > 1){
+          return <option value="2">Get A Free Drink</option>
+        }
       }
     })
     const street = this.state.order.location.split(',')[0];

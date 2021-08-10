@@ -30,7 +30,10 @@ class OrderHistory extends React.Component {
                     extras:"",
                     quantity: 0
                 }]
-            }]
+            }],
+            flag: 0,
+            from: 0,
+            end: 5
         }
     }
 
@@ -39,13 +42,91 @@ class OrderHistory extends React.Component {
         this.setState({orders: userData.orders});
     }
 
+    changePage(page){
+        const NUM = 5;
+
+        if(page == -1){ //previous
+            if(this.state.flag <= 0){
+                this.state.flag = 0;
+            }else {
+                this.state.flag = this.state.flag - 1;
+            }
+            this.state.from = this.state.flag*NUM;
+            this.state.end = this.state.from + NUM;
+        }else { //next
+            if(this.state.orders.length % NUM == 0){
+                if(this.flag >= this.state.orders.length/NUM -1){
+                    this.state.flag = this.state.orders.length/NUM - 1;
+                }else {
+                    this.state.flag = this.state.flag + 1;
+                }
+                this.state.from = this.state.flag*NUM;
+                this.state.end = this.state.from + NUM;
+            }else{ //%NUM != 0
+                if(this.state.flag >= Math.floor(this.state.orders.length/NUM)){
+                    this.state.flag = Math.floor(this.state.orders.length/NUM);
+                }else {
+                    this.state.flag = this.state.flag + 1;
+                }
+                this.state.from = this.state.flag*NUM;
+                this.state.end = this.state.from + NUM;
+            }
+        }
+        this.setState({flag:this.state.flag, from: this.state.from, end: this.state.end});
+    }
+
+    showPage(pageNum){
+        const NUM = 5;
+        this.state.flag = pageNum - 1;
+        this.state.from = this.state.flag*NUM;
+        this.state.end = this.state.from + NUM;
+        this.setState({flag:this.state.flag, from: this.state.from, end: this.state.end});
+    }
+
+
     formatOrderCards = () => {
         if(this.state.orders){
-            return this.state.orders.slice(0).reverse().map((reading, index) => <OrderCard reading={reading} key={index} />)
+            return this.state.orders.slice().reverse().slice(this.state.from,this.state.end).map((reading, index) => <OrderCard reading={reading} key={index} />)
         }
     }
 
     render() {
+        const pageNumber = () => {
+            let length;
+            if(this.state.orders){
+                if(this.state.orders.length > 0){
+                    if(this.state.orders.length % 5 == 0)
+                        length =  Math.floor(this.state.orders.length/5);
+                    else
+                        length = Math.floor(this.state.orders.length/5)+1;
+                    if(length == 1){
+                        return <div className="inlineP">
+                            <li><p>{this.state.flag+1}</p></li>
+                        </div>
+                    }
+                    if(this.state.flag == 0){
+                        return <div className="inlineP">
+                            <li><p>{this.state.flag+1}</p></li>
+                            <li><a href="javascript:void(0)" onClick={()=>this.showPage(this.state.flag+2)}>{this.state.flag+2}</a></li>
+                        </div>
+                    }else if(this.state.flag == length-1){
+                        return <div className="inlineP">
+                            <li><a href="javascript:void(0)" onClick={()=>this.showPage(this.state.flag+0)}>{this.state.flag}</a></li>
+                            <li><p>{this.state.flag+1}</p></li>
+                        </div>
+                    }else {
+                        return <div className="inlineP">
+                            <li><a href="javascript:void(0)" onClick={()=>this.showPage(this.state.flag+0)}>{this.state.flag}</a></li>
+                            <li><p>{this.state.flag+1}</p></li>
+                            <li><a href="javascript:void(0)" onClick={()=>this.showPage(this.state.flag+2)}>{this.state.flag+2}</a></li>
+                        </div>
+                    }
+                }else {
+                    return <li><p>{this.state.flag+1}</p></li>;
+                }
+            }
+        }
+
         return (
             <div>
                 <div className="userScreen">
@@ -58,18 +139,19 @@ class OrderHistory extends React.Component {
                                 <a href="">Cancelled Orders</a>
                             </b></nav>
                             <div className="orderContainer">
-
                                 <div>
-                                    {this.formatOrderCards()}
+                                    {this.state.orders&&this.state.orders.length ? this.formatOrderCards() : <h2 className="middleWarning">You haven't ordered anything</h2>}
                                 </div>
-
                             </div>
                             <div className="nextPage">
                                 <ul>
-                                    <li><a href="/" >Previous</a></li>
-                                    <li><a href="/" >1</a></li>
-                                    <li><a href="/" >2</a></li>
-                                    <li><a href="/" >Next</a></li>
+                                    {this.state.orders&&this.state.orders.length ? <div>
+                                        <li><a href="javascript:void(0)" onClick={()=>this.changePage(-1)}>Previous</a></li>
+                                        {pageNumber()}
+                                        <li><a href="javascript:void(0)" onClick={()=>this.changePage(1)}>Next</a></li>
+                                    </div> : <span/> }
+
+
                                 </ul>
                             </div>
                         </div>

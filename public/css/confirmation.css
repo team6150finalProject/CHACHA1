@@ -43,3 +43,8 @@
 .inlineP{
     display: inline;
 }
+
+.redWarning{
+    color: red;
+    font-weight: bold;
+}
