@@ -75,6 +75,14 @@ class OrderHistory extends React.Component {
         this.setState({flag:this.state.flag, from: this.state.from, end: this.state.end});
     }
 
+    showPage(pageNum){
+        const NUM = 5;
+        this.state.flag = pageNum - 1;
+        this.state.from = this.state.flag*NUM;
+        this.state.end = this.state.from + NUM;
+        this.setState({flag:this.state.flag, from: this.state.from, end: this.state.end});
+    }
+
 
     formatOrderCards = () => {
         if(this.state.orders){
@@ -83,7 +91,7 @@ class OrderHistory extends React.Component {
     }
 
     render() {
-        const showPage = () => {
+        const pageNumber = () => {
             let length;
             if(this.state.orders){
                 if(this.state.orders.length > 0){
@@ -99,18 +107,18 @@ class OrderHistory extends React.Component {
                     if(this.state.flag == 0){
                         return <div className="inlineP">
                             <li><p>{this.state.flag+1}</p></li>
-                            <li><a href="#" >{this.state.flag+2}</a></li>
+                            <li><a href="javascript:void(0)" onClick={()=>this.showPage(this.state.flag+2)}>{this.state.flag+2}</a></li>
                         </div>
                     }else if(this.state.flag == length-1){
                         return <div className="inlineP">
-                            <li><a href="#" >{this.state.flag}</a></li>
+                            <li><a href="javascript:void(0)" onClick={()=>this.showPage(this.state.flag+0)}>{this.state.flag}</a></li>
                             <li><p>{this.state.flag+1}</p></li>
                         </div>
                     }else {
                         return <div className="inlineP">
-                            <li><a href="#" >{this.state.flag}</a></li>
+                            <li><a href="javascript:void(0)" onClick={()=>this.showPage(this.state.flag+0)}>{this.state.flag}</a></li>
                             <li><p>{this.state.flag+1}</p></li>
-                            <li><a href="#" >{this.state.flag+2}</a></li>
+                            <li><a href="javascript:void(0)" onClick={()=>this.showPage(this.state.flag+2)}>{this.state.flag+2}</a></li>
                         </div>
                     }
                 }else {
@@ -139,7 +147,7 @@ class OrderHistory extends React.Component {
                                 <ul>
                                     {this.state.orders&&this.state.orders.length ? <div>
                                         <li><a href="javascript:void(0)" onClick={()=>this.changePage(-1)}>Previous</a></li>
-                                        {showPage()}
+                                        {pageNumber()}
                                         <li><a href="javascript:void(0)" onClick={()=>this.changePage(1)}>Next</a></li>
                                     </div> : <span/> }
 
