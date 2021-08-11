@@ -88,7 +88,7 @@ class Settings extends React.Component {
 
                       <div className='life-style-content-signin'>
                           <p >
-                              Sign up to get special deals, exclusive CHA-CHA content and offers via email.
+                              Sign up to get special deals, exclusive CHA-CHA content and offers via text.
                           </p>
                           <div className='life-style-content-signin-switch'><BootstrapSwitchButton checked={true} onstyle="dark" /></div>
                       </div>
