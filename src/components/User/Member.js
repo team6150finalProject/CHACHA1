@@ -82,7 +82,7 @@ class Member extends Component {
     }
 
     onApprove(data, actions) {
-        swal('You have been renewed your membership')
+        swal({text:'You have been renewed your membership', icon:"success"})
         this.setState({
             memeberday: true
         })

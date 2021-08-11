@@ -3,6 +3,7 @@ import './coupon.css'
 import {connect} from "react-redux";
 import {fetchData} from "../../redux/actions";
 import {reqGetCoupon} from "../../api";
+import swal from 'sweetalert';
 class Coupon extends Component {
 
     constructor(props) {
@@ -21,9 +22,9 @@ class Coupon extends Component {
             }
             const response = await reqGetCoupon(data)
             const result =response.data
-            alert(result.msg)
+            swal({text: result.msg, icon:"success"})
         } else {
-            alert('You are not member')
+            swal({text: 'You are not member',icon: "warning"})
         }
     }
     componentDidMount(){
