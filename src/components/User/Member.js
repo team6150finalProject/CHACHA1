@@ -14,6 +14,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {reqGetMembership} from "../../api";
 import ReactDOM from 'react-dom'
+import swal from 'sweetalert';
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -52,7 +53,7 @@ class Member extends Component {
               console.log(error.response)
           })
           const result =response.data
-          alert(result.msg )
+          swal(result.msg )
      }
     getPassword(e) {
         const {value} =e.target;
@@ -81,7 +82,7 @@ class Member extends Component {
     }
 
     onApprove(data, actions) {
-        alert('You have been renewed your membership')
+        swal('You have been renewed your membership')
         this.setState({
             memeberday: true
         })

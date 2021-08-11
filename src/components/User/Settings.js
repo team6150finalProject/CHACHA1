@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { reqUpdatePassword} from "../../api";
 import "./Profile.css"
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
+import swal from 'sweetalert';
+import responsiveObserve from 'antd/lib/_util/responsiveObserve';
 
 const passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,12}$/;
 
@@ -53,7 +55,12 @@ class Settings extends React.Component {
                           };
                           const response = await reqUpdatePassword(data);
                           const result =response.data
-                          alert(result.msg)
+                          if (result.code === 0) {
+                            swal ({title:result.msg, icon: "success"})
+                          }
+                          else {
+                            swal ({title:result.msg, icon: "error"})
+                          }
                       }}
                   >
                       {({ isSubmitting }) => (

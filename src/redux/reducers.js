@@ -8,6 +8,7 @@ import {
     SYNC_STATE_INFO,
     FETCH_USER_DATA
 } from "./action-types";
+import swal from 'sweetalert';
 
 const initUser ={
     isAuth: false,
@@ -33,7 +34,7 @@ function user(state=initUser, action){
 function userregister(state=initUser, action){
     switch (action.type) {
         case REGISTER_SUCCESS:
-            // alert("Account Created Successfully!");
+            swal("Welcome to CHA-CHA!", "Your account has been created successfully.", "success");
             return {...action.data, redirectTo: '/signin',msg: '' }
         case ERROR_MSG_REGISTER:
             return {...state, msg: action.data}
