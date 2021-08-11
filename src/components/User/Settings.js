@@ -81,14 +81,14 @@ class Settings extends React.Component {
                   <div className='life-style-content'>
                       <div className='life-style-content-signin'>
                           <p>
-                              Sign up to get special deals, exclusive Sprouts content and offers via email.
+                              Sign up to get special deals, exclusive CHA-CHA content and offers via email.
                           </p>
                           <div className='life-style-content-signin-switch'><BootstrapSwitchButton checked={true} onstyle="dark" /></div>
                       </div>
 
                       <div className='life-style-content-signin'>
                           <p >
-                              Sign up to get special deals, exclusive Sprouts content and offers via email.
+                              Sign up to get special deals, exclusive CHA-CHA content and offers via email.
                           </p>
                           <div className='life-style-content-signin-switch'><BootstrapSwitchButton checked={true} onstyle="dark" /></div>
                       </div>
